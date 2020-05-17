@@ -61,9 +61,9 @@ import {createEvent, useSubscription, useEvent, View} from '@cobuildlab/react-si
 // agency-events.js
 import {createEvent} from "@cobuildlab/react-simple-state";
 
-const OnAgencyList = createEvent();
-const OnAgencyListError = createEvent();
-const OnNewAgent = createEvent({
+export const OnAgencyList = createEvent();
+export const OnAgencyListError = createEvent();
+export const OnNewAgent = createEvent({
   initialValue : new Agent(),
   reducer: (prevState)=>{
     prevState.agencies = OnAgencyList.get()
@@ -134,7 +134,7 @@ const AgencyView = ()=> {
 - `reducer` A function that mutates the state before it gets propagated.
 - `receiveLastValue` A flag to receive the last value the first time that the hook gets created. 
 
-### `useEvent(stire, eventName, initialValue, reducer)`
+### `useEvent(eventName, initialValue, reducer)`
 
 - It subscribes ton event from functional components using hooks with a declarative approach.
 - It handles the subscription lifecycle
@@ -153,13 +153,13 @@ import {OnAgencyList, OnNewAgent} from "./agency-events.js"
 const AgencyView = ()=> {
     const state = useEvent(OnAgencyList);
     const agent = useEvent(OnNewAgent, {initialValue: {}, reducer: (prevState) => prevState.agent});
-    ¬
+    
     return (); 
 }
 ```
 
 
-## Full Example 
+### Full Example 
 
 Let's build a Flux Workflow for authentication
 
@@ -168,14 +168,14 @@ Let's build a Flux Workflow for authentication
 ```js
 import {createEvent} from "@cobuildlab/react-simple-state";
 
-const LogoutEvent = createEvent({
+export const LogoutEvent = createEvent({
   reducer: (prevState)=>{
     localStorage.clear();
     return prevState;
   }
 });
-const LoginEvent = createEvent();
-const PermissionError = createEvent({
+export const LoginEvent = createEvent();
+export const PermissionError = createEvent({
   reducer: (prevState)=>{
     LogoutEvent.dispatch();
     return prevState;
@@ -247,9 +247,13 @@ const authenticateAction = (username, password)=> {
       LoginEvent.dispatch(dataToSave);
 }
 
-export default {authenticateAction};
+export {authenticateAction};
 ```
 ## Changelog
+
+### v0.1.0:
+
+- Typos and documentation
 
 ### v0.0.1:
 
