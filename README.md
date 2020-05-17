@@ -233,7 +233,7 @@ const View = (props) => {
 ### 3) Define some actions that will trigger the event
 
 ```js
-import {LoginEvent, LogoutEvent} from "@cobuildlab/react-simple-state"; 
+import {LoginEvent, LogoutEvent} from "./agency-events.js"; 
 
 const authenticateAction = (username, password)=> {
       if (username === undefined)
