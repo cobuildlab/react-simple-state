@@ -1,0 +1,59 @@
+{
+  "name": "@cobuildlab/react-simple-state",
+  "version": "0.0.1",
+  "description": "Simple and Lightweight state management for react applications. ",
+  "main": "lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "test": "jest --collect-coverage",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json"
+  },
+  "homepage": "https://github.com/cobuildlab/react-simple-state",
+  "bugs": {
+    "url": "https://github.com/cobuildlab/react-simple-state/issues"
+  },
+  "author": "Angel Lacret",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.9.0",
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.13.5",
+    "@types/ramda": "github:types/npm-ramda#dist",
+    "@types/react": "^16.9.35",
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
+    "babel-jest": "^26.0.1",
+    "eslint": "^7.0.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-jest": "^23.13.1",
+    "eslint-plugin-jsdoc": "^25.4.1",
+    "husky": "^4.2.5",
+    "jest": "^26.0.1",
+    "lint-staged": "^10.2.2",
+    "prettier": "^2.0.5",
+    "ts-jest": "^25.5.1",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "ramda": "^0.27.0",
+    "react": "^16.8.6",
+    "rxjs": "^6.5.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}
