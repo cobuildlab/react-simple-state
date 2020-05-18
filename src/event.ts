@@ -30,12 +30,11 @@ export class Event {
     }
 
     dispatch(value: any) {
-        let _value = this.#value;
         if (this.#reducer !== null && this.#reducer !== undefined)
-            _value = this.#reducer(_value);
-        _value = clone(_value);
-        this.#value = _value;
-        this.#subject.next(_value);
+            value = this.#reducer(value);
+        value = clone(value);
+        this.#value = value;
+        this.#subject.next(value);
     }
 
     get(): any {

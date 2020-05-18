@@ -14,7 +14,7 @@ test("createEvent:", () => {
         expect(val).toBe(false);
     });
     eventWithReducer.dispatch(true);
-    expect(eventWithReducer.get()).toBe(true);
+    expect(eventWithReducer.get()).toBe(false);
 
     const eventWithReducerAndInitial = createEvent({initialValue: 1, reducer: (val: any) => val + 1});
     eventWithReducerAndInitial.subscribe(val => {
