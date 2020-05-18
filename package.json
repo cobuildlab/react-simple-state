@@ -1,6 +1,6 @@
 {
   "name": "@cobuildlab/react-simple-state",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Simple and Lightweight state management for react applications. ",
   "main": "lib/index.js",
   "types": "./lib/index.d.ts",
