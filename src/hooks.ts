@@ -28,12 +28,12 @@ export type EventHookParams = {
  * @param {any} initialValue -  An Initial Value for the state.
  * @param {Function} reducer - A function to transform the state before return the value.
  */
-const useEvent = (event: Event, params: EventHookParams) => {
-    const [value, setValue] = useState(params.receiveLastValue ? event.get : params.initialValue);
+const useEvent = (event: Event, params?: EventHookParams) => {
+    const [value, setValue] = useState(params?.receiveLastValue ? event.get() : params?.initialValue);
 
     useEffect(() => {
         const handleStateChange = (state?: any) => {
-            if (params.reducer)
+            if (params?.reducer)
                 state = params.reducer(state);
             setValue(state)
         };

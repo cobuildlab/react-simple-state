@@ -15,9 +15,9 @@ export class Event {
     #reducer?: Function | null = null;
     #subject: Subject<any> = new Subject()
 
-    constructor(eventDescriptor: EventParams) {
-        this.#value = eventDescriptor.initialValue;
-        this.#reducer = eventDescriptor.reducer;
+    constructor(eventDescriptor?: EventParams) {
+        this.#value = eventDescriptor?.initialValue;
+        this.#reducer = eventDescriptor?.reducer;
     }
 
     subscribe(subscriber: (value?: any) => void, receiveLastValue = false): Subscription {
@@ -43,7 +43,7 @@ export class Event {
     }
 }
 
-export const createEvent = (eventDescriptor: EventParams): Event => {
+export const createEvent = (eventDescriptor?: EventParams): Event => {
     return new Event(eventDescriptor);
 };
 
