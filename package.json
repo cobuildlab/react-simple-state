@@ -1,6 +1,6 @@
 {
   "name": "@cobuildlab/react-simple-state",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Simple and Lightweight state management for react applications. ",
   "main": "lib/index.js",
   "types": "./lib/index.d.ts",
@@ -39,7 +39,7 @@
     "ts-jest": "^25.5.1",
     "typescript": "^3.8.3"
   },
-  "dependencies": {
+  "peerDependencies": {
     "ramda": "^0.27.0",
     "react": "^16.8.6",
     "rxjs": "^6.5.5"
@@ -52,8 +52,7 @@
   "lint-staged": {
     "*.js": [
       "prettier --write",
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ]
   }
 }
