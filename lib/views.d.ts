@@ -10,7 +10,7 @@ export declare abstract class View extends Component {
      * @param {boolean}receiveLastValue - Whether the callback should receive the last value immediately
      * @return {Subscription} subscription The subscription for this event in the Store
      */
-    subscribe(event: Event, callback: (value?: any) => void, receiveLastValue?: boolean): import("rxjs").Subscription;
+    subscribe<T>(event: Event<T>, callback: (value?: T) => void, receiveLastValue?: boolean): import("rxjs").Subscription;
     componentDidMount(): void;
     componentWillUnmount(): void;
 }
