@@ -5,10 +5,10 @@ export declare type Store = {
 export declare type Subscription = {
     unsubscribe: Function;
 };
-export declare type LocalObserver = {
+export declare type LocalObserver<T> = {
     store?: Store;
     eventName?: string;
-    event?: Event;
-    callback: (value?: any) => void;
+    event?: Event<T>;
+    callback: (value?: T) => void;
     receiveLastValue: boolean;
 };

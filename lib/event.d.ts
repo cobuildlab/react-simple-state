@@ -1,17 +1,18 @@
 import { Subscription } from 'rxjs';
-declare type EventParams = {
-    initialValue?: any;
+declare type EventParams<T> = {
+    initialValue?: T;
     reducer?: Function;
 };
 /**
  * New Event Classes
  */
-export declare class Event {
+export declare class Event<T> {
     #private;
-    constructor(eventDescriptor: EventParams);
-    subscribe(subscriber: (value?: any) => void, receiveLastValue?: boolean): Subscription;
-    dispatch(value: any): void;
-    get(): any;
+    constructor(eventDescriptor: EventParams<T>);
+    subscribe(subscriber: (value?: T) => void, receiveLastValue?: boolean): Subscription;
+    dispatch<T>(value: T): void;
+    get<T>(): T | undefined;
 }
-export declare const createEvent: (eventDescriptor: EventParams) => Event;
-export {};
+
+export declare function createEvent<T>(eventDescriptor: EventParams<T>): Event<T>;
+export { };
