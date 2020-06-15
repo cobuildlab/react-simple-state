@@ -1,11 +1,11 @@
-import {Component} from "react";
-import {LocalObserver, Subscription} from "./types";
-import {Event} from "./event";
+import { Component } from "react";
+import { LocalObserver, Subscription } from "./types";
+import { Event } from "./event";
 
 export abstract class View extends Component {
-    #subscriptions: Subscription[] = [];
-    #toBeSubscribedIfUnMounted: LocalObserver[] = [];
-    #hasBeenUnmounted: boolean = false;
+    private subscriptions: Subscription[] = [];
+    private toBeSubscribedIfUnMounted: LocalObserver[] = [];
+    private hasBeenUnmounted: boolean = false;
 
     /**
      * Subscribe to an Event
@@ -17,26 +17,26 @@ export abstract class View extends Component {
      */
     subscribe(event: Event, callback: (value?: any) => void, receiveLastValue = false) {
         const subscription = event.subscribe(callback, receiveLastValue);
-        this.#subscriptions.push(subscription);
+        this.subscriptions.push(subscription);
         // on an event where the component is unmounted and then mounted:
-        this.#toBeSubscribedIfUnMounted.push({event, callback, receiveLastValue});
+        this.toBeSubscribedIfUnMounted.push({ event, callback, receiveLastValue });
         return subscription;
     }
 
     componentDidMount() {
-        if (!this.#hasBeenUnmounted)
+        if (!this.hasBeenUnmounted)
             return;
         const that = this;
-        this.#toBeSubscribedIfUnMounted.forEach(observer => {
+        this.toBeSubscribedIfUnMounted.forEach(observer => {
             const store = observer.store;
             if (store !== null && store !== undefined) {
                 const subscription = store.subscribe(observer.eventName, observer.callback, observer.receiveLastValue);
-                that.#subscriptions.push(subscription);
-            }else{
+                that.subscriptions.push(subscription);
+            } else {
                 const event = observer.event;
                 if (event !== null && event !== undefined) {
                     const subscription = event.subscribe(observer.callback, observer.receiveLastValue);
-                    that.#subscriptions.push(subscription);
+                    that.subscriptions.push(subscription);
                 }
             }
         });
@@ -44,10 +44,10 @@ export abstract class View extends Component {
     }
 
     componentWillUnmount() {
-        this.#subscriptions.forEach(subscription => {
+        this.subscriptions.forEach(subscription => {
             subscription.unsubscribe();
         });
-        this.#subscriptions = [];
-        this.#hasBeenUnmounted = true;
+        this.subscriptions = [];
+        this.hasBeenUnmounted = true;
     }
 }
