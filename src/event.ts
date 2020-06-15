@@ -13,7 +13,7 @@ type EventParams<T> = {
 export class Event<T> {
     private value: any = null;
     private reducer?: Function | null = null;
-    private subject: Subject<any> = new Subject()
+    private subject: Subject<T> = new Subject()
 
     constructor(eventDescriptor?: EventParams<T>) {
         this.value = eventDescriptor?.initialValue;
@@ -39,6 +39,14 @@ export class Event<T> {
 
     get(): T | undefined {
         return clone(this.value);
+    }
+
+    /**
+     * Removes all data from the Event store
+     */
+    clear(): void {
+        this.value = undefined;
+        this.subject.next(undefined);
     }
 }
 
