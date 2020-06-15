@@ -1,4 +1,4 @@
-import {Event} from "./event";
+import { Event } from "./event";
 
 export type Store = {
     subscribe: Function
@@ -8,10 +8,10 @@ export type Subscription = {
     unsubscribe: Function
 };
 
-export type LocalObserver = {
+export type LocalObserver<T> = {
     store?: Store
     eventName?: string
-    event?: Event
-    callback: (value?: any) => void
+    event?: Event<T>
+    callback: (value?: T) => void
     receiveLastValue: boolean
 };
