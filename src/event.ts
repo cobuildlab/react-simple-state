@@ -44,9 +44,12 @@ export class Event<T> {
     /**
      * Removes all data from the Event store
      */
-    clear(): void {
-        this.value = undefined;
-        this.subject.next(undefined);
+    clear(dispatch = false): void {
+        if (dispatch) {
+            this.dispatch(); // Empty dispatch
+        } else {
+            this.value = null;
+        }
     }
 }
 
