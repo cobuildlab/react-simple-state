@@ -46,7 +46,7 @@ export class Event<T> {
      */
     clear(dispatch = false): void {
         if (dispatch) {
-            this.dispatch(); // Empty dispatch
+            this.dispatch(null); // Empty dispatch
         } else {
             this.value = null;
         }
