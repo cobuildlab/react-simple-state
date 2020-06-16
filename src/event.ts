@@ -1,5 +1,5 @@
-import {Subject, Subscription} from 'rxjs';
-import {NextObserver} from 'rxjs/internal/types';
+import { Subject, Subscription } from 'rxjs';
+import { NextObserver } from 'rxjs/internal/types';
 import * as clone from "ramda/src/clone";
 
 type EventParams = {
@@ -11,13 +11,13 @@ type EventParams = {
  * New Event Classes
  */
 export class Event {
-    #value: any = null;
-    #reducer?: Function | null = null;
-    #subject: Subject<any> = new Subject()
+    private value: any = null;
+    private reducer?: Function | null = null;
+    private subject: Subject<any> = new Subject()
 
     constructor(eventDescriptor?: EventParams) {
-        this.#value = eventDescriptor?.initialValue;
-        this.#reducer = eventDescriptor?.reducer;
+        this.value = eventDescriptor?.initialValue;
+        this.reducer = eventDescriptor?.reducer;
     }
 
     subscribe(subscriber: (value?: any) => void, receiveLastValue = false): Subscription {
@@ -26,19 +26,19 @@ export class Event {
         }
         if (receiveLastValue)
             subscriber(this.get())
-        return this.#subject.subscribe(observer);
+        return this.subject.subscribe(observer);
     }
 
     dispatch(value: any) {
-        if (this.#reducer !== null && this.#reducer !== undefined)
-            value = this.#reducer(value);
+        if (this.reducer !== null && this.reducer !== undefined)
+            value = this.reducer(value);
         value = clone(value);
-        this.#value = value;
-        this.#subject.next(value);
+        this.value = value;
+        this.subject.next(value);
     }
 
     get(): any {
-        return clone(this.#value);
+        return clone(this.value);
     }
 }
 
