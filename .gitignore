@@ -4,3 +4,4 @@ node_modules/
 .c9
 .DS_Store
 coverage/
+lib/

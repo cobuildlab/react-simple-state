@@ -1,18 +1,20 @@
-import { Subject, Subscription } from 'rxjs';
-import { NextObserver } from 'rxjs/internal/types';
+import {Subject, Subscription} from 'rxjs';
+import {NextObserver} from 'rxjs/internal/types';
 import * as clone from "ramda/src/clone";
+
+type Reducer<T> = (value: T | undefined) => T | undefined;
 
 type EventParams<T> = {
     initialValue?: T;
-    reducer?: (value?: T) => void;
+    reducer?: Reducer<T>;
 };
 
 /**
  * New Event Classes
  */
 export class Event<T> {
-    private value: any = null;
-    private reducer?: Function | null = null;
+    private value?: T = undefined;
+    private readonly reducer?: Reducer<T>;
     private subject: Subject<T> = new Subject()
 
     constructor(eventDescriptor?: EventParams<T>) {
@@ -46,13 +48,18 @@ export class Event<T> {
      */
     clear(dispatch = false): void {
         if (dispatch) {
-            this.dispatch(null); // Empty dispatch
+            this.dispatch(); // Empty dispatch
         } else {
-            this.value = null;
+            this.value = undefined;
         }
     }
 }
 
+/**
+ * Creates an event from a descriptor.
+ *
+ * @param eventDescriptor
+ */
 export function createEvent<T>(eventDescriptor?: EventParams<T>): Event<T> {
     return new Event<T>(eventDescriptor);
 };
