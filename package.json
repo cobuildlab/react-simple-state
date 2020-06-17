@@ -1,6 +1,6 @@
 {
   "name": "@cobuildlab/react-simple-state",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Simple and Lightweight state management for react applications. ",
   "main": "lib/index.js",
   "types": "./lib/index.d.ts",
@@ -37,7 +37,8 @@
     "lint-staged": "^10.2.2",
     "prettier": "^2.0.5",
     "ts-jest": "^25.5.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "ramda": "^0.27.0"
   },
   "peerDependencies": {
     "ramda": "^0.27.0",
@@ -46,7 +47,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run build && npm run test"
     }
   },
   "lint-staged": {

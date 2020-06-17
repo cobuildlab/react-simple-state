@@ -2,9 +2,9 @@ import { Component } from "react";
 import { LocalObserver, Subscription } from "./types";
 import { Event } from "./event";
 
-export abstract class View extends Component {
+export abstract class View<T> extends Component {
     private subscriptions: Subscription[] = [];
-    private toBeSubscribedIfUnMounted: LocalObserver[] = [];
+    private toBeSubscribedIfUnMounted: LocalObserver<T>[] = [];
     private hasBeenUnmounted: boolean = false;
 
     /**
@@ -15,7 +15,7 @@ export abstract class View extends Component {
      * @param {boolean}receiveLastValue - Whether the callback should receive the last value immediately
      * @return {Subscription} subscription The subscription for this event in the Store
      */
-    subscribe(event: Event, callback: (value?: any) => void, receiveLastValue = false) {
+    subscribe(event: Event<T>, callback: (value?: T) => void, receiveLastValue = false) {
         const subscription = event.subscribe(callback, receiveLastValue);
         this.subscriptions.push(subscription);
         // on an event where the component is unmounted and then mounted:
