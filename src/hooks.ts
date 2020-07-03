@@ -31,11 +31,16 @@ export type EventHookParams<T> = {
 function useEvent<T>(event: Event<T>, params?: EventHookParams<T>) {
     const [value, setValue] = useState(event.get() ?? params?.initialValue);
 
-    useSubscription(event, (_value) => {
-        if (params?.reducer) {
-            _value = params.reducer(_value);
-        }
-        setValue(_value);
+    useEffect(() => {
+        const handleStateChange = (state?: any) => {
+            if (params?.reducer)
+                state = params.reducer(state);
+            setValue(state)
+        };
+        const subscription = event.subscribe(handleStateChange);
+        return () => {
+            subscription.unsubscribe();
+        };
     });
 
     return value;
