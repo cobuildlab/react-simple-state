@@ -132,7 +132,6 @@ const AgencyView = ()=> {
 
 - `initialValue` - An initial value for the event.
 - `reducer` A function that mutates the state before it gets propagated.
-- `receiveLastValue` A flag to receive the last value the first time that the hook gets created. 
 
 ### `useEvent(eventName, initialValue, reducer)`
 
@@ -251,6 +250,9 @@ export {authenticateAction};
 ```
 ## Changelog
 
+### v0.2.0:
+
+- Remove: `receiveLastValue` for the `useQuery` hook
 ### v0.1.0:
 
 - Typos and documentation

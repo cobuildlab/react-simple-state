@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Event } from "./event";
+import {useEffect, useState} from "react";
+import {Event} from "./event";
 
 /**
  * React Hook to subscribe to an specific event
@@ -14,22 +14,21 @@ function useSubscription<T>(event: Event<T>, callback: (value?: T) => void) {
         };
     });
 };
-export { useSubscription };
+export {useSubscription};
 
 export type EventHookParams<T> = {
     initialValue?: T;
     reducer?: (value?: T) => void;
-    receiveLastValue: false;
 }
 
 /**
  * React Hook to subscribe to an Event.
  * @param {Event} event - The event.
- * @param {any} initialValue -  An Initial Value for the state.
+ * @param {any} initialValue -  An Initial Value for the state, if not provided, the initial Value of the event will be the last value emitted.
  * @param {Function} reducer - A function to transform the state before return the value.
  */
 function useEvent<T>(event: Event<T>, params?: EventHookParams<T>) {
-    const [value, setValue] = useState(params?.receiveLastValue ? event.get() : params?.initialValue);
+    const [value, setValue] = useState(params?.initialValue ? params.initialValue : event.get());
 
     useEffect(() => {
         const handleStateChange = (state?: any) => {
@@ -45,4 +44,4 @@ function useEvent<T>(event: Event<T>, params?: EventHookParams<T>) {
 
     return value;
 };
-export { useEvent };
+export {useEvent};
