@@ -18,29 +18,22 @@ export { useSubscription };
 
 export type EventHookParams<T> = {
     initialValue?: T;
-    reducer?: (value?: T) => void;
-    receiveLastValue: false;
-}
+    reducer?: (value?: T) => any;
+};
 
 /**
  * React Hook to subscribe to an Event.
  * @param {Event} event - The event.
- * @param {any} initialValue -  An Initial Value for the state.
- * @param {Function} reducer - A function to transform the state before return the value.
+ * @param {EventHookParams} params -  An Initial Value for the state.
  */
 function useEvent<T>(event: Event<T>, params?: EventHookParams<T>) {
-    const [value, setValue] = useState(params?.receiveLastValue ? event.get() : params?.initialValue);
+    const [value, setValue] = useState(event.get() ?? params?.initialValue);
 
-    useEffect(() => {
-        const handleStateChange = (state?: any) => {
-            if (params?.reducer)
-                state = params.reducer(state);
-            setValue(state)
-        };
-        const subscription = event.subscribe(handleStateChange);
-        return () => {
-            subscription.unsubscribe();
-        };
+    useSubscription(event, (_value) => {
+        if (params?.reducer) {
+        _value = params.reducer(_value);
+        }
+        setValue(_value);
     });
 
     return value;
