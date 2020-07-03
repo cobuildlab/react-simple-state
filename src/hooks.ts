@@ -18,7 +18,7 @@ export {useSubscription};
 
 export type EventHookParams<T> = {
     initialValue?: T;
-    reducer?: (value?: T) => void;
+    reducer?: (value?: T) => any;
 }
 
 /**
@@ -28,7 +28,7 @@ export type EventHookParams<T> = {
  * @param {Function} reducer - A function to transform the state before return the value.
  */
 function useEvent<T>(event: Event<T>, params?: EventHookParams<T>) {
-    const [value, setValue] = useState(params?.initialValue ? params.initialValue : event.get());
+    const [value, setValue] = useState((params && params.initialValue !== undefined) ? params.initialValue : event.get());
 
     useEffect(() => {
         const handleStateChange = (state?: any) => {
@@ -40,8 +40,7 @@ function useEvent<T>(event: Event<T>, params?: EventHookParams<T>) {
         return () => {
             subscription.unsubscribe();
         };
-    });
-
+    }, []);
     return value;
 };
 export {useEvent};
