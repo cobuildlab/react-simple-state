@@ -1,6 +1,7 @@
 import { Component } from "react";
-import { LocalObserver, Subscription } from "./types";
 import { Event } from "./event";
+import {Subscription} from "./pub-sub";
+import {LocalObserver} from "./types";
 
 export abstract class View<T> extends Component {
     private subscriptions: Subscription[] = [];
@@ -15,7 +16,7 @@ export abstract class View<T> extends Component {
      * @param {boolean}receiveLastValue - Whether the callback should receive the last value immediately
      * @return {Subscription} subscription The subscription for this event in the Store
      */
-    subscribe(event: Event<T>, callback: (value?: T) => void, receiveLastValue = false) {
+    subscribe(event: Event<T>, callback: (value?: T | null) => void, receiveLastValue = false) {
         const subscription = event.subscribe(callback, receiveLastValue);
         this.subscriptions.push(subscription);
         // on an event where the component is unmounted and then mounted:
