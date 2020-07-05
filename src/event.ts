@@ -1,11 +1,9 @@
-import {Subject, Subscription} from 'rxjs';
-import {NextObserver} from 'rxjs/internal/types';
-import * as clone from "ramda/src/clone";
+import {ConcretePublisher, Publisher, Subscriber, Subscription} from "./pub-sub";
 
-type Reducer<T> = (value: T | undefined) => T | undefined;
+type Reducer<T> = (value: T | null) => T | null;
 
 type EventParams<T> = {
-    initialValue?: T;
+    initialValue?: T | null;
     reducer?: Reducer<T>;
 };
 
@@ -13,34 +11,35 @@ type EventParams<T> = {
  * New Event Classes
  */
 export class Event<T> {
-    private value?: T = undefined;
+    private value: T | null = null;
     private readonly reducer?: Reducer<T>;
-    private subject: Subject<T> = new Subject()
+    private publisher: Publisher<T> = new ConcretePublisher();
 
     constructor(eventDescriptor?: EventParams<T>) {
-        this.value = eventDescriptor?.initialValue;
+        if (eventDescriptor && eventDescriptor.initialValue)
+            this.value = eventDescriptor.initialValue;
         this.reducer = eventDescriptor?.reducer;
     }
 
-    subscribe(subscriber: (value?: T) => void, receiveLastValue = false): Subscription {
-        const observer: NextObserver<any> = {
-            next: subscriber
+    subscribe(subscriber: (value: T | null) => void, receiveLastValue = false): Subscription {
+        const _subscriber: Subscriber<T> = {
+            update: subscriber
         }
         if (receiveLastValue)
             subscriber(this.get())
-        return this.subject.subscribe(observer);
+        return this.publisher.subscribe(_subscriber);
     }
 
-    dispatch(value?: T) {
+    dispatch(value: T | null) {
         if (this.reducer !== null && this.reducer !== undefined)
             value = this.reducer(value);
-        value = clone(value);
+        value = Object.freeze(value);
         this.value = value;
-        this.subject.next(value);
+        this.publisher.notify(value);
     }
 
-    get(): T | undefined {
-        return clone(this.value);
+    get(): T | null {
+        return Object.freeze(this.value);
     }
 
     /**
@@ -48,9 +47,9 @@ export class Event<T> {
      */
     clear(dispatch = false): void {
         if (dispatch) {
-            this.dispatch(); // Empty dispatch
+            this.dispatch(null); // Empty dispatch
         } else {
-            this.value = undefined;
+            this.value = null;
         }
     }
 }

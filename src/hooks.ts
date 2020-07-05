@@ -1,19 +1,23 @@
-import {useEffect, useState} from "react";
+import {useEffect, useState, useCallback} from "react";
 import {Event} from "./event";
 
 /**
  * React Hook to subscribe to an specific event
- * @param {Event} event - The event to subscribe.
+ * @param {Event} event - The event to subscribe. The Event is considered constant across renders.
  * @param {Function} callback -  A function to be called when the subscription gets triggered.
+ * @param {any[]} deps -  List of dependencies for the callback. Follow the same rules of useEffect.
  */
-function useSubscription<T>(event: Event<T>, callback: (value?: T) => void) {
+function useSubscription<T>(event: Event<T>, callback: (value?: T) => void, deps: any[]) {
+    const _callback = useCallback(args => callback(args), [...deps]);
+
     useEffect(() => {
-        const subscription = event.subscribe(callback);
+        const subscription = event.subscribe(_callback);
         return () => {
             subscription.unsubscribe();
         };
-    });
+    }, [_callback]);
 };
+
 export {useSubscription};
 
 export type EventHookParams<T> = {
@@ -29,6 +33,7 @@ export type EventHookParams<T> = {
  */
 function useEvent<T>(event: Event<T>, params?: EventHookParams<T>) {
     const [value, setValue] = useState((params && params.initialValue !== undefined) ? params.initialValue : event.get());
+    const deps = (params && params.reducer !== undefined) ? [params.reducer] : [];
 
     useEffect(() => {
         const handleStateChange = (state?: any) => {
@@ -40,7 +45,7 @@ function useEvent<T>(event: Event<T>, params?: EventHookParams<T>) {
         return () => {
             subscription.unsubscribe();
         };
-    }, []);
+    }, deps);
     return value;
 };
 export {useEvent};

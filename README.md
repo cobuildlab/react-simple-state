@@ -32,7 +32,7 @@ $ npm i --save @cobuildlab/react-simple-state
 import {createEvent, useSubscription, useEvent, View} from '@cobuildlab/react-simple-state';
 ```
 
-## API Docs
+## API Docsw
 
 | Object   | Description   | 
 | ------ | ------ | 
@@ -249,6 +249,12 @@ const authenticateAction = (username, password)=> {
 export {authenticateAction};
 ```
 ## Changelog
+
+### v0.3.0:
+
+- Cache callback on `useEvent`
+- Cache the callback on `useSubscription` and add a dependencies parameter. 
+- Remove `Ramda` and `Rxjs` as dependencies
 
 ### v0.2.0:
 
