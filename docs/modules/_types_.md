@@ -8,7 +8,6 @@
 
 * [LocalObserver](_types_.md#localobserver)
 * [Store](_types_.md#store)
-* [Subscription](_types_.md#subscription)
 
 ## Type aliases
 
@@ -16,13 +15,13 @@
 
 Ƭ **LocalObserver**: *object*
 
-*Defined in [src/types.ts:11](https://github.com/cobuildlab/react-simple-state/blob/87ee77b/src/types.ts#L11)*
+*Defined in [src/types.ts:7](https://github.com/cobuildlab/react-simple-state/blob/269d4ef/src/types.ts#L7)*
 
 #### Type declaration:
 
 * **callback**(): *function*
 
-  * (`value?`: T): *void*
+  * (`value?`: T | null): *void*
 
 * **event**? : *[Event](../classes/_event_.event.md)‹T›*
 
@@ -38,20 +37,8 @@ ___
 
 Ƭ **Store**: *object*
 
-*Defined in [src/types.ts:3](https://github.com/cobuildlab/react-simple-state/blob/87ee77b/src/types.ts#L3)*
+*Defined in [src/types.ts:3](https://github.com/cobuildlab/react-simple-state/blob/269d4ef/src/types.ts#L3)*
 
 #### Type declaration:
 
 * **subscribe**: *Function*
-
-___
-
-###  Subscription
-
-Ƭ **Subscription**: *object*
-
-*Defined in [src/types.ts:7](https://github.com/cobuildlab/react-simple-state/blob/87ee77b/src/types.ts#L7)*
-
-#### Type declaration:
-
-* **unsubscribe**: *Function*

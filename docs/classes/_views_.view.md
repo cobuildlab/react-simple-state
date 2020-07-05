@@ -66,7 +66,7 @@
 
 *Inherited from [View](_views_.view.md).[constructor](_views_.view.md#constructor)*
 
-Defined in node_modules/@types/react/index.d.ts:486
+Defined in node_modules/@types/react/index.d.ts:476
 
 **`deprecated`** 
 
@@ -84,7 +84,7 @@ Name | Type |
 
 *Inherited from [View](_views_.view.md).[constructor](_views_.view.md#constructor)*
 
-Defined in node_modules/@types/react/index.d.ts:488
+Defined in node_modules/@types/react/index.d.ts:478
 
 **`deprecated`** 
 
@@ -107,7 +107,7 @@ Name | Type |
 
 *Inherited from [View](_views_.view.md).[context](_views_.view.md#context)*
 
-Defined in node_modules/@types/react/index.d.ts:486
+Defined in node_modules/@types/react/index.d.ts:476
 
 If using the new style context, re-declare this in your class to be the
 `React.ContextType` of your `static contextType`.
@@ -129,7 +129,7 @@ ___
 
 • **hasBeenUnmounted**: *boolean* = false
 
-*Defined in [src/views.ts:8](https://github.com/cobuildlab/react-simple-state/blob/87ee77b/src/views.ts#L8)*
+*Defined in [src/views.ts:9](https://github.com/cobuildlab/react-simple-state/blob/269d4ef/src/views.ts#L9)*
 
 ___
 
@@ -139,7 +139,7 @@ ___
 
 *Inherited from [View](_views_.view.md).[props](_views_.view.md#readonly-props)*
 
-Defined in node_modules/@types/react/index.d.ts:511
+Defined in node_modules/@types/react/index.d.ts:501
 
 ___
 
@@ -149,7 +149,7 @@ ___
 
 *Inherited from [View](_views_.view.md).[refs](_views_.view.md#refs)*
 
-Defined in node_modules/@types/react/index.d.ts:517
+Defined in node_modules/@types/react/index.d.ts:507
 
 **`deprecated`** 
 https://reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs
@@ -166,15 +166,15 @@ ___
 
 *Inherited from [View](_views_.view.md).[state](_views_.view.md#state)*
 
-Defined in node_modules/@types/react/index.d.ts:512
+Defined in node_modules/@types/react/index.d.ts:502
 
 ___
 
 ### `Private` subscriptions
 
-• **subscriptions**: *[Subscription](../modules/_types_.md#subscription)[]* = []
+• **subscriptions**: *[Subscription](../interfaces/_pub_sub_.subscription.md)[]* = []
 
-*Defined in [src/views.ts:6](https://github.com/cobuildlab/react-simple-state/blob/87ee77b/src/views.ts#L6)*
+*Defined in [src/views.ts:7](https://github.com/cobuildlab/react-simple-state/blob/269d4ef/src/views.ts#L7)*
 
 ___
 
@@ -182,7 +182,7 @@ ___
 
 • **toBeSubscribedIfUnMounted**: *[LocalObserver](../modules/_types_.md#localobserver)‹T›[]* = []
 
-*Defined in [src/views.ts:7](https://github.com/cobuildlab/react-simple-state/blob/87ee77b/src/views.ts#L7)*
+*Defined in [src/views.ts:8](https://github.com/cobuildlab/react-simple-state/blob/269d4ef/src/views.ts#L8)*
 
 ___
 
@@ -192,7 +192,7 @@ ___
 
 *Inherited from [View](_views_.view.md).[contextType](_views_.view.md#static-optional-contexttype)*
 
-Defined in node_modules/@types/react/index.d.ts:468
+Defined in node_modules/@types/react/index.d.ts:458
 
 If set, `this.context` will be set at runtime to the current value of the given Context.
 
@@ -221,7 +221,7 @@ class Foo extends React.Component {
 
 *Inherited from [View](_views_.view.md).[UNSAFE_componentWillMount](_views_.view.md#optional-unsafe_componentwillmount)*
 
-Defined in node_modules/@types/react/index.d.ts:712
+Defined in node_modules/@types/react/index.d.ts:702
 
 Called immediately before mounting occurs, and before `Component#render`.
 Avoid introducing any side-effects or subscriptions in this method.
@@ -247,7 +247,7 @@ ___
 
 *Inherited from [View](_views_.view.md).[UNSAFE_componentWillReceiveProps](_views_.view.md#optional-unsafe_componentwillreceiveprops)*
 
-Defined in node_modules/@types/react/index.d.ts:744
+Defined in node_modules/@types/react/index.d.ts:734
 
 Called when the component may be receiving new props.
 React may call this even if props have not changed, so be sure to compare new and existing
@@ -283,7 +283,7 @@ ___
 
 *Inherited from [View](_views_.view.md).[UNSAFE_componentWillUpdate](_views_.view.md#optional-unsafe_componentwillupdate)*
 
-Defined in node_modules/@types/react/index.d.ts:772
+Defined in node_modules/@types/react/index.d.ts:762
 
 Called immediately before rendering when new props or state is received. Not called for the initial render.
 
@@ -318,7 +318,7 @@ ___
 
 *Inherited from [View](_views_.view.md).[componentDidCatch](_views_.view.md#optional-componentdidcatch)*
 
-Defined in node_modules/@types/react/index.d.ts:641
+Defined in node_modules/@types/react/index.d.ts:631
 
 Catches exceptions generated in descendant components. Unhandled exceptions will cause
 the entire component tree to unmount.
@@ -340,7 +340,7 @@ ___
 
 *Overrides void*
 
-*Defined in [src/views.ts:26](https://github.com/cobuildlab/react-simple-state/blob/87ee77b/src/views.ts#L26)*
+*Defined in [src/views.ts:27](https://github.com/cobuildlab/react-simple-state/blob/269d4ef/src/views.ts#L27)*
 
 **Returns:** *void*
 
@@ -352,7 +352,7 @@ ___
 
 *Inherited from [View](_views_.view.md).[componentDidUpdate](_views_.view.md#optional-componentdidupdate)*
 
-Defined in node_modules/@types/react/index.d.ts:683
+Defined in node_modules/@types/react/index.d.ts:673
 
 Called immediately after updating occurs. Not called for the initial render.
 
@@ -376,7 +376,7 @@ ___
 
 *Inherited from [View](_views_.view.md).[componentWillMount](_views_.view.md#optional-componentwillmount)*
 
-Defined in node_modules/@types/react/index.d.ts:698
+Defined in node_modules/@types/react/index.d.ts:688
 
 Called immediately before mounting occurs, and before `Component#render`.
 Avoid introducing any side-effects or subscriptions in this method.
@@ -400,7 +400,7 @@ ___
 
 *Inherited from [View](_views_.view.md).[componentWillReceiveProps](_views_.view.md#optional-componentwillreceiveprops)*
 
-Defined in node_modules/@types/react/index.d.ts:727
+Defined in node_modules/@types/react/index.d.ts:717
 
 Called when the component may be receiving new props.
 React may call this even if props have not changed, so be sure to compare new and existing
@@ -434,7 +434,7 @@ ___
 
 *Overrides void*
 
-*Defined in [src/views.ts:46](https://github.com/cobuildlab/react-simple-state/blob/87ee77b/src/views.ts#L46)*
+*Defined in [src/views.ts:47](https://github.com/cobuildlab/react-simple-state/blob/269d4ef/src/views.ts#L47)*
 
 **Returns:** *void*
 
@@ -446,7 +446,7 @@ ___
 
 *Inherited from [View](_views_.view.md).[componentWillUpdate](_views_.view.md#optional-componentwillupdate)*
 
-Defined in node_modules/@types/react/index.d.ts:757
+Defined in node_modules/@types/react/index.d.ts:747
 
 Called immediately before rendering when new props or state is received. Not called for the initial render.
 
@@ -479,7 +479,7 @@ ___
 
 *Inherited from [View](_views_.view.md).[forceUpdate](_views_.view.md#forceupdate)*
 
-Defined in node_modules/@types/react/index.d.ts:503
+Defined in node_modules/@types/react/index.d.ts:493
 
 **Parameters:**
 
@@ -497,7 +497,7 @@ ___
 
 *Inherited from [View](_views_.view.md).[getSnapshotBeforeUpdate](_views_.view.md#optional-getsnapshotbeforeupdate)*
 
-Defined in node_modules/@types/react/index.d.ts:677
+Defined in node_modules/@types/react/index.d.ts:667
 
 Runs before React applies the result of `render` to the document, and
 returns an object to be given to componentDidUpdate. Useful for saving
@@ -523,7 +523,7 @@ ___
 
 *Inherited from [View](_views_.view.md).[render](_views_.view.md#render)*
 
-Defined in node_modules/@types/react/index.d.ts:504
+Defined in node_modules/@types/react/index.d.ts:494
 
 **Returns:** *ReactNode*
 
@@ -535,7 +535,7 @@ ___
 
 *Inherited from [View](_views_.view.md).[setState](_views_.view.md#setstate)*
 
-Defined in node_modules/@types/react/index.d.ts:498
+Defined in node_modules/@types/react/index.d.ts:488
 
 **Type parameters:**
 
@@ -558,7 +558,7 @@ ___
 
 *Inherited from [View](_views_.view.md).[shouldComponentUpdate](_views_.view.md#optional-shouldcomponentupdate)*
 
-Defined in node_modules/@types/react/index.d.ts:631
+Defined in node_modules/@types/react/index.d.ts:621
 
 Called to determine whether the change in props and state should trigger a re-render.
 
@@ -583,9 +583,9 @@ ___
 
 ###  subscribe
 
-▸ **subscribe**(`event`: [Event](_event_.event.md)‹T›, `callback`: function, `receiveLastValue`: boolean): *Subscription‹›*
+▸ **subscribe**(`event`: [Event](_event_.event.md)‹T›, `callback`: function, `receiveLastValue`: boolean): *[Subscription](../interfaces/_pub_sub_.subscription.md)*
 
-*Defined in [src/views.ts:18](https://github.com/cobuildlab/react-simple-state/blob/87ee77b/src/views.ts#L18)*
+*Defined in [src/views.ts:19](https://github.com/cobuildlab/react-simple-state/blob/269d4ef/src/views.ts#L19)*
 
 Subscribe to an Event
 This is a helpful method to keep track of your subscriptions on UnMount and Mount of the Component
@@ -600,18 +600,18 @@ The Event object to which you want to subscribe
 
 The callback function that's gonna be executed when it happens
 
-▸ (`value?`: T): *void*
+▸ (`value?`: T | null): *void*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`value?` | T |
+`value?` | T &#124; null |
 
 ▪`Default value`  **receiveLastValue**: *boolean*= false
 
 Whether the callback should receive the last value immediately
 
-**Returns:** *Subscription‹›*
+**Returns:** *[Subscription](../interfaces/_pub_sub_.subscription.md)*
 
 subscription The subscription for this event in the Store
