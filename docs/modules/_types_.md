@@ -15,7 +15,7 @@
 
 Ƭ **LocalObserver**: *object*
 
-*Defined in [src/types.ts:7](https://github.com/cobuildlab/react-simple-state/blob/54fb38a/src/types.ts#L7)*
+*Defined in [src/types.ts:7](https://github.com/cobuildlab/react-simple-state/blob/8e6ada3/src/types.ts#L7)*
 
 #### Type declaration:
 
@@ -37,7 +37,7 @@ ___
 
 Ƭ **Store**: *object*
 
-*Defined in [src/types.ts:3](https://github.com/cobuildlab/react-simple-state/blob/54fb38a/src/types.ts#L3)*
+*Defined in [src/types.ts:3](https://github.com/cobuildlab/react-simple-state/blob/8e6ada3/src/types.ts#L3)*
 
 #### Type declaration:
 

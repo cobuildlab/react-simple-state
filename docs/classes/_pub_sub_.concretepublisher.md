@@ -35,7 +35,7 @@ A simple publisher
 
 *Implementation of [Publisher](../interfaces/_pub_sub_.publisher.md).[subscribers](../interfaces/_pub_sub_.publisher.md#subscribers)*
 
-*Defined in [src/pub-sub.ts:45](https://github.com/cobuildlab/react-simple-state/blob/54fb38a/src/pub-sub.ts#L45)*
+*Defined in [src/pub-sub.ts:45](https://github.com/cobuildlab/react-simple-state/blob/8e6ada3/src/pub-sub.ts#L45)*
 
 ## Methods
 
@@ -45,7 +45,7 @@ A simple publisher
 
 *Implementation of [Publisher](../interfaces/_pub_sub_.publisher.md)*
 
-*Defined in [src/pub-sub.ts:56](https://github.com/cobuildlab/react-simple-state/blob/54fb38a/src/pub-sub.ts#L56)*
+*Defined in [src/pub-sub.ts:56](https://github.com/cobuildlab/react-simple-state/blob/8e6ada3/src/pub-sub.ts#L56)*
 
 **Parameters:**
 
@@ -63,7 +63,7 @@ ___
 
 *Implementation of [Publisher](../interfaces/_pub_sub_.publisher.md)*
 
-*Defined in [src/pub-sub.ts:47](https://github.com/cobuildlab/react-simple-state/blob/54fb38a/src/pub-sub.ts#L47)*
+*Defined in [src/pub-sub.ts:47](https://github.com/cobuildlab/react-simple-state/blob/8e6ada3/src/pub-sub.ts#L47)*
 
 **Parameters:**
 
