@@ -1,51 +1,63 @@
-import {useEffect, useState, useCallback} from "react";
-import {Event} from "./event";
+import { useEffect, useState } from 'react';
+import { Event } from './event';
 
 /**
- * React Hook to subscribe to an specific event
+ * React Hook to subscribe to an specific event.
+ *
  * @param {Event} event - The event to subscribe. The Event is considered constant across renders.
  * @param {Function} callback -  A function to be called when the subscription gets triggered.
  * @param {any[]} deps -  List of dependencies for the callback. Follow the same rules of useEffect.
  */
-function useSubscription<T>(event: Event<T>, callback: (value?: T) => void, deps: any[]) {
-    const _callback = useCallback(args => callback(args), [...deps]);
+function useSubscription<T, U>(
+  event: Event<T>,
+  callback: (value: T | null) => void,
+  deps: U[],
+) {
+  useEffect(() => {
+    const subscription = event.subscribe(callback);
+    return () => {
+      subscription.unsubscribe();
+    };
 
-    useEffect(() => {
-        const subscription = event.subscribe(_callback);
-        return () => {
-            subscription.unsubscribe();
-        };
-    }, [_callback]);
-};
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [event, deps]);
+}
 
-export {useSubscription};
+export { useSubscription };
 
 export type EventHookParams<T> = {
-    initialValue?: T;
-    reducer?: (value?: T) => any;
-}
+  initialValue?: T;
+  reducer?: (value?: T) => any;
+};
 
 /**
  * React Hook to subscribe to an Event.
+ *
  * @param {Event} event - The event.
- * @param {any} initialValue -  An Initial Value for the state, if not provided, the initial Value of the event will be the last value emitted.
- * @param {Function} reducer - A function to transform the state before return the value.
+ * @param {object}  params - Params.
+ * @param {object}  params.initialValue - Initial Value.
+ * @param {object}  params.reducer - Reducer for transform the data.
+ * @returns {object} Data object.
  */
 function useEvent<T>(event: Event<T>, params?: EventHookParams<T>) {
-    const [value, setValue] = useState((params && params.initialValue !== undefined) ? params.initialValue : event.get());
-    const deps = (params && params.reducer !== undefined) ? [params.reducer] : [];
+  const [value, setValue] = useState(
+    params && params.initialValue !== undefined
+      ? params.initialValue
+      : event.get(),
+  );
 
-    useEffect(() => {
-        const handleStateChange = (state?: any) => {
-            if (params?.reducer)
-                state = params.reducer(state);
-            setValue(state)
-        };
-        const subscription = event.subscribe(handleStateChange);
-        return () => {
-            subscription.unsubscribe();
-        };
-    }, deps);
-    return value;
-};
-export {useEvent};
+  useEffect(() => {
+    const handleStateChange = (state?: any) => {
+      if (params?.reducer) state = params.reducer(state);
+      setValue(state);
+    };
+    const subscription = event.subscribe(handleStateChange);
+    return () => {
+      subscription.unsubscribe();
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [event, params?.reducer]);
+  return value;
+}
+export { useEvent };
