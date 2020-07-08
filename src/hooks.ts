@@ -20,7 +20,7 @@ function useSubscription<T, U>(
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [event, deps]);
+  }, [event, ...deps]);
 }
 
 export { useSubscription };
