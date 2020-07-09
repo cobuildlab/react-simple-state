@@ -19,7 +19,7 @@
 
 Ƭ **EventHookParams**: *object*
 
-*Defined in [src/hooks.ts:23](https://github.com/cobuildlab/react-simple-state/blob/269d4ef/src/hooks.ts#L23)*
+*Defined in [src/hooks.ts:28](https://github.com/cobuildlab/react-simple-state/blob/8e6ada3/src/hooks.ts#L28)*
 
 #### Type declaration:
 
@@ -33,7 +33,7 @@
 
 ▸ **useEvent**‹**T**›(`event`: [Event](../classes/_event_.event.md)‹T›, `params?`: [EventHookParams](_hooks_.md#eventhookparams)‹T›): *null | T*
 
-*Defined in [src/hooks.ts:34](https://github.com/cobuildlab/react-simple-state/blob/269d4ef/src/hooks.ts#L34)*
+*Defined in [src/hooks.ts:42](https://github.com/cobuildlab/react-simple-state/blob/8e6ada3/src/hooks.ts#L42)*
 
 React Hook to subscribe to an Event.
 
@@ -46,23 +46,27 @@ React Hook to subscribe to an Event.
 Name | Type | Description |
 ------ | ------ | ------ |
 `event` | [Event](../classes/_event_.event.md)‹T› | The event. |
-`params?` | [EventHookParams](_hooks_.md#eventhookparams)‹T› | - |
+`params?` | [EventHookParams](_hooks_.md#eventhookparams)‹T› | Params. |
 
 **Returns:** *null | T*
+
+Data object.
 
 ___
 
 ###  useSubscription
 
-▸ **useSubscription**‹**T**›(`event`: [Event](../classes/_event_.event.md)‹T›, `callback`: function, `deps`: any[]): *void*
+▸ **useSubscription**‹**T**, **U**›(`event`: [Event](../classes/_event_.event.md)‹T›, `callback`: function, `deps`: U[]): *void*
 
-*Defined in [src/hooks.ts:10](https://github.com/cobuildlab/react-simple-state/blob/269d4ef/src/hooks.ts#L10)*
+*Defined in [src/hooks.ts:11](https://github.com/cobuildlab/react-simple-state/blob/8e6ada3/src/hooks.ts#L11)*
 
-React Hook to subscribe to an specific event
+React Hook to subscribe to an specific event.
 
 **Type parameters:**
 
 ▪ **T**
+
+▪ **U**
 
 **Parameters:**
 
@@ -74,15 +78,15 @@ The event to subscribe. The Event is considered constant across renders.
 
 A function to be called when the subscription gets triggered.
 
-▸ (`value?`: T): *void*
+▸ (`value`: T | null): *void*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`value?` | T |
+`value` | T &#124; null |
 
-▪ **deps**: *any[]*
+▪ **deps**: *U[]*
 
 List of dependencies for the callback. Follow the same rules of useEffect.
 

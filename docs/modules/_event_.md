@@ -23,7 +23,7 @@
 
 Ƭ **EventParams**: *object*
 
-*Defined in [src/event.ts:5](https://github.com/cobuildlab/react-simple-state/blob/269d4ef/src/event.ts#L5)*
+*Defined in [src/event.ts:5](https://github.com/cobuildlab/react-simple-state/blob/8e6ada3/src/event.ts#L5)*
 
 #### Type declaration:
 
@@ -37,7 +37,7 @@ ___
 
 Ƭ **Reducer**: *function*
 
-*Defined in [src/event.ts:3](https://github.com/cobuildlab/react-simple-state/blob/269d4ef/src/event.ts#L3)*
+*Defined in [src/event.ts:3](https://github.com/cobuildlab/react-simple-state/blob/8e6ada3/src/event.ts#L3)*
 
 #### Type declaration:
 
@@ -55,7 +55,7 @@ Name | Type |
 
 ▸ **createEvent**‹**T**›(`eventDescriptor?`: [EventParams](_event_.md#eventparams)‹T›): *[Event](../classes/_event_.event.md)‹T›*
 
-*Defined in [src/event.ts:62](https://github.com/cobuildlab/react-simple-state/blob/269d4ef/src/event.ts#L62)*
+*Defined in [src/event.ts:62](https://github.com/cobuildlab/react-simple-state/blob/8e6ada3/src/event.ts#L62)*
 
 Creates an event from a descriptor.
 

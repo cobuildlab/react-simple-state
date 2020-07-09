@@ -5,6 +5,7 @@ module.exports = {
     'eslint:recommended',
     'eslint-config-prettier',
     'plugin:jsdoc/recommended',
+    'plugin:react-hooks/recommended',
   ],
   ignorePatterns: ['lib/**/*.js.', 'lib/*.js'],
   env: {
