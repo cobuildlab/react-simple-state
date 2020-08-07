@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Event } from './event';
 
 /**
@@ -13,8 +13,15 @@ function useSubscription<T, U>(
   callback: (value: T | null) => void,
   deps: U[],
 ) {
+  const callbackRef = useRef(callback);
+
+  callbackRef.current = callback;
+
   useEffect(() => {
-    const subscription = event.subscribe(callback);
+    const subscriptionCallback = (eventData: T | null) => {
+      callbackRef.current(eventData);
+    };
+    const subscription = event.subscribe(subscriptionCallback);
     return () => {
       subscription.unsubscribe();
     };
