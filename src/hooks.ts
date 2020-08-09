@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Event } from './event';
 
 /**
@@ -11,16 +11,27 @@ import { Event } from './event';
 function useSubscription<T, U>(
   event: Event<T>,
   callback: (value: T | null) => void,
-  deps: U[],
+  deps: U[] | undefined,
 ) {
+  const callbackRef = useRef(callback);
+
+  callbackRef.current = callback;
+
+  if (deps) {
+    console.warn(`Deps param has been deprecated, it is not useful anymore.`);
+  }
+
   useEffect(() => {
-    const subscription = event.subscribe(callback);
+    const subscriptionCallback = (eventData: T | null) => {
+      callbackRef.current(eventData);
+    };
+    const subscription = event.subscribe(subscriptionCallback);
     return () => {
       subscription.unsubscribe();
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [event, ...deps]);
+  }, [event]);
 }
 
 export { useSubscription };
