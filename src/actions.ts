@@ -5,12 +5,14 @@ import { Event } from './event';
  * @param {Function} action - Action to call.
  * @returns {Function} -  Function with the binded event.
  */
-export function createAction<T, U extends any[]>(
-  event: Event<T>,
-  action: (...params: readonly [...U]) => Promise<T>,
+export function createAction<T, V, U extends []>(
+  event: Event<T, V>,
+  action: (...params: readonly [...U]) => Promise<T | V>,
 ) {
-  return async (...params: readonly [...U]) => {
-    let data: T;
+  return async (
+    ...params: readonly [...U]
+  ): Promise<T | V | { error: Error }> => {
+    let data: T | V;
 
     try {
       data = await action(...params);

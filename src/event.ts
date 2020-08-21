@@ -5,9 +5,9 @@ import {
   Subscription,
 } from './pub-sub';
 
-type Reducer<T, U> = (value: U | T | null) => T;
+type Reducer<T, U> = (value: U) => T;
 
-type EventParams<T, U = unknown> = {
+type EventParams<T, U> = {
   initialValue?: T | null;
   reducer?: Reducer<T, U>;
 };
@@ -21,7 +21,7 @@ export class Event<T, U = unknown> {
   private publisher: Publisher<T> = new ConcretePublisher();
   private errorPublisher: Publisher<Error> = new ConcretePublisher();
 
-  constructor(eventDescriptor?: EventParams<T>) {
+  constructor(eventDescriptor?: EventParams<T, U>) {
     if (eventDescriptor && eventDescriptor.initialValue)
       this.value = eventDescriptor.initialValue;
     this.reducer = eventDescriptor?.reducer;
@@ -45,17 +45,17 @@ export class Event<T, U = unknown> {
     return this.errorPublisher.subscribe(_subscriber);
   }
 
-  dispatch(eventValue: T | U | null) {
+  dispatch(eventValue: T | U | null): void {
     const value = Object.freeze(
       this.reducer !== null && this.reducer !== undefined
-        ? this.reducer(eventValue)
+        ? this.reducer(eventValue as U)
         : (eventValue as T),
     );
 
     this.value = value;
     this.publisher.notify(value);
   }
-  dispatchError(value: Error) {
+  dispatchError(value: Error): void {
     this.errorPublisher.notify(value);
   }
   get(): T | null {
@@ -81,6 +81,8 @@ export class Event<T, U = unknown> {
  *
  * @param eventDescriptor
  */
-export function createEvent<T>(eventDescriptor?: EventParams<T>): Event<T> {
-  return new Event<T>(eventDescriptor);
+export function createEvent<T, U>(
+  eventDescriptor?: EventParams<T, U>,
+): Event<T, U> {
+  return new Event<T, U>(eventDescriptor);
 }
