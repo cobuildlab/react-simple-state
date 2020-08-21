@@ -40,15 +40,15 @@ New Event Classes.
 
 ###  constructor
 
-\+ **new Event**(`eventDescriptor?`: [EventParams](../modules/_event_.md#eventparams)‹T›): *[Event](_event_.event.md)*
+\+ **new Event**(`eventDescriptor?`: [EventParams](../modules/_event_.md#eventparams)‹T, U›): *[Event](_event_.event.md)*
 
-*Defined in [src/event.ts:22](https://github.com/cobuildlab/react-simple-state/blob/d032904/src/event.ts#L22)*
+*Defined in [src/event.ts:22](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L22)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`eventDescriptor?` | [EventParams](../modules/_event_.md#eventparams)‹T› |
+`eventDescriptor?` | [EventParams](../modules/_event_.md#eventparams)‹T, U› |
 
 **Returns:** *[Event](_event_.event.md)*
 
@@ -58,7 +58,7 @@ Name | Type |
 
 • **errorPublisher**: *[Publisher](../interfaces/_pub_sub_.publisher.md)‹Error›* = new ConcretePublisher()
 
-*Defined in [src/event.ts:22](https://github.com/cobuildlab/react-simple-state/blob/d032904/src/event.ts#L22)*
+*Defined in [src/event.ts:22](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L22)*
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 • **publisher**: *[Publisher](../interfaces/_pub_sub_.publisher.md)‹T›* = new ConcretePublisher()
 
-*Defined in [src/event.ts:21](https://github.com/cobuildlab/react-simple-state/blob/d032904/src/event.ts#L21)*
+*Defined in [src/event.ts:21](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L21)*
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 • **reducer**? : *[Reducer](../modules/_event_.md#reducer)‹T, U›*
 
-*Defined in [src/event.ts:20](https://github.com/cobuildlab/react-simple-state/blob/d032904/src/event.ts#L20)*
+*Defined in [src/event.ts:20](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L20)*
 
 ___
 
@@ -82,7 +82,7 @@ ___
 
 • **value**: *T | null* = null
 
-*Defined in [src/event.ts:19](https://github.com/cobuildlab/react-simple-state/blob/d032904/src/event.ts#L19)*
+*Defined in [src/event.ts:19](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L19)*
 
 ## Methods
 
@@ -90,7 +90,7 @@ ___
 
 ▸ **clear**(`dispatch`: boolean): *void*
 
-*Defined in [src/event.ts:70](https://github.com/cobuildlab/react-simple-state/blob/d032904/src/event.ts#L70)*
+*Defined in [src/event.ts:70](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L70)*
 
 Removes all data from the Event store.
 
@@ -108,7 +108,7 @@ ___
 
 ▸ **dispatch**(`eventValue`: T | U | null): *void*
 
-*Defined in [src/event.ts:48](https://github.com/cobuildlab/react-simple-state/blob/d032904/src/event.ts#L48)*
+*Defined in [src/event.ts:48](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L48)*
 
 **Parameters:**
 
@@ -124,7 +124,7 @@ ___
 
 ▸ **dispatchError**(`value`: Error): *void*
 
-*Defined in [src/event.ts:58](https://github.com/cobuildlab/react-simple-state/blob/d032904/src/event.ts#L58)*
+*Defined in [src/event.ts:58](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L58)*
 
 **Parameters:**
 
@@ -140,7 +140,7 @@ ___
 
 ▸ **get**(): *T | null*
 
-*Defined in [src/event.ts:61](https://github.com/cobuildlab/react-simple-state/blob/d032904/src/event.ts#L61)*
+*Defined in [src/event.ts:61](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L61)*
 
 **Returns:** *T | null*
 
@@ -150,7 +150,7 @@ ___
 
 ▸ **subscribe**(`subscriber`: function, `receiveLastValue`: boolean): *[Subscription](../interfaces/_pub_sub_.subscription.md)*
 
-*Defined in [src/event.ts:30](https://github.com/cobuildlab/react-simple-state/blob/d032904/src/event.ts#L30)*
+*Defined in [src/event.ts:30](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L30)*
 
 **Parameters:**
 
@@ -174,7 +174,7 @@ ___
 
 ▸ **subscribeError**(`subscriber`: function): *[Subscription](../interfaces/_pub_sub_.subscription.md)*
 
-*Defined in [src/event.ts:41](https://github.com/cobuildlab/react-simple-state/blob/d032904/src/event.ts#L41)*
+*Defined in [src/event.ts:41](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L41)*
 
 **Parameters:**
 
