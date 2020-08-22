@@ -1,12 +1,12 @@
-interface Subscription {
+export interface Subscription {
   unsubscribe(): void;
 }
 
-interface Subscriber<T> {
+export interface Subscriber<T> {
   update: (value: T | null) => void;
 }
 
-interface Publisher<T> {
+export interface Publisher<T> {
   subscribers: Subscriber<T>[];
 
   subscribe(subscriber: Subscriber<T>): Subscription;
@@ -26,7 +26,7 @@ class ConcreteSubscription<T> implements Subscription {
     this.subscriber = subscriber;
   }
 
-  unsubscribe() {
+  unsubscribe(): void {
     if (this.publisher === null || this.subscriber === null)
       throw new Error('ConcreteSubscription: Invalid state');
 
@@ -60,10 +60,4 @@ class ConcretePublisher<T> implements Publisher<T> {
   }
 }
 
-export {
-  Subscription,
-  Subscriber,
-  Publisher,
-  ConcretePublisher,
-  ConcreteSubscription,
-};
+export { ConcretePublisher, ConcreteSubscription };
