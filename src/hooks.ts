@@ -58,53 +58,18 @@ function useEvent<T>(event: Event<T>, params?: EventHookParams<T>) {
   );
 
   useEffect(() => {
-    const handleStateChange = (state?: any) => {
+    const handleStateChange = (state?: any): void => {
       if (params?.reducer) state = params.reducer(state);
       setValue(state);
     };
     const subscription = event.subscribe(handleStateChange);
-    return () => {
+    return (): void => {
       subscription.unsubscribe();
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [event, params?.reducer]);
   return value;
-}
-
-/**
- * * React Hook to subscribe to an Event.
- *
- * @param {Event} event - The event.
- * @param {Function} successCallback - Callback function to run on event dispatch.
- * @param {Function} errorCallback - Callback function to run on event Error dispatch.
- */
-export function useXSubscription<T>(
-  event: Event<T>,
-  successCallback: (value: T | null) => void,
-  errorCallback: (value: Error | null) => void,
-) {
-  const callbackRef = useRef({ successCallback, errorCallback });
-
-  callbackRef.current = { successCallback, errorCallback };
-
-  useEffect(() => {
-    const subscriptionCallback = (eventData: T | null) => {
-      callbackRef.current.successCallback(eventData);
-    };
-
-    const subscriptionErrorCallback = (eventData: Error | null) => {
-      callbackRef.current.errorCallback(eventData);
-    };
-
-    const subscription = event.subscribe(subscriptionCallback);
-    const subscriptionError = event.subscribeError(subscriptionErrorCallback);
-
-    return () => {
-      subscription.unsubscribe();
-      subscriptionError.unsubscribe();
-    };
-  }, [event]);
 }
 
 export { useEvent };

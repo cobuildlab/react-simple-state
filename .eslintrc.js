@@ -8,7 +8,12 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:@typescript-eslint/recommended',
   ],
-  ignorePatterns: ['lib/**/*.js.', 'lib/*.js', 'src/actions.ts'],
+  ignorePatterns: [
+    'lib/**/*.js.',
+    'lib/*.js',
+    'src/actions.ts',
+    'src/store.ts',
+  ],
   env: {
     node: true,
     es6: true,

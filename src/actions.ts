@@ -7,6 +7,7 @@ import { Event } from './event';
  */
 export function createAction<T, V, U extends []>(
   event: Event<T, V>,
+  errorEvent: Event<Error>,
   action: (...params: readonly [...U]) => Promise<T | V>,
 ) {
   return async (
@@ -17,7 +18,7 @@ export function createAction<T, V, U extends []>(
     try {
       data = await action(...params);
     } catch (error) {
-      event.dispatchError(error);
+      errorEvent.dispatch(error);
       return { error };
     }
 
