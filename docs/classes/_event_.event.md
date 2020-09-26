@@ -22,7 +22,6 @@ New Event Classes.
 
 ### Properties
 
-* [errorPublisher](_event_.event.md#private-errorpublisher)
 * [publisher](_event_.event.md#private-publisher)
 * [reducer](_event_.event.md#private-optional-readonly-reducer)
 * [value](_event_.event.md#private-value)
@@ -31,10 +30,8 @@ New Event Classes.
 
 * [clear](_event_.event.md#clear)
 * [dispatch](_event_.event.md#dispatch)
-* [dispatchError](_event_.event.md#dispatcherror)
 * [get](_event_.event.md#get)
 * [subscribe](_event_.event.md#subscribe)
-* [subscribeError](_event_.event.md#subscribeerror)
 
 ## Constructors
 
@@ -42,7 +39,7 @@ New Event Classes.
 
 \+ **new Event**(`eventDescriptor?`: [EventParams](../modules/_event_.md#eventparams)‹T, U›): *[Event](_event_.event.md)*
 
-*Defined in [src/event.ts:22](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L22)*
+*Defined in [src/event.ts:21](https://github.com/cobuildlab/react-simple-state/blob/b742703/src/event.ts#L21)*
 
 **Parameters:**
 
@@ -54,19 +51,11 @@ Name | Type |
 
 ## Properties
 
-### `Private` errorPublisher
-
-• **errorPublisher**: *[Publisher](../interfaces/_pub_sub_.publisher.md)‹Error›* = new ConcretePublisher()
-
-*Defined in [src/event.ts:22](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L22)*
-
-___
-
 ### `Private` publisher
 
 • **publisher**: *[Publisher](../interfaces/_pub_sub_.publisher.md)‹T›* = new ConcretePublisher()
 
-*Defined in [src/event.ts:21](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L21)*
+*Defined in [src/event.ts:21](https://github.com/cobuildlab/react-simple-state/blob/b742703/src/event.ts#L21)*
 
 ___
 
@@ -74,7 +63,7 @@ ___
 
 • **reducer**? : *[Reducer](../modules/_event_.md#reducer)‹T, U›*
 
-*Defined in [src/event.ts:20](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L20)*
+*Defined in [src/event.ts:20](https://github.com/cobuildlab/react-simple-state/blob/b742703/src/event.ts#L20)*
 
 ___
 
@@ -82,7 +71,7 @@ ___
 
 • **value**: *T | null* = null
 
-*Defined in [src/event.ts:19](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L19)*
+*Defined in [src/event.ts:19](https://github.com/cobuildlab/react-simple-state/blob/b742703/src/event.ts#L19)*
 
 ## Methods
 
@@ -90,7 +79,7 @@ ___
 
 ▸ **clear**(`dispatch`: boolean): *void*
 
-*Defined in [src/event.ts:70](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L70)*
+*Defined in [src/event.ts:58](https://github.com/cobuildlab/react-simple-state/blob/b742703/src/event.ts#L58)*
 
 Removes all data from the Event store.
 
@@ -108,7 +97,7 @@ ___
 
 ▸ **dispatch**(`eventValue`: T | U | null): *void*
 
-*Defined in [src/event.ts:48](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L48)*
+*Defined in [src/event.ts:39](https://github.com/cobuildlab/react-simple-state/blob/b742703/src/event.ts#L39)*
 
 **Parameters:**
 
@@ -120,27 +109,11 @@ Name | Type |
 
 ___
 
-###  dispatchError
-
-▸ **dispatchError**(`value`: Error): *void*
-
-*Defined in [src/event.ts:58](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L58)*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`value` | Error |
-
-**Returns:** *void*
-
-___
-
 ###  get
 
 ▸ **get**(): *T | null*
 
-*Defined in [src/event.ts:61](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L61)*
+*Defined in [src/event.ts:49](https://github.com/cobuildlab/react-simple-state/blob/b742703/src/event.ts#L49)*
 
 **Returns:** *T | null*
 
@@ -150,7 +123,7 @@ ___
 
 ▸ **subscribe**(`subscriber`: function, `receiveLastValue`: boolean): *[Subscription](../interfaces/_pub_sub_.subscription.md)*
 
-*Defined in [src/event.ts:30](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L30)*
+*Defined in [src/event.ts:29](https://github.com/cobuildlab/react-simple-state/blob/b742703/src/event.ts#L29)*
 
 **Parameters:**
 
@@ -165,27 +138,5 @@ Name | Type |
 `value` | T &#124; null |
 
 ▪`Default value`  **receiveLastValue**: *boolean*= false
-
-**Returns:** *[Subscription](../interfaces/_pub_sub_.subscription.md)*
-
-___
-
-###  subscribeError
-
-▸ **subscribeError**(`subscriber`: function): *[Subscription](../interfaces/_pub_sub_.subscription.md)*
-
-*Defined in [src/event.ts:41](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/event.ts#L41)*
-
-**Parameters:**
-
-▪ **subscriber**: *function*
-
-▸ (`value`: Error | null): *void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`value` | Error &#124; null |
 
 **Returns:** *[Subscription](../interfaces/_pub_sub_.subscription.md)*

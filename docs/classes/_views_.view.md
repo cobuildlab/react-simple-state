@@ -129,7 +129,7 @@ ___
 
 • **hasBeenUnmounted**: *boolean* = false
 
-*Defined in [src/views.ts:9](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/views.ts#L9)*
+*Defined in [src/views.ts:9](https://github.com/cobuildlab/react-simple-state/blob/b742703/src/views.ts#L9)*
 
 ___
 
@@ -174,7 +174,7 @@ ___
 
 • **subscriptions**: *[Subscription](../interfaces/_pub_sub_.subscription.md)[]* = []
 
-*Defined in [src/views.ts:7](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/views.ts#L7)*
+*Defined in [src/views.ts:7](https://github.com/cobuildlab/react-simple-state/blob/b742703/src/views.ts#L7)*
 
 ___
 
@@ -182,7 +182,7 @@ ___
 
 • **toBeSubscribedIfUnMounted**: *[LocalObserver](../modules/_types_.md#localobserver)‹T›[]* = []
 
-*Defined in [src/views.ts:8](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/views.ts#L8)*
+*Defined in [src/views.ts:8](https://github.com/cobuildlab/react-simple-state/blob/b742703/src/views.ts#L8)*
 
 ___
 
@@ -340,7 +340,7 @@ ___
 
 *Overrides void*
 
-*Defined in [src/views.ts:27](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/views.ts#L27)*
+*Defined in [src/views.ts:27](https://github.com/cobuildlab/react-simple-state/blob/b742703/src/views.ts#L27)*
 
 **Returns:** *void*
 
@@ -434,7 +434,7 @@ ___
 
 *Overrides void*
 
-*Defined in [src/views.ts:47](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/views.ts#L47)*
+*Defined in [src/views.ts:47](https://github.com/cobuildlab/react-simple-state/blob/b742703/src/views.ts#L47)*
 
 **Returns:** *void*
 
@@ -585,7 +585,7 @@ ___
 
 ▸ **subscribe**(`event`: [Event](_event_.event.md)‹T›, `callback`: function, `receiveLastValue`: boolean): *[Subscription](../interfaces/_pub_sub_.subscription.md)*
 
-*Defined in [src/views.ts:19](https://github.com/cobuildlab/react-simple-state/blob/d47d397/src/views.ts#L19)*
+*Defined in [src/views.ts:19](https://github.com/cobuildlab/react-simple-state/blob/b742703/src/views.ts#L19)*
 
 Subscribe to an Event
 This is a helpful method to keep track of your subscriptions on UnMount and Mount of the Component
