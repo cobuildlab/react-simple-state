@@ -69,7 +69,7 @@ export class Event<T, U = unknown> {
  *
  * @param eventDescriptor
  */
-export function createEvent<T, U>(
+export function createEvent<T, U = unknown>(
   eventDescriptor?: EventParams<T, U>,
 ): Event<T, U> {
   return new Event<T, U>(eventDescriptor);
