@@ -1,6 +1,6 @@
 {
   "name": "@cobuildlab/react-simple-state",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "Simple and Lightweight state management for react applications. ",
   "main": "lib/index.js",
   "types": "./lib/index.d.ts",
@@ -26,10 +26,10 @@
     "@types/jest": "^25.2.1",
     "@types/node": "^13.13.5",
     "@types/react": "^16.9.35",
-    "@typescript-eslint/eslint-plugin": "^2.34.0",
-    "@typescript-eslint/parser": "^2.34.0",
+    "@typescript-eslint/eslint-plugin": "^4.2.0",
+    "@typescript-eslint/parser": "^4.2.0",
     "babel-jest": "^26.0.1",
-    "eslint": "^7.7.0",
+    "eslint": "^7.10.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-jest": "^23.13.1",
     "eslint-plugin-jsdoc": "^25.4.1",
@@ -43,7 +43,7 @@
     "ts-jest": "^25.5.1",
     "typedoc": "^0.17.8",
     "typedoc-plugin-markdown": "^2.3.1",
-    "typescript": "^4.0.2"
+    "typescript": "^4.0.3"
   },
   "peerDependencies": {
     "react": "^16.8.6"
