@@ -31,7 +31,7 @@
 
 • **subscribers**: *[Subscriber](_pub_sub_.subscriber.md)‹T›[]*
 
-*Defined in [src/pub-sub.ts:10](https://github.com/cobuildlab/react-simple-state/blob/0a311bb/src/pub-sub.ts#L10)*
+*Defined in [src/pub-sub.ts:10](https://github.com/cobuildlab/react-simple-state/blob/b742703/src/pub-sub.ts#L10)*
 
 ## Methods
 
@@ -39,7 +39,7 @@
 
 ▸ **notify**(`value`: T | null): *void*
 
-*Defined in [src/pub-sub.ts:14](https://github.com/cobuildlab/react-simple-state/blob/0a311bb/src/pub-sub.ts#L14)*
+*Defined in [src/pub-sub.ts:14](https://github.com/cobuildlab/react-simple-state/blob/b742703/src/pub-sub.ts#L14)*
 
 **Parameters:**
 
@@ -55,7 +55,7 @@ ___
 
 ▸ **subscribe**(`subscriber`: [Subscriber](_pub_sub_.subscriber.md)‹T›): *[Subscription](_pub_sub_.subscription.md)*
 
-*Defined in [src/pub-sub.ts:12](https://github.com/cobuildlab/react-simple-state/blob/0a311bb/src/pub-sub.ts#L12)*
+*Defined in [src/pub-sub.ts:12](https://github.com/cobuildlab/react-simple-state/blob/b742703/src/pub-sub.ts#L12)*
 
 **Parameters:**
 

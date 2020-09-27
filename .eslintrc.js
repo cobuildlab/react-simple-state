@@ -1,11 +1,12 @@
 module.exports = {
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
-  plugins: ['jsdoc'],
+  plugins: ['jsdoc', '@typescript-eslint'],
   extends: [
     'eslint:recommended',
     'eslint-config-prettier',
     'plugin:jsdoc/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:@typescript-eslint/recommended',
   ],
   ignorePatterns: ['lib/**/*.js.', 'lib/*.js'],
   env: {

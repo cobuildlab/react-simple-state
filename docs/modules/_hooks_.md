@@ -19,7 +19,7 @@
 
 Ƭ **EventHookParams**: *object*
 
-*Defined in [src/hooks.ts:35](https://github.com/cobuildlab/react-simple-state/blob/0a311bb/src/hooks.ts#L35)*
+*Defined in [src/hooks.ts:39](https://github.com/cobuildlab/react-simple-state/blob/b742703/src/hooks.ts#L39)*
 
 #### Type declaration:
 
@@ -33,7 +33,7 @@
 
 ▸ **useEvent**‹**T**›(`event`: [Event](../classes/_event_.event.md)‹T›, `params?`: [EventHookParams](_hooks_.md#eventhookparams)‹T›): *null | T*
 
-*Defined in [src/hooks.ts:49](https://github.com/cobuildlab/react-simple-state/blob/0a311bb/src/hooks.ts#L49)*
+*Defined in [src/hooks.ts:53](https://github.com/cobuildlab/react-simple-state/blob/b742703/src/hooks.ts#L53)*
 
 React Hook to subscribe to an Event.
 
@@ -56,9 +56,9 @@ ___
 
 ###  useSubscription
 
-▸ **useSubscription**‹**T**, **U**›(`event`: [Event](../classes/_event_.event.md)‹T›, `callback`: function, `deps`: U[]): *void*
+▸ **useSubscription**‹**T**, **U**›(`event`: [Event](../classes/_event_.event.md)‹T›, `callback`: function, `deps`: U[] | undefined): *void*
 
-*Defined in [src/hooks.ts:11](https://github.com/cobuildlab/react-simple-state/blob/0a311bb/src/hooks.ts#L11)*
+*Defined in [src/hooks.ts:11](https://github.com/cobuildlab/react-simple-state/blob/b742703/src/hooks.ts#L11)*
 
 React Hook to subscribe to an specific event.
 
@@ -86,7 +86,7 @@ Name | Type |
 ------ | ------ |
 `value` | T &#124; null |
 
-▪ **deps**: *U[]*
+▪ **deps**: *U[] | undefined*
 
 List of dependencies for the callback. Follow the same rules of useEffect.
 
