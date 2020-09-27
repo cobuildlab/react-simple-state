@@ -10,7 +10,7 @@ export function createAction<T, V, U extends []>(
   errorEvent: Event<Error>,
   action: (...params: readonly [...U]) => Promise<T | V>,
 ) {
-  return async (
+  const actionCallback = async (
     ...params: readonly [...U]
   ): Promise<T | V | { error: Error }> => {
     let data: T | V;
@@ -25,4 +25,11 @@ export function createAction<T, V, U extends []>(
     event.dispatch(data);
     return data;
   };
+
+  // This properties allow to idetify actions and it events from services and other functions
+  actionCallback.isAction = true;
+  actionCallback.event = event;
+  actionCallback.errorEvent = errorEvent;
+
+  return actionCallback;
 }
