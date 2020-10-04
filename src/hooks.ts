@@ -11,7 +11,7 @@ import { Event } from './event';
 function useSubscription<T, U>(
   event: Event<T>,
   callback: (value: T | null) => void,
-  deps: U[] | undefined,
+  deps: U[] | undefined = undefined,
 ) {
   const callbackRef = useRef(callback);
 
