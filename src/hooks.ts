@@ -59,8 +59,9 @@ function useEvent<T>(event: Event<T>, params?: EventHookParams<T>) {
 
   useEffect(() => {
     const handleStateChange = (state?: any): void => {
-      if (params?.reducer) state = params.reducer(state);
-      setValue(state);
+      const eventState = params?.reducer ? params.reducer(state) : state;
+
+      setValue(eventState);
     };
     const subscription = event.subscribe(handleStateChange);
     return (): void => {
