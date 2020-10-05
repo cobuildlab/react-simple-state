@@ -22,7 +22,7 @@
 
 • **update**: *function*
 
-*Defined in [src/pub-sub.ts:6](https://github.com/cobuildlab/react-simple-state/blob/4d0bc58/src/pub-sub.ts#L6)*
+*Defined in [src/pub-sub.ts:6](https://github.com/cobuildlab/react-simple-state/blob/fa9a70c/src/pub-sub.ts#L6)*
 
 #### Type declaration:
 
