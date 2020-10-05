@@ -1,13 +1,13 @@
-import { Event } from './event';
+import { createEvent, Event } from './event';
 
 /**
  * @param {Event} event - Event to bind the action.
  * @param {Function} action - Action to call.
  * @returns {Function} -  Function with the binded event.
  */
-export function createAction<T, V, U extends []>(
+export function createAction<T, U extends any[], E = Error, V = unknown>(
   event: Event<T, V>,
-  errorEvent: Event<Error>,
+  errorEvent: Event<E>,
   action: (...params: readonly [...U]) => Promise<T | V>,
 ) {
   const actionCallback = async (
