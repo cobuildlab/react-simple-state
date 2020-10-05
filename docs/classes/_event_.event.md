@@ -39,7 +39,7 @@ New Event Classes.
 
 \+ **new Event**(`eventDescriptor?`: [EventParams](../modules/_event_.md#eventparams)‹T, U›): *[Event](_event_.event.md)*
 
-*Defined in [src/event.ts:21](https://github.com/cobuildlab/react-simple-state/blob/b620d4b/src/event.ts#L21)*
+*Defined in [src/event.ts:21](https://github.com/cobuildlab/react-simple-state/blob/4d0bc58/src/event.ts#L21)*
 
 **Parameters:**
 
@@ -55,7 +55,7 @@ Name | Type |
 
 • **publisher**: *[Publisher](../interfaces/_pub_sub_.publisher.md)‹T›* = new ConcretePublisher()
 
-*Defined in [src/event.ts:21](https://github.com/cobuildlab/react-simple-state/blob/b620d4b/src/event.ts#L21)*
+*Defined in [src/event.ts:21](https://github.com/cobuildlab/react-simple-state/blob/4d0bc58/src/event.ts#L21)*
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 • **reducer**? : *[Reducer](../modules/_event_.md#reducer)‹T, U›*
 
-*Defined in [src/event.ts:20](https://github.com/cobuildlab/react-simple-state/blob/b620d4b/src/event.ts#L20)*
+*Defined in [src/event.ts:20](https://github.com/cobuildlab/react-simple-state/blob/4d0bc58/src/event.ts#L20)*
 
 ___
 
@@ -71,7 +71,7 @@ ___
 
 • **value**: *T | null* = null
 
-*Defined in [src/event.ts:19](https://github.com/cobuildlab/react-simple-state/blob/b620d4b/src/event.ts#L19)*
+*Defined in [src/event.ts:19](https://github.com/cobuildlab/react-simple-state/blob/4d0bc58/src/event.ts#L19)*
 
 ## Methods
 
@@ -79,7 +79,7 @@ ___
 
 ▸ **clear**(`dispatch`: boolean): *void*
 
-*Defined in [src/event.ts:58](https://github.com/cobuildlab/react-simple-state/blob/b620d4b/src/event.ts#L58)*
+*Defined in [src/event.ts:58](https://github.com/cobuildlab/react-simple-state/blob/4d0bc58/src/event.ts#L58)*
 
 Removes all data from the Event store.
 
@@ -97,7 +97,7 @@ ___
 
 ▸ **dispatch**(`eventValue`: T | U | null): *void*
 
-*Defined in [src/event.ts:39](https://github.com/cobuildlab/react-simple-state/blob/b620d4b/src/event.ts#L39)*
+*Defined in [src/event.ts:39](https://github.com/cobuildlab/react-simple-state/blob/4d0bc58/src/event.ts#L39)*
 
 **Parameters:**
 
@@ -113,7 +113,7 @@ ___
 
 ▸ **get**(): *T | null*
 
-*Defined in [src/event.ts:49](https://github.com/cobuildlab/react-simple-state/blob/b620d4b/src/event.ts#L49)*
+*Defined in [src/event.ts:49](https://github.com/cobuildlab/react-simple-state/blob/4d0bc58/src/event.ts#L49)*
 
 **Returns:** *T | null*
 
@@ -123,7 +123,7 @@ ___
 
 ▸ **subscribe**(`subscriber`: function, `receiveLastValue`: boolean): *[Subscription](../interfaces/_pub_sub_.subscription.md)*
 
-*Defined in [src/event.ts:29](https://github.com/cobuildlab/react-simple-state/blob/b620d4b/src/event.ts#L29)*
+*Defined in [src/event.ts:29](https://github.com/cobuildlab/react-simple-state/blob/4d0bc58/src/event.ts#L29)*
 
 **Parameters:**
 

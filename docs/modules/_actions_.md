@@ -14,7 +14,7 @@
 
 ▸ **createAction**‹**T**, **V**, **U**›(`event`: [Event](../classes/_event_.event.md)‹T, V›, `errorEvent`: [Event](../classes/_event_.event.md)‹Error›, `action`: function): *actionCallback*
 
-*Defined in [src/actions.ts:8](https://github.com/cobuildlab/react-simple-state/blob/b620d4b/src/actions.ts#L8)*
+*Defined in [src/actions.ts:8](https://github.com/cobuildlab/react-simple-state/blob/4d0bc58/src/actions.ts#L8)*
 
 **Type parameters:**
 
