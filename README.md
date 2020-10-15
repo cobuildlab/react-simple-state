@@ -1,5 +1,3 @@
-
-
 # React Simple State
 
 A simple and predictable state management for React and React Native Applications.
@@ -10,65 +8,68 @@ A simple and predictable state management for React and React Native Application
 - Scalable
 - Easy to organize
 - Compatible with Hooks and Class based Components.
-  
 
 Inspired by:
 
-* Flux State Management [flux-state](https://github.com/cobuildlab/flux-state) Library
-* React bindings for Flux State Management [react-flux-state](https://github.com/cobuildlab/react-simple-state) Library
-* RXJS [rxjs](https://github.com/reactivex/rxjs) Library
-* Recoil State Management [recoil](https://github.com/facebookexperimental/Recoil) Library
-
+- Flux State Management [flux-state](https://github.com/cobuildlab/flux-state) Library
+- React bindings for Flux State Management [react-flux-state](https://github.com/cobuildlab/react-simple-state) Library
+- RXJS [rxjs](https://github.com/reactivex/rxjs) Library
+- Recoil State Management [recoil](https://github.com/facebookexperimental/Recoil) Library
 
 ## Installation
 
 1. Run on your terminal the following command:
+
 ```sh
 $ npm i --save @cobuildlab/react-simple-state
 ```
 
 2. To import the library anywhere you would like to use it:
+
 ```js
-import {createEvent, useSubscription, useEvent, View} from '@cobuildlab/react-simple-state';
+import {
+  createEvent,
+  useSubscription,
+  useEvent,
+  View,
+} from '@cobuildlab/react-simple-state';
 ```
 
 ## API Docsw
 
-| Object   | Description   | 
-| ------ | ------ | 
-| [`EventParams`](#EventParams) | Params for the createEvent function.  | 
-| [`createEvent`](#createEvent) | Helper function to create state events.  | 
-| [`View`](#View) | Subclass of `React.View` that includes a `this.subscribe` method to subscribe to changes on an Event.  | 
-| [`useSubscription`](#useSubscription) | A hook for subscribe to specific events with a callback.  |
-| [`EventHookParams`](#EventHookParams) | Params for the `useEvent` hook.  | 
-| [`useEvent`](#useEvent) | A declarative alternative to the `useSubscription`.  | 
-
+| Object                                | Description                                                                                           |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| [`EventParams`](#EventParams)         | Params for the createEvent function.                                                                  |
+| [`createEvent`](#createEvent)         | Helper function to create state events.                                                               |
+| [`View`](#View)                       | Subclass of `React.View` that includes a `this.subscribe` method to subscribe to changes on an Event. |
+| [`useSubscription`](#useSubscription) | A hook for subscribe to specific events with a callback.                                              |
+| [`EventHookParams`](#EventHookParams) | Params for the `useEvent` hook.                                                                       |
+| [`useEvent`](#useEvent)               | A declarative alternative to the `useSubscription`.                                                   |
 
 ### `EventParams`
 
 - `initialValue` - An initial value for the event.
 - `reducer` A function that mutates the state before it gets propagated.
 
-
 ### `createEvent(params: EventParams)`
 
-- Allows you to create a subscribable event. 
+- Allows you to create a subscribable event.
 - The result object can be used for subscriptions with the `View` or the hooks: `useEvent` and `useSubscription`
 
 [`Example`](#Examples)
 
 ```javascript
 // agency-events.js
-import {createEvent} from "@cobuildlab/react-simple-state";
+import { createEvent } from '@cobuildlab/react-simple-state';
 
 export const OnAgencyList = createEvent();
 export const OnAgencyListError = createEvent();
 export const OnNewAgent = createEvent({
-  initialValue : new Agent(),
-  reducer: (prevState)=>{
-    prevState.agencies = OnAgencyList.get()
+  initialValue: new Agent(),
+  reducer: (prevState) => {
+    prevState.agencies = OnAgencyList.get();
     return prevState;
-  }
+  },
 });
 ```
 
@@ -91,15 +92,14 @@ class AgencyView extend View{
     this.subscribe(OnAgencyList, (state)=> {
       // So something with the state.
     })
-  
+
     this.subscribe(OnNewAgent, (state)=> {
       // So something with the state.
     })
-  
+
   }
 }
 ```
-
 
 ### `useSubscription(store, eventName, callback)`
 
@@ -123,8 +123,8 @@ const AgencyView = ()=> {
     useSubscription(OnNewAgent, (state)=>{
         // Do something with the state
     });
-    
-    return (); 
+
+    return ();
 }
 ```
 
@@ -152,36 +152,35 @@ import {OnAgencyList, OnNewAgent} from "./agency-events.js"
 const AgencyView = ()=> {
     const state = useEvent(OnAgencyList);
     const agent = useEvent(OnNewAgent, {initialValue: {}, reducer: (prevState) => prevState.agent});
-    
-    return (); 
+
+    return ();
 }
 ```
 
-
-### Full Example 
+### Full Example
 
 Let's build a Flux Workflow for authentication
 
 ### 1) First, declare your Events
 
 ```js
-import {createEvent} from "@cobuildlab/react-simple-state";
+import { createEvent } from '@cobuildlab/react-simple-state';
 
 export const LogoutEvent = createEvent({
-  reducer: (prevState)=>{
+  reducer: (prevState) => {
     localStorage.clear();
     return prevState;
-  }
+  },
 });
 export const LoginEvent = createEvent();
 export const PermissionError = createEvent({
-  reducer: (prevState)=>{
+  reducer: (prevState) => {
     LogoutEvent.dispatch();
     return prevState;
-  }
+  },
 });
 
-export {LogoutEvent, LoginEvent,PermissionError } ;
+export { LogoutEvent, LoginEvent, PermissionError };
 ```
 
 ### 2) Registering with the Store changes
@@ -217,12 +216,12 @@ const View = (props) => {
   // Set an Initial Value
   const loginState = useEvent(LoginEvent);
   const userState = useEvent(LogoutEvent, {reducer:(state) => state.user});
-  
+
   useSubscription(LoginEvent, (state) => {
     // setError
     // toast.error()
   });
-  
+
   return (
     {loginState && <User user={loginState}>}
   )
@@ -232,33 +231,76 @@ const View = (props) => {
 ### 3) Define some actions that will trigger the event
 
 ```js
-import {LoginEvent, LogoutEvent} from "./agency-events.js"; 
+import { LoginEvent, LogoutEvent } from './agency-events.js';
 
-const authenticateAction = (username, password)=> {
-      if (username === undefined)
-        return LogoutEvent.dispatch();
-      
-      let dataToSave = {
-          authenticated: true,
-          username,
-          password,
-      }
-      LoginEvent.dispatch(dataToSave);
-}
+const authenticateAction = (username, password) => {
+  if (username === undefined) return LogoutEvent.dispatch();
 
-export {authenticateAction};
+  let dataToSave = {
+    authenticated: true,
+    username,
+    password,
+  };
+  LoginEvent.dispatch(dataToSave);
+};
+
+export { authenticateAction };
 ```
+
+### 4) Actions can be created with `createAction` helper
+
+```js
+import { createAction } from '@cobuildlab/react-simple-state';
+import { OnFecthUserEvent, OnFetchUserErrorEvent } from './events';
+import { apiClient } from './api';
+
+// single declarition of the async service and the action
+export const fetchUserAction = createAction(
+  OnFecthUserEvent,
+  OnFetchUserErrorEvent,
+  async (id) => {
+    const user = await apiClient.fetch({ user: id });
+
+    return user;
+  },
+);
+
+// Or we could declare the async service and then use in with diferent actions
+
+export const fetchUserService = async (id) => {
+  const user = await apiClient.fetch({ user: id });
+
+  return user;
+};
+
+export const fetchMainUserAction = createAction(
+  OnFecthMainUserEvent,
+  OnFetchMainUserErrorEvent,
+  fetchUserService,
+);
+export const fetchSecondaryUserAction = createAction(
+  OnFecthSecondaryUserEvent,
+  OnFetchSecondaryUserErrorEvent,
+  fetchUserService,
+);
+```
+
 ## Changelog
+
+### v0.4.0:
+
+- Add `createAction` decorator
 
 ### v0.3.0:
 
 - Cache callback on `useEvent`
-- Cache the callback on `useSubscription` and add a dependencies parameter. 
+- Cache the callback on `useSubscription` and add a dependencies parameter.
 - Remove `Ramda` and `Rxjs` as dependencies
 
 ### v0.2.0:
 
 - Remove: `receiveLastValue` for the `useQuery` hook
+
 ### v0.1.0:
 
 - Typos and documentation
