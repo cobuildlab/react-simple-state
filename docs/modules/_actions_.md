@@ -12,9 +12,9 @@
 
 ###  createAction
 
-▸ **createAction**‹**T**, **U**, **E**, **V**›(`event`: [Event](../classes/_event_.event.md)‹T, V›, `errorEvent`: [Event](../classes/_event_.event.md)‹E›, `action`: function): *actionCallback*
+▸ **createAction**‹**T**, **U**, **E**›(`event`: [Event](../classes/_event_.event.md)‹T›, `errorEvent`: [Event](../classes/_event_.event.md)‹E›, `action`: function): *actionCallback*
 
-*Defined in [src/actions.ts:8](https://github.com/cobuildlab/react-simple-state/blob/fa9a70c/src/actions.ts#L8)*
+*Defined in [src/actions.ts:8](https://github.com/cobuildlab/react-simple-state/blob/325157c/src/actions.ts#L8)*
 
 **Type parameters:**
 
@@ -24,11 +24,9 @@
 
 ▪ **E**
 
-▪ **V**
-
 **Parameters:**
 
-▪ **event**: *[Event](../classes/_event_.event.md)‹T, V›*
+▪ **event**: *[Event](../classes/_event_.event.md)‹T›*
 
 Event to bind the action.
 
@@ -38,7 +36,7 @@ Event to bind the action.
 
 Action to call.
 
-▸ (...`params`: keyof []): *Promise‹T | V›*
+▸ (...`params`: keyof []): *Promise‹T›*
 
 **Parameters:**
 
