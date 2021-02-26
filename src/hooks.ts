@@ -8,7 +8,7 @@ import { Event } from './event';
  * @param {Function} callback -  A function to be called when the subscription gets triggered.
  * @param {any[]} deps -  List of dependencies for the callback. Follow the same rules of useEffect.
  */
-function useSubscription<T, U>(
+export function useSubscription<T, U>(
   event: Event<T>,
   callback: (value: T | null) => void,
   deps: U[] | undefined = undefined,
@@ -34,8 +34,6 @@ function useSubscription<T, U>(
   }, [event]);
 }
 
-export { useSubscription };
-
 export type EventHookParams<T> = {
   initialValue?: T;
   reducer?: (value?: T) => any;
@@ -50,7 +48,7 @@ export type EventHookParams<T> = {
  * @param {object}  params.reducer - Reducer for transform the data.
  * @returns {object} Data object.
  */
-function useEvent<T>(event: Event<T>, params?: EventHookParams<T>) {
+export function useEvent<T>(event: Event<T>, params?: EventHookParams<T>) {
   const [value, setValue] = useState(
     params && params.initialValue !== undefined
       ? params.initialValue
@@ -72,5 +70,3 @@ function useEvent<T>(event: Event<T>, params?: EventHookParams<T>) {
   }, [event, params?.reducer]);
   return value;
 }
-
-export { useEvent };
