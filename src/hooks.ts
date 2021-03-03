@@ -78,10 +78,6 @@ export function useEvent<T>(event: Event<T>, params?: EventHookParams<T>) {
   return value;
 }
 
-export function useFetchAction<T, U extends any[], E = Error>(
-  action: ActionType<T, U, E>,
-  params: U,
-): UseFetchActionReturn<T, E>;
 /**
  * Hook that handle fetch promise actions, like querys to database.
  * This hook uses a declarative pattern.
@@ -121,9 +117,11 @@ export function useFetchAction<T, U extends any[], E = Error | null>(
   };
 
   const fetch = useCallback(() => {
+    console.log('calling fetch...');
     setState((state) => ({ ...state, loading: true }));
     action(...params);
-  }, [action, params]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [action, ...params]);
 
   useEffect(() => {
     if (skip && !event.isEmpty()) {
@@ -157,10 +155,6 @@ export function useFetchAction<T, U extends any[], E = Error | null>(
   ];
 }
 
-export function useCallAction<T, U extends any[], E = Error | null>(
-  action: ActionType<T, U, E>,
-  params: U,
-): UseCallActionReturn<T, E>;
 /**
  * Hook that handle call promise actions, like mutations to database in a declarative way.
  *
@@ -201,7 +195,8 @@ export function useCallAction<T, U extends any[], E = Error | null>(
   const call = useCallback(() => {
     setState((state) => ({ ...state, loading: true }));
     action(...params);
-  }, [action, params]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [action, ...params]);
 
   useEffect(() => {
     const onSuccessCallback = (data: T | null) => {
