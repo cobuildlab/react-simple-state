@@ -287,6 +287,10 @@ export const fetchSecondaryUserAction = createAction(
 
 ## Changelog
 
+### v0.4.4:
+
+- Add `isEmpty` method to event to know if the event has data without to call the `get` method.
+
 ### v0.4.0:
 
 - Add `createAction` decorator

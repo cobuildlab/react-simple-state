@@ -4,6 +4,10 @@
 
 ## Index
 
+### Interfaces
+
+* [ActionType](../interfaces/_actions_.actiontype.md)
+
 ### Functions
 
 * [createAction](_actions_.md#createaction)
@@ -12,9 +16,9 @@
 
 ###  createAction
 
-▸ **createAction**‹**T**, **U**, **E**›(`event`: [Event](../classes/_event_.event.md)‹T›, `errorEvent`: [Event](../classes/_event_.event.md)‹E›, `action`: function): *actionCallback*
+▸ **createAction**‹**T**, **U**, **E**›(`event`: [Event](../classes/_event_.event.md)‹T›, `errorEvent`: [Event](../classes/_event_.event.md)‹E›, `action`: function): *[ActionType](../interfaces/_actions_.actiontype.md)‹T, U, E›*
 
-*Defined in [src/actions.ts:8](https://github.com/cobuildlab/react-simple-state/blob/325157c/src/actions.ts#L8)*
+*Defined in [src/actions.ts:18](https://github.com/cobuildlab/react-simple-state/blob/53910e6/src/actions.ts#L18)*
 
 **Type parameters:**
 
@@ -44,6 +48,6 @@ Name | Type |
 ------ | ------ |
 `...params` | keyof [] |
 
-**Returns:** *actionCallback*
+**Returns:** *[ActionType](../interfaces/_actions_.actiontype.md)‹T, U, E›*
 
 -  Function with the binded event.
