@@ -19,6 +19,7 @@ export class Event<T, U = unknown> {
   private value: T | null = null;
   private readonly reducer?: Reducer<T, U>;
   private publisher: Publisher<T> = new ConcretePublisher();
+  private isEventEmpty: boolean = true;
 
   constructor(eventDescriptor?: EventParams<T, U>) {
     if (eventDescriptor && eventDescriptor.initialValue)
@@ -45,11 +46,14 @@ export class Event<T, U = unknown> {
 
     this.value = value;
     this.publisher.notify(value);
+    this.isEventEmpty = false;
   }
   get(): T | null {
     return Object.freeze(this.value);
   }
-
+  isEmpty(): boolean {
+    return this.isEventEmpty;
+  }
   /**
    * Removes all data from the Event store.
    *
@@ -61,6 +65,7 @@ export class Event<T, U = unknown> {
     } else {
       this.value = null;
     }
+    this.isEventEmpty = true;
   }
 }
 

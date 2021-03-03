@@ -1,5 +1,15 @@
 import { Event } from './event';
-
+export interface ActionType<T, U extends any[], E> {
+  (...params_0: U): Promise<
+    | T
+    | {
+        error: Error;
+      }
+  >;
+  isAction: boolean;
+  event: Event<T, unknown>;
+  errorEvent: Event<E, unknown>;
+}
 /**
  * @param {Event} event - Event to bind the action.
  * @param {Function} action - Action to call.
@@ -9,7 +19,7 @@ export function createAction<T, U extends any[], E = Error>(
   event: Event<T>,
   errorEvent: Event<E>,
   action: (...params: readonly [...U]) => Promise<T>,
-) {
+): ActionType<T, U, E> {
   const actionCallback = async (
     ...params: readonly [...U]
   ): Promise<T | { error: Error }> => {
