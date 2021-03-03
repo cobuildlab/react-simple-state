@@ -4,10 +4,6 @@
 
 ## Index
 
-### Interfaces
-
-* [ActionType](../interfaces/_actions_.actiontype.md)
-
 ### Functions
 
 * [createAction](_actions_.md#createaction)
@@ -16,9 +12,9 @@
 
 ###  createAction
 
-▸ **createAction**‹**T**, **U**, **E**›(`event`: [Event](../classes/_event_.event.md)‹T›, `errorEvent`: [Event](../classes/_event_.event.md)‹E›, `action`: function): *[ActionType](../interfaces/_actions_.actiontype.md)‹T, U, E›*
+▸ **createAction**‹**T**, **U**, **E**›(`event`: [Event](../classes/_event_.event.md)‹T›, `errorEvent`: [Event](../classes/_event_.event.md)‹E›, `action`: function): *[ActionType](../interfaces/_types_.actiontype.md)‹T, U, E›*
 
-*Defined in [src/actions.ts:18](https://github.com/cobuildlab/react-simple-state/blob/53910e6/src/actions.ts#L18)*
+*Defined in [src/actions.ts:9](https://github.com/cobuildlab/react-simple-state/blob/69c0983/src/actions.ts#L9)*
 
 **Type parameters:**
 
@@ -48,6 +44,6 @@ Name | Type |
 ------ | ------ |
 `...params` | keyof [] |
 
-**Returns:** *[ActionType](../interfaces/_actions_.actiontype.md)‹T, U, E›*
+**Returns:** *[ActionType](../interfaces/_types_.actiontype.md)‹T, U, E›*
 
 -  Function with the binded event.
