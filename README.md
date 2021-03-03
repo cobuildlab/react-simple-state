@@ -285,7 +285,88 @@ export const fetchSecondaryUserAction = createAction(
 );
 ```
 
+### 5) Fetch can be done with `useFetchAction` hook
+
+```js
+import { useFetchAction } from '@cobuildlab/react-simple-state';
+import { fetchUser } from './actions';
+
+// UserProfile component
+export const UserProfile = ({ userId }) => {
+  const [user, loadingUser] = useFetchAction(fetchUser, [userId]);
+  // OR...
+
+  // Like this the hook will not fetch until the skip property is set to false.
+  const [user, loadingUser] = useFetchAction(fetchUser, [userId], {
+    skip: true,
+  });
+
+  const [user, loadingUser] = useFetchAction(fetchUser, [userId], {
+    onCompleted: () => {
+      toast.success('user fetched');
+    },
+    onError: () => {
+      toast.error('Error when fetching user');
+    },
+  });
+
+  // OR...
+
+  const [user, loadingUser, { refetch }] = useFetchAction(fetchUser, [userId], {
+    onCompleted: () => {
+      toast.success('user fetched');
+    },
+    onError: () => {
+      toast.error('Error when fetching user');
+    },
+  });
+
+  useSubscription(OnSaveUserEvent, () => {
+    // refetch the user after saving form for example
+    refetch();
+  });
+  return; // profile view
+};
+```
+
+### 6) Fetch can be done with `useCallAction` hook
+
+```js
+import { useCallAction } from '@cobuildlab/react-simple-state';
+import { saveUser } from './actions';
+
+// UserProfile component
+export const UserProfile = ({ userId }) => {
+  const userData = userDataState;
+  const [save, loadingSubmit] = useCallAction(saveUser, [
+    userId,
+    useCallAction,
+  ]);
+  // OR...
+
+  // Like this the hook will not fetch until the skip property is set to false.
+  const [save, loadingUser] = useCallAction(saveUser, [userId, userData], {
+    onCompleted: () => {
+      toast.success('user saved');
+    },
+    onError: () => {
+      toast.error('Error when saving user');
+    },
+  });
+
+  return (
+    <Form>
+      <SubmitButton onClick={() => save()} />
+    </Form>
+  );
+};
+```
+
 ## Changelog
+
+### v0.5.0:
+
+- Add `useCallAction` and `useFetchAction` hooks to have a better declaritive way to handle promise in components.
 
 ### v0.4.4:
 
