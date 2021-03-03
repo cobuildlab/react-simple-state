@@ -19,7 +19,7 @@ export class Event<T, U = unknown> {
   private value: T | null = null;
   private readonly reducer?: Reducer<T, U>;
   private publisher: Publisher<T> = new ConcretePublisher();
-  private isEventEmpty: boolean = true;
+  private isEventEmpty = true;
 
   constructor(eventDescriptor?: EventParams<T, U>) {
     if (eventDescriptor && eventDescriptor.initialValue)
@@ -72,7 +72,8 @@ export class Event<T, U = unknown> {
 /**
  * Creates an event from a descriptor.
  *
- * @param eventDescriptor
+ * @param {EventParams} eventDescriptor - Event options.
+ * @returns {Event} - Event object.
  */
 export function createEvent<T, U = unknown>(
   eventDescriptor?: EventParams<T, U>,
