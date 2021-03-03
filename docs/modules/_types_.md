@@ -24,7 +24,7 @@
 
 Ƭ **Arr**: *keyof any[]*
 
-*Defined in [src/types.ts:17](https://github.com/cobuildlab/react-simple-state/blob/69c0983/src/types.ts#L17)*
+*Defined in [src/types.ts:17](https://github.com/cobuildlab/react-simple-state/blob/46e6b47/src/types.ts#L17)*
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 Ƭ **LocalObserver**: *object*
 
-*Defined in [src/types.ts:8](https://github.com/cobuildlab/react-simple-state/blob/69c0983/src/types.ts#L8)*
+*Defined in [src/types.ts:8](https://github.com/cobuildlab/react-simple-state/blob/46e6b47/src/types.ts#L8)*
 
 #### Type declaration:
 
@@ -54,7 +54,7 @@ ___
 
 Ƭ **Store**: *object*
 
-*Defined in [src/types.ts:3](https://github.com/cobuildlab/react-simple-state/blob/69c0983/src/types.ts#L3)*
+*Defined in [src/types.ts:3](https://github.com/cobuildlab/react-simple-state/blob/46e6b47/src/types.ts#L3)*
 
 #### Type declaration:
 
@@ -66,7 +66,7 @@ ___
 
 Ƭ **UseActionOptions**: *object*
 
-*Defined in [src/types.ts:30](https://github.com/cobuildlab/react-simple-state/blob/69c0983/src/types.ts#L30)*
+*Defined in [src/types.ts:30](https://github.com/cobuildlab/react-simple-state/blob/46e6b47/src/types.ts#L30)*
 
 #### Type declaration:
 
@@ -80,7 +80,7 @@ ___
 
 Ƭ **UseCallActionReturn**: *[]*
 
-*Defined in [src/types.ts:46](https://github.com/cobuildlab/react-simple-state/blob/69c0983/src/types.ts#L46)*
+*Defined in [src/types.ts:46](https://github.com/cobuildlab/react-simple-state/blob/46e6b47/src/types.ts#L46)*
 
 ___
 
@@ -88,4 +88,4 @@ ___
 
 Ƭ **UseFetchActionReturn**: *[]*
 
-*Defined in [src/types.ts:38](https://github.com/cobuildlab/react-simple-state/blob/69c0983/src/types.ts#L38)*
+*Defined in [src/types.ts:38](https://github.com/cobuildlab/react-simple-state/blob/46e6b47/src/types.ts#L38)*

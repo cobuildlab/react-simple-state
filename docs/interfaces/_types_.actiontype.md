@@ -18,7 +18,7 @@
 
 ▸ (...`params_0`: U): *Promise‹T | object›*
 
-*Defined in [src/types.ts:18](https://github.com/cobuildlab/react-simple-state/blob/69c0983/src/types.ts#L18)*
+*Defined in [src/types.ts:18](https://github.com/cobuildlab/react-simple-state/blob/46e6b47/src/types.ts#L18)*
 
 **Parameters:**
 
@@ -42,7 +42,7 @@ Name | Type |
 
 • **errorEvent**: *[Event](../classes/_event_.event.md)‹E, unknown›*
 
-*Defined in [src/types.ts:27](https://github.com/cobuildlab/react-simple-state/blob/69c0983/src/types.ts#L27)*
+*Defined in [src/types.ts:27](https://github.com/cobuildlab/react-simple-state/blob/46e6b47/src/types.ts#L27)*
 
 ___
 
@@ -50,7 +50,7 @@ ___
 
 • **event**: *[Event](../classes/_event_.event.md)‹T, unknown›*
 
-*Defined in [src/types.ts:26](https://github.com/cobuildlab/react-simple-state/blob/69c0983/src/types.ts#L26)*
+*Defined in [src/types.ts:26](https://github.com/cobuildlab/react-simple-state/blob/46e6b47/src/types.ts#L26)*
 
 ___
 
@@ -58,4 +58,4 @@ ___
 
 • **isAction**: *boolean*
 
-*Defined in [src/types.ts:25](https://github.com/cobuildlab/react-simple-state/blob/69c0983/src/types.ts#L25)*
+*Defined in [src/types.ts:25](https://github.com/cobuildlab/react-simple-state/blob/46e6b47/src/types.ts#L25)*

@@ -21,7 +21,7 @@
 
 Ƭ **EventHookParams**: *object*
 
-*Defined in [src/hooks.ts:44](https://github.com/cobuildlab/react-simple-state/blob/69c0983/src/hooks.ts#L44)*
+*Defined in [src/hooks.ts:44](https://github.com/cobuildlab/react-simple-state/blob/46e6b47/src/hooks.ts#L44)*
 
 #### Type declaration:
 
@@ -33,9 +33,9 @@
 
 ###  useCallAction
 
-▸ **useCallAction**‹**T**, **U**, **E**›(`action`: [ActionType](../interfaces/_types_.actiontype.md)‹T, U, E›, `params`: U): *[UseCallActionReturn](_types_.md#usecallactionreturn)‹T, E›*
+▸ **useCallAction**‹**T**, **U**, **E**›(`action`: [ActionType](../interfaces/_types_.actiontype.md)‹T, U, E›, `params`: U, `options?`: [UseActionOptions](_types_.md#useactionoptions)‹T, E›): *[UseCallActionReturn](_types_.md#usecallactionreturn)‹T, E›*
 
-*Defined in [src/hooks.ts:160](https://github.com/cobuildlab/react-simple-state/blob/69c0983/src/hooks.ts#L160)*
+*Defined in [src/hooks.ts:166](https://github.com/cobuildlab/react-simple-state/blob/46e6b47/src/hooks.ts#L166)*
 
 Hook that handle call promise actions, like mutations to database in a declarative way.
 
@@ -53,6 +53,7 @@ Name | Type | Description |
 ------ | ------ | ------ |
 `action` | [ActionType](../interfaces/_types_.actiontype.md)‹T, U, E› | - |
 `params` | U | - |
+`options?` | [UseActionOptions](_types_.md#useactionoptions)‹T, E› | - |
 
 **Returns:** *[UseCallActionReturn](_types_.md#usecallactionreturn)‹T, E›*
 
@@ -64,7 +65,7 @@ ___
 
 ▸ **useEvent**‹**T**›(`event`: [Event](../classes/_event_.event.md)‹T›, `params?`: [EventHookParams](_hooks_.md#eventhookparams)‹T›): *null | T*
 
-*Defined in [src/hooks.ts:58](https://github.com/cobuildlab/react-simple-state/blob/69c0983/src/hooks.ts#L58)*
+*Defined in [src/hooks.ts:58](https://github.com/cobuildlab/react-simple-state/blob/46e6b47/src/hooks.ts#L58)*
 
 React Hook to subscribe to an Event.
 
@@ -87,9 +88,9 @@ ___
 
 ###  useFetchAction
 
-▸ **useFetchAction**‹**T**, **U**, **E**›(`action`: [ActionType](../interfaces/_types_.actiontype.md)‹T, U, E›, `params`: U): *[UseFetchActionReturn](_types_.md#usefetchactionreturn)‹T, E›*
+▸ **useFetchAction**‹**T**, **U**, **E**›(`action`: [ActionType](../interfaces/_types_.actiontype.md)‹T, U, E›, `params`: U, `options?`: [UseFetchActionOptions](../interfaces/_types_.usefetchactionoptions.md)‹T, E›): *[UseFetchActionReturn](_types_.md#usefetchactionreturn)‹T, E›*
 
-*Defined in [src/hooks.ts:81](https://github.com/cobuildlab/react-simple-state/blob/69c0983/src/hooks.ts#L81)*
+*Defined in [src/hooks.ts:90](https://github.com/cobuildlab/react-simple-state/blob/46e6b47/src/hooks.ts#L90)*
 
 Hook that handle fetch promise actions, like querys to database.
 This hook uses a declarative pattern.
@@ -108,6 +109,7 @@ Name | Type | Description |
 ------ | ------ | ------ |
 `action` | [ActionType](../interfaces/_types_.actiontype.md)‹T, U, E› | Action to fetch. |
 `params` | U | Param to call the action. |
+`options?` | [UseFetchActionOptions](../interfaces/_types_.usefetchactionoptions.md)‹T, E› | Option to handle the actions. |
 
 **Returns:** *[UseFetchActionReturn](_types_.md#usefetchactionreturn)‹T, E›*
 
@@ -119,7 +121,7 @@ ___
 
 ▸ **useSubscription**‹**T**, **U**›(`event`: [Event](../classes/_event_.event.md)‹T›, `callback`: function, `deps`: U[] | undefined): *void*
 
-*Defined in [src/hooks.ts:18](https://github.com/cobuildlab/react-simple-state/blob/69c0983/src/hooks.ts#L18)*
+*Defined in [src/hooks.ts:18](https://github.com/cobuildlab/react-simple-state/blob/46e6b47/src/hooks.ts#L18)*
 
 React Hook to subscribe to an specific event.
 

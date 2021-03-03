@@ -12,4 +12,5 @@
 * ["pub-sub"](modules/_pub_sub_.md)
 * ["store"](modules/_store_.md)
 * ["types"](modules/_types_.md)
+* ["utils"](modules/_utils_.md)
 * ["views"](modules/_views_.md)

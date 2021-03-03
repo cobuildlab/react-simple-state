@@ -14,7 +14,7 @@
 
 ▸ **createAction**‹**T**, **U**, **E**›(`event`: [Event](../classes/_event_.event.md)‹T›, `errorEvent`: [Event](../classes/_event_.event.md)‹E›, `action`: function): *[ActionType](../interfaces/_types_.actiontype.md)‹T, U, E›*
 
-*Defined in [src/actions.ts:9](https://github.com/cobuildlab/react-simple-state/blob/69c0983/src/actions.ts#L9)*
+*Defined in [src/actions.ts:9](https://github.com/cobuildlab/react-simple-state/blob/46e6b47/src/actions.ts#L9)*
 
 **Type parameters:**
 
