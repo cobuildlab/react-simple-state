@@ -7,6 +7,7 @@
   "scripts": {
     "test": "jest --collect-coverage",
     "build": "tsc",
+    "dev": "tsc -w",
     "docs": "typedoc --out docs --theme markdown --categorizeByGroup false --exclude src/index.ts --exclude src/__tests__ --readme none --plugin typedoc-plugin-markdown src",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "eslint -c .eslintrc.js src/**/*.ts"
