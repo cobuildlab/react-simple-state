@@ -1,5 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Event } from './event';
+import {
+  ActionType,
+  UseActionOptions,
+  UseCallActionReturn,
+  UseFetchActionOptions,
+  UseFetchActionReturn,
+} from './types';
 
 /**
  * React Hook to subscribe to an specific event.
@@ -69,4 +76,154 @@ export function useEvent<T>(event: Event<T>, params?: EventHookParams<T>) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [event, params?.reducer]);
   return value;
+}
+
+export function useFetchAction<T, U extends any[], E = Error>(
+  action: ActionType<T, U, E>,
+  params: U,
+): UseFetchActionReturn<T, E>;
+/**
+ * Hook that handle fetch promise actions, like querys to database.
+ * This hook uses a declarative pattern.
+ *
+ * @param {ActionType} action - Action to fetch.
+ * @param {Array} params - Param to call the action.
+ * @param {UseFetchActionOptions} options - Option to handle the actions.
+ * @returns {UseFetchActionReturn} - Hook state result.
+ */
+export function useFetchAction<T, U extends any[], E = Error | null>(
+  action: ActionType<T, U, E>,
+  params: U,
+  options?: UseFetchActionOptions<T, E>,
+): UseFetchActionReturn<T, E> {
+  const { skip, onCompleted, onError } = options || {};
+
+  const { event, errorEvent } = action;
+
+  const [{ value, loading, error }, setState] = useState<{
+    value: T | null;
+    loading: boolean;
+    error: E | null;
+  }>(() => ({
+    value: event.get(),
+    loading: false,
+    error: null,
+  }));
+
+  const callbacksRef = useRef({
+    completed: onCompleted,
+    error: onError,
+  });
+
+  callbacksRef.current = {
+    completed: onCompleted,
+    error: onError,
+  };
+
+  const fetch = useCallback(() => {
+    setState((state) => ({ ...state, loading: true }));
+    action(...params);
+  }, [action, params]);
+
+  useEffect(() => {
+    if (skip && !event.isEmpty()) {
+      return;
+    }
+    fetch();
+  }, [fetch, skip, event]);
+
+  useEffect(() => {
+    const onSuccessCallback = (data: T | null) => {
+      setState((state) => ({ ...state, loading: false, value: data }));
+      if (callbacksRef.current.completed)
+        callbacksRef.current.completed(data as T);
+    };
+    const onErrorCallback = (data: E | null) => {
+      setState((state) => ({ ...state, loading: false, error: data }));
+      if (callbacksRef.current.error) callbacksRef.current.error(data as E);
+    };
+
+    event.subscribe(onSuccessCallback);
+    errorEvent.subscribe(onErrorCallback);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [event, errorEvent]);
+  return [
+    value as T,
+    loading,
+    {
+      error: error as E,
+      refetch: fetch,
+    },
+  ];
+}
+
+export function useCallAction<T, U extends any[], E = Error | null>(
+  action: ActionType<T, U, E>,
+  params: U,
+): UseCallActionReturn<T, E>;
+/**
+ * Hook that handle call promise actions, like mutations to database in a declarative way.
+ *
+ * @param {ActionType} action -
+ * @param {Array} params -
+ * @param {UseActionOptions} options -
+ * @returns {UseCallActionReturn} - Hook state result.
+ */
+export function useCallAction<T, U extends any[], E = Error | null>(
+  action: ActionType<T, U, E>,
+  params: U,
+  options?: UseActionOptions<T, E>,
+): UseCallActionReturn<T, E> {
+  const { onCompleted, onError } = options || {};
+
+  const { event, errorEvent } = action;
+
+  const [{ value, loading, error }, setState] = useState<{
+    value: T | null;
+    loading: boolean;
+    error: E | null;
+  }>(() => ({
+    value: event.get(),
+    loading: false,
+    error: null,
+  }));
+
+  const callbacksRef = useRef({
+    completed: onCompleted,
+    error: onError,
+  });
+
+  callbacksRef.current = {
+    completed: onCompleted,
+    error: onError,
+  };
+
+  const call = useCallback(() => {
+    setState((state) => ({ ...state, loading: true }));
+    action(...params);
+  }, [action, params]);
+
+  useEffect(() => {
+    const onSuccessCallback = (data: T | null) => {
+      setState((state) => ({ ...state, loading: false, value: data }));
+      if (callbacksRef.current.completed)
+        callbacksRef.current.completed(data as T);
+    };
+    const onErrorCallback = (data: E | null) => {
+      setState((state) => ({ ...state, loading: false, error: data }));
+      if (callbacksRef.current.error) callbacksRef.current.error(data as E);
+    };
+
+    event.subscribe(onSuccessCallback);
+    errorEvent.subscribe(onErrorCallback);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [event, errorEvent]);
+  return [
+    call,
+    loading,
+    {
+      error: error as E,
+      data: value as T,
+    },
+  ];
 }
