@@ -1,15 +1,6 @@
 import { Event } from './event';
-export interface ActionType<T, U extends any[], E> {
-  (...params_0: U): Promise<
-    | T
-    | {
-        error: Error;
-      }
-  >;
-  isAction: boolean;
-  event: Event<T, unknown>;
-  errorEvent: Event<E, unknown>;
-}
+import { ActionType } from './types';
+
 /**
  * @param {Event} event - Event to bind the action.
  * @param {Function} action - Action to call.
