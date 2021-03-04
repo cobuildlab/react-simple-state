@@ -296,11 +296,6 @@ export const UserProfile = ({ userId }) => {
   const [user, loadingUser] = useFetchAction(fetchUser, [userId]);
   // OR...
 
-  // Like this the hook will not fetch until the skip property is set to false.
-  const [user, loadingUser] = useFetchAction(fetchUser, [userId], {
-    skip: true,
-  });
-
   const [user, loadingUser] = useFetchAction(fetchUser, [userId], {
     onCompleted: () => {
       toast.success('user fetched');
@@ -344,8 +339,8 @@ export const UserProfile = ({ userId }) => {
   ]);
   // OR...
 
-  // Like this the hook will not fetch until the skip property is set to false.
-  const [save, loadingUser] = useCallAction(saveUser, [userId, userData], {
+  // setup the action, and return a function that will trigger the action when it needed.
+  const [save, loadingSubmit] = useCallAction(saveUser, [userId, userData], {
     onCompleted: () => {
       toast.success('user saved');
     },

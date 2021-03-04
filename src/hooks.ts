@@ -4,7 +4,6 @@ import {
   ActionType,
   UseActionOptions,
   UseCallActionReturn,
-  UseFetchActionOptions,
   UseFetchActionReturn,
 } from './types';
 
@@ -84,15 +83,17 @@ export function useEvent<T>(event: Event<T>, params?: EventHookParams<T>) {
  *
  * @param {ActionType} action - Action to fetch.
  * @param {Array} params - Param to call the action.
- * @param {UseFetchActionOptions} options - Option to handle the actions.
+ * @param {UseActionOptions} options - Option to handle the actions.
+ * @param {Function} options.onCompleted - A callback to be called when the promise get resolved.
+ * @param {Function} options.onError - A callback to be called when an error occurs.
  * @returns {UseFetchActionReturn} - Hook state result.
  */
 export function useFetchAction<T, U extends any[], E = Error | null>(
   action: ActionType<T, U, E>,
   params: U,
-  options?: UseFetchActionOptions<T, E>,
+  options?: UseActionOptions<T, E>,
 ): UseFetchActionReturn<T, E> {
-  const { skip, onCompleted, onError } = options || {};
+  const { onCompleted, onError } = options || {};
 
   const { event, errorEvent } = action;
 
@@ -124,11 +125,8 @@ export function useFetchAction<T, U extends any[], E = Error | null>(
   }, [action, ...params]);
 
   useEffect(() => {
-    if (skip && !event.isEmpty()) {
-      return;
-    }
     fetch();
-  }, [fetch, skip, event]);
+  }, [fetch]);
 
   useEffect(() => {
     const onSuccessCallback = (data: T | null) => {
@@ -158,9 +156,11 @@ export function useFetchAction<T, U extends any[], E = Error | null>(
 /**
  * Hook that handle call promise actions, like mutations to database in a declarative way.
  *
- * @param {ActionType} action -
- * @param {Array} params -
- * @param {UseActionOptions} options -
+ * @param {ActionType} action - The action to be called.
+ * @param {Array} params - Array of the params to pass to the action.
+ * @param {UseActionOptions} options - Option to handle the actions.
+ * @param {Function} options.onCompleted - A callback to be called when the promise get resolved.
+ * @param {Function} options.onError - A callback to be called when an error occurs.
  * @returns {UseCallActionReturn} - Hook state result.
  */
 export function useCallAction<T, U extends any[], E = Error | null>(
