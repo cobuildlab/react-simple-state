@@ -4,18 +4,34 @@
 
 ## Index
 
+### Interfaces
+
+* [ActionType](../interfaces/_types_.actiontype.md)
+
 ### Type aliases
 
+* [Arr](_types_.md#arr)
 * [LocalObserver](_types_.md#localobserver)
 * [Store](_types_.md#store)
+* [UseActionOptions](_types_.md#useactionoptions)
+* [UseCallActionReturn](_types_.md#usecallactionreturn)
+* [UseFetchActionReturn](_types_.md#usefetchactionreturn)
 
 ## Type aliases
+
+###  Arr
+
+Ƭ **Arr**: *keyof any[]*
+
+*Defined in [src/types.ts:17](https://github.com/cobuildlab/react-simple-state/blob/fe49677/src/types.ts#L17)*
+
+___
 
 ###  LocalObserver
 
 Ƭ **LocalObserver**: *object*
 
-*Defined in [src/types.ts:7](https://github.com/cobuildlab/react-simple-state/blob/53910e6/src/types.ts#L7)*
+*Defined in [src/types.ts:8](https://github.com/cobuildlab/react-simple-state/blob/fe49677/src/types.ts#L8)*
 
 #### Type declaration:
 
@@ -37,8 +53,38 @@ ___
 
 Ƭ **Store**: *object*
 
-*Defined in [src/types.ts:3](https://github.com/cobuildlab/react-simple-state/blob/53910e6/src/types.ts#L3)*
+*Defined in [src/types.ts:3](https://github.com/cobuildlab/react-simple-state/blob/fe49677/src/types.ts#L3)*
 
 #### Type declaration:
 
 * **subscribe**: *Function*
+
+___
+
+###  UseActionOptions
+
+Ƭ **UseActionOptions**: *object*
+
+*Defined in [src/types.ts:30](https://github.com/cobuildlab/react-simple-state/blob/fe49677/src/types.ts#L30)*
+
+#### Type declaration:
+
+* **onCompleted**? : *undefined | function*
+
+* **onError**? : *undefined | function*
+
+___
+
+###  UseCallActionReturn
+
+Ƭ **UseCallActionReturn**: *[]*
+
+*Defined in [src/types.ts:43](https://github.com/cobuildlab/react-simple-state/blob/fe49677/src/types.ts#L43)*
+
+___
+
+###  UseFetchActionReturn
+
+Ƭ **UseFetchActionReturn**: *[]*
+
+*Defined in [src/types.ts:35](https://github.com/cobuildlab/react-simple-state/blob/fe49677/src/types.ts#L35)*

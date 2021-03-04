@@ -3,7 +3,7 @@ module.exports = {
   plugins: ['jsdoc', '@typescript-eslint'],
   extends: [
     'eslint:recommended',
-    'eslint-config-prettier',
+    'prettier',
     'plugin:jsdoc/recommended',
     'plugin:react-hooks/recommended',
     'plugin:@typescript-eslint/recommended',
