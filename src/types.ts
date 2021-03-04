@@ -31,7 +31,9 @@ export type UseActionOptions<T, E> = {
   onCompleted?: (data: T) => void;
   onError?: (error: E) => void;
 };
-
+export interface UseFetchActionOptions<T, E> extends UseActionOptions<T, E> {
+  skip?: boolean;
+}
 export type UseFetchActionReturn<T, E> = [
   T,
   boolean,

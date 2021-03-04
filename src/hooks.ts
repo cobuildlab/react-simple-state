@@ -4,6 +4,7 @@ import {
   ActionType,
   UseActionOptions,
   UseCallActionReturn,
+  UseFetchActionOptions,
   UseFetchActionReturn,
 } from './types';
 
@@ -83,17 +84,18 @@ export function useEvent<T>(event: Event<T>, params?: EventHookParams<T>) {
  *
  * @param {ActionType} action - Action to fetch.
  * @param {Array} params - Param to call the action.
- * @param {UseActionOptions} options - Option to handle the actions.
+ * @param {UseFetchActionOptions} options - Option to handle the actions.
  * @param {Function} options.onCompleted - A callback to be called when the promise get resolved.
  * @param {Function} options.onError - A callback to be called when an error occurs.
+ * @param {Function} options.skip - To skip the fetch ultil some validation happen.
  * @returns {UseFetchActionReturn} - Hook state result.
  */
 export function useFetchAction<T, U extends any[], E = Error | null>(
   action: ActionType<T, U, E>,
   params: U,
-  options?: UseActionOptions<T, E>,
+  options?: UseFetchActionOptions<T, E>,
 ): UseFetchActionReturn<T, E> {
-  const { onCompleted, onError } = options || {};
+  const { onCompleted, onError, skip } = options || {};
 
   const { event, errorEvent } = action;
 
@@ -118,15 +120,17 @@ export function useFetchAction<T, U extends any[], E = Error | null>(
   };
 
   const fetch = useCallback(() => {
-    console.log('calling fetch...');
     setState((state) => ({ ...state, loading: true }));
     action(...params);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [action, ...params]);
 
   useEffect(() => {
+    if (skip) {
+      return;
+    }
     fetch();
-  }, [fetch]);
+  }, [fetch, skip]);
 
   useEffect(() => {
     const onSuccessCallback = (data: T | null) => {
