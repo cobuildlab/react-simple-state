@@ -2,8 +2,10 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Event } from './event';
 import {
   ActionType,
+  EventHookParams,
   UseActionOptions,
   UseCallActionReturn,
+  useEventReturn,
   UseFetchActionOptions,
   UseFetchActionReturn,
 } from './types';
@@ -14,12 +16,13 @@ import {
  * @param {Event} event - The event to subscribe. The Event is considered constant across renders.
  * @param {Function} callback -  A function to be called when the subscription gets triggered.
  * @param {any[]} deps -  List of dependencies for the callback. Follow the same rules of useEffect.
+ * @returns {void} - Void hook.
  */
 export function useSubscription<T, U>(
   event: Event<T>,
   callback: (value: T | null) => void,
   deps: U[] | undefined = undefined,
-) {
+): void {
   const callbackRef = useRef(callback);
 
   callbackRef.current = callback;
@@ -41,30 +44,32 @@ export function useSubscription<T, U>(
   }, [event]);
 }
 
-export type EventHookParams<T> = {
-  initialValue?: T;
-  reducer?: (value?: T) => any;
-};
-
 /**
  * React Hook to subscribe to an Event.
  *
  * @param {Event} event - The event.
  * @param {object}  params - Params.
  * @param {object}  params.initialValue - Initial Value.
- * @param {object}  params.reducer - Reducer for transform the data.
+ * @param {Function}  params.reducer - Reducer for transform the data.
  * @returns {object} Data object.
  */
-export function useEvent<T>(event: Event<T>, params?: EventHookParams<T>) {
+export function useEvent<U, T = U>(
+  event: Event<T>,
+  params?: EventHookParams<T, U>,
+): useEventReturn<T, U> {
   const [value, setValue] = useState(
     params && params.initialValue !== undefined
       ? params.initialValue
       : event.get(),
   );
 
+  const reducerRef = useRef(params?.reducer);
+  reducerRef.current = params?.reducer;
   useEffect(() => {
-    const handleStateChange = (state?: any): void => {
-      const eventState = params?.reducer ? params.reducer(state) : state;
+    const handleStateChange = (state: T | null): void => {
+      const eventState = reducerRef.current
+        ? reducerRef.current(state as T)
+        : state;
 
       setValue(eventState);
     };
@@ -72,10 +77,10 @@ export function useEvent<T>(event: Event<T>, params?: EventHookParams<T>) {
     return (): void => {
       subscription.unsubscribe();
     };
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [event, params?.reducer]);
-  return value;
+  }, [event]);
+
+  return value as useEventReturn<T, U>;
 }
 
 /**
