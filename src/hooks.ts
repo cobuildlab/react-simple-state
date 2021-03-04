@@ -57,7 +57,7 @@ export function useEvent<U, T = U>(
   event: Event<T>,
   params?: EventHookParams<T, U>,
 ): useEventReturn<T, U> {
-  const [value, setValue] = useState(
+  const [value, setValue] = useState(() =>
     params && params.initialValue !== undefined
       ? params.initialValue
       : event.get(),
