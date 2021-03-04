@@ -1,3 +1,4 @@
+import { type } from 'os';
 import { Event } from './event';
 
 export type Store = {
@@ -50,3 +51,9 @@ export type UseCallActionReturn<T, E> = [
     error: E;
   },
 ];
+
+export type EventHookParams<T, U = T> = {
+  initialValue?: U;
+  reducer?: (value?: T) => U;
+};
+export type useEventReturn<T, U> = T extends U ? T : U;
