@@ -292,8 +292,13 @@ import { useFetchAction } from '@cobuildlab/react-simple-state';
 import { fetchUser } from './actions';
 
 // UserProfile component
-export const UserProfile = ({ userId }) => {
+export const UserProfile = ({ userId, loadingToken }) => {
   const [user, loadingUser] = useFetchAction(fetchUser, [userId]);
+
+  // OR... skip the fetch ultil the token loads
+  const [user, loadingUser] = useFetchAction(fetchUser, [userId], {
+    skip: loadingToken,
+  });
   // OR...
 
   const [user, loadingUser] = useFetchAction(fetchUser, [userId], {
@@ -324,7 +329,7 @@ export const UserProfile = ({ userId }) => {
 };
 ```
 
-### 6) Fetch can be done with `useCallAction` hook
+### 6) callable fetch can be done with `useCallAction` hook
 
 ```js
 import { useCallAction } from '@cobuildlab/react-simple-state';
