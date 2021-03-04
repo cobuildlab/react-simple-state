@@ -18,7 +18,7 @@
 
 Ƭ **EventParams**: *object*
 
-*Defined in [src/store.ts:9](https://github.com/cobuildlab/react-simple-state/blob/46e6b47/src/store.ts#L9)*
+*Defined in [src/store.ts:9](https://github.com/cobuildlab/react-simple-state/blob/fe49677/src/store.ts#L9)*
 
 #### Type declaration:
 
