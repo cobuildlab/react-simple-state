@@ -1,5 +1,6 @@
 import { type } from 'os';
-import { Event } from './event';
+import { createEvent, Event } from './event';
+import { useEvent } from './hooks';
 
 export type Store = {
   // eslint-disable-next-line @typescript-eslint/ban-types
@@ -54,6 +55,6 @@ export type UseCallActionReturn<T, E> = [
 
 export type EventHookParams<T, U = T> = {
   initialValue?: U;
-  reducer?: (value?: T) => U;
+  reducer?: (value: T) => U;
 };
 export type useEventReturn<T, U> = T extends U ? T : U;
