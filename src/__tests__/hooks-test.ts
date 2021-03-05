@@ -15,6 +15,25 @@ test('useEvent', () => {
   expect(hook.result.current).toBe(2);
 });
 
+test('useEvent with Reducer', () => {
+  const TestEvent = createEvent({ initialValue: 1 });
+  const hook = renderHook(() =>
+    useEvent(TestEvent, {
+      reducer: (value) => {
+        return `${value}`;
+      },
+    }),
+  );
+
+  expect(hook.result.current).toStrictEqual('1');
+
+  act(() => {
+    TestEvent.dispatch(2);
+  });
+
+  expect(hook.result.current).toStrictEqual('2');
+});
+
 test('useSubscription', () => {
   const TestEvent = createEvent({ initialValue: 1 });
   const hook = renderHook(() =>

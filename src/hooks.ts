@@ -57,11 +57,16 @@ export function useEvent<U, T = U>(
   event: Event<T>,
   params?: EventHookParams<T, U>,
 ): useEventReturn<T, U> {
-  const [value, setValue] = useState(() =>
-    params && params.initialValue !== undefined
-      ? params.initialValue
-      : event.get(),
-  );
+  const { reducer, initialValue } = params || {};
+  const [value, setValue] = useState(() => {
+    if (initialValue && event.isEmpty()) {
+      return initialValue;
+    } else if (reducer) {
+      return reducer(event.get() as T);
+    }
+
+    return event.get();
+  });
 
   const reducerRef = useRef(params?.reducer);
   reducerRef.current = params?.reducer;
