@@ -4,6 +4,7 @@ import {
   Subscriber,
   Subscription,
 } from './pub-sub';
+import { CheckGeneric } from './types';
 
 export type Reducer<T, U> = (value: U) => T;
 
@@ -37,7 +38,7 @@ export class Event<T, U = unknown> {
     if (receiveLastValue) subscriber(this.get());
     return this.publisher.subscribe(_subscriber);
   }
-  dispatch(eventValue: T | U | null): void {
+  dispatch(eventValue: CheckGeneric<T, U> | null): void {
     const value = Object.freeze(
       this.reducer !== null && this.reducer !== undefined
         ? this.reducer(eventValue as U)
@@ -75,7 +76,7 @@ export class Event<T, U = unknown> {
  * @param {EventParams} eventDescriptor - Event options.
  * @returns {Event} - Event object.
  */
-export function createEvent<T, U = unknown>(
+export function createEvent<T, U = T>(
   eventDescriptor?: EventParams<T, U>,
 ): Event<T, U> {
   return new Event<T, U>(eventDescriptor);

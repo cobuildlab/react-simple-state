@@ -100,7 +100,12 @@ export function useEvent<U, T = U>(
  * @param {Function} options.skip - To skip the fetch ultil some validation happen.
  * @returns {UseFetchActionReturn} - Hook state result.
  */
-export function useFetchAction<T, U extends any[], E = Error | null>(
+export function useFetchAction<
+  T,
+  U extends any[],
+  R = unknown,
+  E = Error | null
+>(
   action: ActionType<T, U, E>,
   params: U,
   options?: UseFetchActionOptions<T, E>,
