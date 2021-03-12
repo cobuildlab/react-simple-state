@@ -1,7 +1,6 @@
 import { Event } from './event';
 import { ActionType, CheckGeneric } from './types';
 
-type check<T, R> = T extends R ? T : R;
 /**
  * @param {Event} event - Event to bind the action.
  * @param {Event}  errorEvent - Event to bind on error.
@@ -10,12 +9,12 @@ type check<T, R> = T extends R ? T : R;
  */
 export function createAction<T, U extends any[], E = Error, R = unknown>(
   event: Event<T, R>,
-  errorEvent: Event<E>,
+  errorEvent: Event<E, E>,
   action: (...params: readonly [...U]) => Promise<CheckGeneric<T, R>>,
 ): ActionType<T, U, E, R> {
   const actionCallback = async (
     ...params: readonly [...U]
-  ): Promise<check<T, R> | { error: Error }> => {
+  ): Promise<CheckGeneric<T, R> | { error: Error }> => {
     let data: CheckGeneric<T, R>;
 
     try {

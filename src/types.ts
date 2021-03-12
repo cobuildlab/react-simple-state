@@ -25,7 +25,7 @@ export interface ActionType<T, U extends Arr, E, R = unknown> {
   >;
   isAction: boolean;
   event: Event<T, R>;
-  errorEvent: Event<E, unknown>;
+  errorEvent: Event<E, E>;
 }
 
 export type UseActionOptions<T, E> = {
@@ -43,8 +43,8 @@ export type UseFetchActionReturn<T, E> = [
     refetch: () => void;
   },
 ];
-export type UseCallActionReturn<T, E> = [
-  () => void,
+export type UseCallActionReturn<T, U extends any[], E> = [
+  (...params: U) => void,
   boolean,
   {
     data: T;

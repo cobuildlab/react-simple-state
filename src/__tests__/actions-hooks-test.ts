@@ -121,7 +121,7 @@ describe('test useCallAction', () => {
     });
 
     const { result, waitForNextUpdate } = renderHook(() =>
-      useCallAction(saveAction, []),
+      useCallAction(saveAction),
     );
     expect(result.current[0]).toBeInstanceOf(Function);
     expect(result.current[1]).toBe(false);
