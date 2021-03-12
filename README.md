@@ -361,6 +361,10 @@ export const UserProfile = ({ userId }) => {
 
 ## Changelog
 
+### v0.6.0:
+
+- types improvements to be more genereic.
+
 ### v0.5.0:
 
 - Add `useCallAction` and `useFetchAction` hooks to have a better declaritive way to handle promise in components.
