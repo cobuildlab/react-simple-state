@@ -43,7 +43,7 @@ import {
 | [`createEvent`](#createEvent)         | Helper function to create state events.                                                               |
 | [`View`](#View)                       | Subclass of `React.View` that includes a `this.subscribe` method to subscribe to changes on an Event. |
 | [`useSubscription`](#useSubscription) | A hook for subscribe to specific events with a callback.                                              |
-| [`EventHookParams`](#EventHookParams) | Params for the `useEvent` hook.                                                                       |
+| [`EventHookParams`](#EventHookParams) | Params for the `useEvent`                                                                             |
 | [`useEvent`](#useEvent)               | A declarative alternative to the `useSubscription`.                                                   |
 
 ### `EventParams`
@@ -338,14 +338,11 @@ import { saveUser } from './actions';
 // UserProfile component
 export const UserProfile = ({ userId }) => {
   const userData = userDataState;
-  const [save, loadingSubmit] = useCallAction(saveUser, [
-    userId,
-    useCallAction,
-  ]);
+  const [save, loadingSubmit] = useCallAction(saveUser);
   // OR...
 
   // setup the action, and return a function that will trigger the action when it needed.
-  const [save, loadingSubmit] = useCallAction(saveUser, [userId, userData], {
+  const [save, loadingSubmit] = useCallAction(saveUser, {
     onCompleted: () => {
       toast.success('user saved');
     },
@@ -356,13 +353,17 @@ export const UserProfile = ({ userId }) => {
 
   return (
     <Form>
-      <SubmitButton onClick={() => save()} />
+      <SubmitButton onClick={() => save(userId, useCallAction)} />
     </Form>
   );
 };
 ```
 
 ## Changelog
+
+### v0.6.0:
+
+- types improvements to be more genereic.
 
 ### v0.5.0:
 

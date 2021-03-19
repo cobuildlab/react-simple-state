@@ -1,6 +1,4 @@
-import { type } from 'os';
-import { createEvent, Event } from './event';
-import { useEvent } from './hooks';
+import { Event } from './event';
 
 export type Store = {
   // eslint-disable-next-line @typescript-eslint/ban-types
@@ -17,16 +15,17 @@ export type LocalObserver<T> = {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Arr = readonly any[];
-export interface ActionType<T, U extends Arr, E> {
+export type CheckGeneric<T, R> = T extends R ? T : R;
+export interface ActionType<T, U extends Arr, E, R = unknown> {
   (...params_0: U): Promise<
-    | T
+    | CheckGeneric<T, R>
     | {
         error: Error;
       }
   >;
   isAction: boolean;
-  event: Event<T, unknown>;
-  errorEvent: Event<E, unknown>;
+  event: Event<T, R>;
+  errorEvent: Event<E, E>;
 }
 
 export type UseActionOptions<T, E> = {
@@ -44,8 +43,8 @@ export type UseFetchActionReturn<T, E> = [
     refetch: () => void;
   },
 ];
-export type UseCallActionReturn<T, E> = [
-  () => void,
+export type UseCallActionReturn<T, U extends any[], E> = [
+  (...params: U) => void,
   boolean,
   {
     data: T;

@@ -18,8 +18,8 @@ import {
  * @param {any[]} deps -  List of dependencies for the callback. Follow the same rules of useEffect.
  * @returns {void} - Void hook.
  */
-export function useSubscription<T, U>(
-  event: Event<T>,
+export function useSubscription<T, U, V = unknown>(
+  event: Event<T, V>,
   callback: (value: T | null) => void,
   deps: U[] | undefined = undefined,
 ): void {
@@ -53,8 +53,8 @@ export function useSubscription<T, U>(
  * @param {Function}  params.reducer - Reducer for transform the data.
  * @returns {object} Data object.
  */
-export function useEvent<U, T = U>(
-  event: Event<T>,
+export function useEvent<U, T = U, V = unknown>(
+  event: Event<T, V>,
   params?: EventHookParams<T, U>,
 ): useEventReturn<T, U> {
   const { reducer, initialValue } = params || {};
@@ -100,8 +100,13 @@ export function useEvent<U, T = U>(
  * @param {Function} options.skip - To skip the fetch ultil some validation happen.
  * @returns {UseFetchActionReturn} - Hook state result.
  */
-export function useFetchAction<T, U extends any[], E = Error | null>(
-  action: ActionType<T, U, E>,
+export function useFetchAction<
+  T,
+  U extends any[],
+  R = unknown,
+  E = Error | null
+>(
+  action: ActionType<T, U, E, R>,
   params: U,
   options?: UseFetchActionOptions<T, E>,
 ): UseFetchActionReturn<T, E> {
@@ -171,17 +176,20 @@ export function useFetchAction<T, U extends any[], E = Error | null>(
  * Hook that handle call promise actions, like mutations to database in a declarative way.
  *
  * @param {ActionType} action - The action to be called.
- * @param {Array} params - Array of the params to pass to the action.
  * @param {UseActionOptions} options - Option to handle the actions.
  * @param {Function} options.onCompleted - A callback to be called when the promise get resolved.
  * @param {Function} options.onError - A callback to be called when an error occurs.
  * @returns {UseCallActionReturn} - Hook state result.
  */
-export function useCallAction<T, U extends any[], E = Error | null>(
-  action: ActionType<T, U, E>,
-  params: U,
+export function useCallAction<
+  T,
+  U extends any[],
+  R = unknown,
+  E = Error | null
+>(
+  action: ActionType<T, U, E, R>,
   options?: UseActionOptions<T, E>,
-): UseCallActionReturn<T, E> {
+): UseCallActionReturn<T, U, E> {
   const { onCompleted, onError } = options || {};
 
   const { event, errorEvent } = action;
@@ -206,11 +214,13 @@ export function useCallAction<T, U extends any[], E = Error | null>(
     error: onError,
   };
 
-  const call = useCallback(() => {
-    setState((state) => ({ ...state, loading: true }));
-    action(...params);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [action, ...params]);
+  const call = useCallback(
+    (...params: U) => {
+      setState((state) => ({ ...state, loading: true }));
+      action(...params);
+    },
+    [action],
+  );
 
   useEffect(() => {
     const onSuccessCallback = (data: T | null) => {
