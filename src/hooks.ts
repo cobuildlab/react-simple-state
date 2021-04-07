@@ -259,7 +259,7 @@ export function useCallAction<
  */
 export function useEvents<T, U>(
   events: Events<T, U>,
-  initialState: () => T | T,
+  initialState?: () => T | T,
 ): [T, () => Dispatchs<T, U>] {
   const [state, setState] = useState(() => {
     if (initialState) {
