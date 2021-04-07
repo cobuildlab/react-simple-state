@@ -69,5 +69,5 @@ export type Events<T, U> = {
 };
 
 export type Dispatchs<T, U> = {
-  [K in keyof U]: (value: CheckGeneric<T, U[K]>) => void;
+  [K in keyof U]: (value?: CheckGeneric<T, U[K]>) => void;
 };
