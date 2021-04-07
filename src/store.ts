@@ -44,7 +44,7 @@ export class Store<T, U extends []> {
   dispatch(eventValue: T | U | null): void {
     const value = Object.freeze(
       this.reducer !== null && this.reducer !== undefined
-        ? this.reducer(eventValue as U)
+        ? this.reducer(eventValue as U, this.value as T)
         : (eventValue as T),
     );
 

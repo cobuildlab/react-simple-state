@@ -1,4 +1,4 @@
-import { Event } from './event';
+import { Event, Reducer } from './event';
 
 export type Store = {
   // eslint-disable-next-line @typescript-eslint/ban-types
@@ -57,3 +57,17 @@ export type EventHookParams<T, U = T> = {
   reducer?: (value: T) => U;
 };
 export type useEventReturn<T, U> = T extends U ? T : U;
+
+export type Reducers<T, U> = {
+  [K in keyof U]: {
+    reducer: Reducer<T, U[K]>;
+  };
+};
+
+export type Events<T, U> = {
+  [K in keyof U]: Event<T, U[K]>;
+};
+
+export type Dispatchs<T, U> = {
+  [K in keyof U]: (value: CheckGeneric<T, U[K]>) => void;
+};
