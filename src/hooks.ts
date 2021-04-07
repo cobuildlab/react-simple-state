@@ -2,7 +2,10 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Event } from './event';
 import {
   ActionType,
+  CheckGeneric,
+  Dispatchs,
   EventHookParams,
+  Events,
   UseActionOptions,
   UseCallActionReturn,
   useEventReturn,
@@ -245,4 +248,57 @@ export function useCallAction<
       data: value as T,
     },
   ];
+}
+
+/**
+ * @template T .
+ * @template U .
+ * @param {Events<T, U>} events - Events.
+ * @param {T} initialState - Default state if no default state if passed the hook will use the initial state of the first event.
+ * @returns {[T,Dispatchs<T, U>]} Tuple with hook state.
+ */
+export function useEvents<T, U>(
+  events: Events<T, U>,
+  initialState: () => T | T,
+): [T, () => Dispatchs<T, U>] {
+  const [state, setState] = useState(() => {
+    if (initialState) {
+      return typeof initialState === 'function' ? initialState() : initialState;
+    }
+
+    const event = (Object.values(events) as Array<Event<T, U[keyof U]>>)[0];
+
+    return event.get();
+  });
+
+  const arrKeys = Object.keys(events) as (keyof Events<T, U>)[];
+
+  const dispatchs = arrKeys.reduce((prev, key) => {
+    const event = events[key];
+    return {
+      ...prev,
+      [key]: (value: CheckGeneric<T, U[keyof U]>) =>
+        event.dispatch(value, state as T),
+    };
+  }, {} as Dispatchs<T, U>);
+
+  const ref = useRef(dispatchs);
+  ref.current = dispatchs;
+
+  const dispatchsCallback = useCallback(() => ref.current, []);
+
+  useEffect(() => {
+    const arrKeys = Object.keys(events) as (keyof Events<T, U>)[];
+    const subscriptions = arrKeys.map((key) =>
+      events[key].subscribe((value) => setState(value)),
+    );
+
+    return () => {
+      subscriptions.forEach((sub) => {
+        sub.unsubscribe();
+      });
+    };
+  }, [events]);
+
+  return [state as T, dispatchsCallback];
 }
