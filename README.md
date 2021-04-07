@@ -359,7 +359,48 @@ export const UserProfile = ({ userId }) => {
 };
 ```
 
+### 7) Complext state manament with multiples events with `useEvents` hook
+
+```js
+import { createEvents } from './event';
+import { useEvents } from './hooks';
+
+const initalState = { showModal: false, selectedItem: '' };
+
+const actionsEvent = createEvents(initalState, {
+  SELECT: {
+    reducer: (value: string, state) => ({
+      ...state,
+      selectedItem: value,
+      showModal: true,
+    }),
+  },
+  CLOSE: {
+    reducer: (value, state) => ({
+      ...state,
+      selectedItem: '',
+      showModal: false,
+    }),
+  },
+});
+
+export const View = () => {
+  const [state, dispatch] = useEvents(actionsEvent);
+
+  return (
+    <>
+      <button onClick={() => dispatch().SELECT('id')}>Select item</button>
+      <Modal isOpen={state.showModal} onClose={() => dispatch().CLOSE()} />
+    </>
+  );
+};
+```
+
 ## Changelog
+
+### v0.7.0:
+
+- Add `useEvents` hook.
 
 ### v0.6.0:
 
