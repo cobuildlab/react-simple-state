@@ -4,9 +4,9 @@ import {
   Subscriber,
   Subscription,
 } from './pub-sub';
-import { CheckGeneric } from './types';
+import { CheckGeneric, Events, Reducers } from './types';
 
-export type Reducer<T, U> = (value: U) => T;
+export type Reducer<T, U> = (value: U, prevState: T) => T;
 
 export type EventParams<T, U> = {
   initialValue?: T | null;
@@ -23,8 +23,9 @@ export class Event<T, U = unknown> {
   private isEventEmpty = true;
 
   constructor(eventDescriptor?: EventParams<T, U>) {
-    if (eventDescriptor && eventDescriptor.initialValue)
+    if (eventDescriptor && eventDescriptor.initialValue) {
       this.value = eventDescriptor.initialValue;
+    }
     this.reducer = eventDescriptor?.reducer;
   }
 
@@ -38,10 +39,11 @@ export class Event<T, U = unknown> {
     if (receiveLastValue) subscriber(this.get());
     return this.publisher.subscribe(_subscriber);
   }
-  dispatch(eventValue: CheckGeneric<T, U> | null): void {
+  dispatch(eventValue: CheckGeneric<T, U> | null, state?: T): void {
+    const prevState = (state || this.value) as T;
     const value = Object.freeze(
       this.reducer !== null && this.reducer !== undefined
-        ? this.reducer(eventValue as U)
+        ? this.reducer(eventValue as U, prevState)
         : (eventValue as T),
     );
 
@@ -80,4 +82,29 @@ export function createEvent<T, U = T>(
   eventDescriptor?: EventParams<T, U>,
 ): Event<T, U> {
   return new Event<T, U>(eventDescriptor);
+}
+
+/**
+ * @template T .
+ * @param {T} initalState - Initial state.
+ * @param {Reducers} events - Events inputs tu create.
+ * @returns {Events} - Returned events.
+ */
+export function createEvents<T, U>(
+  initalState: T,
+  events: Reducers<T, U>,
+): Events<T, U> {
+  const arrKeys = Object.keys(events) as (keyof Reducers<T, U>)[];
+
+  const result = arrKeys.reduce((prev, key) => {
+    return {
+      ...prev,
+      [key]: createEvent({
+        initialValue: initalState,
+        reducer: events[key].reducer,
+      }),
+    };
+  }, {} as Events<T, U>);
+
+  return result;
 }
