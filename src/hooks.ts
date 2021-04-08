@@ -120,7 +120,7 @@ export function useFetchAction<
     error: E | null;
   }>(() => ({
     value: event.get(),
-    loading: false,
+    loading: options?.skip ? false : true,
     error: null,
   }));
 
