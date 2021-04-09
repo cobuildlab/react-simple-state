@@ -349,27 +349,23 @@ import { createMixedEvent, useEvent } from '@cobuildlab/react-simple-state';
 
 const initalState = { showModal: false, selectedItem: '' };
 
-const actionsEvent = createMixedEvent(
-  {
-    SELECT: {
-      reducer: (value: string, state) => ({
-        ...state,
-        selectedItem: value,
-        showModal: true,
-      }),
-    },
-    CLOSE: {
-      reducer: (value, state) => ({
-        ...state,
-        selectedItem: '',
-        showModal: false,
-      }),
-    },
-  },
-  {
-    initialValue: initalState,
-  },
-);
+const OnSelectItem = createEvent({
+  reducer: (value: string, state) => ({
+    ..state,
+    selectedItem: value,
+    showModal: true,
+  }),
+})
+
+const OnCloseModal = createEvent({
+  reducer: (value: string, state) => ({
+    ..state,
+    selectedItem: value,
+    showModal: true,
+  }),
+})
+
+const actionsEvent = createMixedEvent({ SELECT: OnSelectItem, CLOSE: OnCloseModal, },{ initialValue: initalState, });
 
 export const View = () => {
   const state = useEvent(actionsEvent);
