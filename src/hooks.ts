@@ -1,11 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Event } from './event';
+import { Event } from './types';
 import {
   ActionType,
-  CheckGeneric,
-  Dispatchs,
   EventHookParams,
-  Events,
   UseActionOptions,
   UseCallActionReturn,
   useEventReturn,
@@ -21,11 +18,7 @@ import {
  * @param {any[]} deps -  List of dependencies for the callback. Follow the same rules of useEffect.
  * @returns {void} - Void hook.
  */
-export function useSubscription<T, U, V = unknown>(
-  event: Event<T, V>,
-  callback: (value: T | null) => void,
-  deps: U[] | undefined = undefined,
-): void {
+export function useSubscription<T, U, V = unknown>(event: Event<T, V>, callback: (value: T | null) => void, deps: U[] | undefined = undefined): void {
   const callbackRef = useRef(callback);
 
   callbackRef.current = callback;
@@ -56,10 +49,7 @@ export function useSubscription<T, U, V = unknown>(
  * @param {Function}  params.reducer - Reducer for transform the data.
  * @returns {object} Data object.
  */
-export function useEvent<U, T = U, V = unknown>(
-  event: Event<T, V>,
-  params?: EventHookParams<T, U>,
-): useEventReturn<T, U> {
+export function useEvent<U, T = U, V = unknown>(event: Event<T, V>, params?: EventHookParams<T, U>): useEventReturn<T, U> {
   const { reducer, initialValue } = params || {};
   const [value, setValue] = useState(() => {
     if (initialValue && event.isEmpty()) {
@@ -75,9 +65,7 @@ export function useEvent<U, T = U, V = unknown>(
   reducerRef.current = params?.reducer;
   useEffect(() => {
     const handleStateChange = (state: T | null): void => {
-      const eventState = reducerRef.current
-        ? reducerRef.current(state as T)
-        : state;
+      const eventState = reducerRef.current ? reducerRef.current(state as T) : state;
 
       setValue(eventState);
     };
@@ -103,12 +91,8 @@ export function useEvent<U, T = U, V = unknown>(
  * @param {Function} options.skip - To skip the fetch ultil some validation happen.
  * @returns {UseFetchActionReturn} - Hook state result.
  */
-export function useFetchAction<
-  T,
-  U extends any[],
-  R = unknown,
-  E = Error | null
->(
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function useFetchAction<T, U extends any[], R = unknown, E = Error | null>(
   action: ActionType<T, U, E, R>,
   params: U,
   options?: UseFetchActionOptions<T, E>,
@@ -153,8 +137,7 @@ export function useFetchAction<
   useEffect(() => {
     const onSuccessCallback = (data: T | null) => {
       setState((state) => ({ ...state, loading: false, value: data }));
-      if (callbacksRef.current.completed)
-        callbacksRef.current.completed(data as T);
+      if (callbacksRef.current.completed) callbacksRef.current.completed(data as T);
     };
     const onErrorCallback = (data: E | null) => {
       setState((state) => ({ ...state, loading: false, error: data }));
@@ -184,12 +167,8 @@ export function useFetchAction<
  * @param {Function} options.onError - A callback to be called when an error occurs.
  * @returns {UseCallActionReturn} - Hook state result.
  */
-export function useCallAction<
-  T,
-  U extends any[],
-  R = unknown,
-  E = Error | null
->(
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function useCallAction<T, U extends any[], R = unknown, E = Error | null>(
   action: ActionType<T, U, E, R>,
   options?: UseActionOptions<T, E>,
 ): UseCallActionReturn<T, U, E> {
@@ -228,8 +207,7 @@ export function useCallAction<
   useEffect(() => {
     const onSuccessCallback = (data: T | null) => {
       setState((state) => ({ ...state, loading: false, value: data }));
-      if (callbacksRef.current.completed)
-        callbacksRef.current.completed(data as T);
+      if (callbacksRef.current.completed) callbacksRef.current.completed(data as T);
     };
     const onErrorCallback = (data: E | null) => {
       setState((state) => ({ ...state, loading: false, error: data }));
@@ -248,57 +226,4 @@ export function useCallAction<
       data: value as T,
     },
   ];
-}
-
-/**
- * @template T .
- * @template U .
- * @param {Events<T, U>} events - Events.
- * @param {T} initialState - Default state if no default state if passed the hook will use the initial state of the first event.
- * @returns {[T,Dispatchs<T, U>]} Tuple with hook state.
- */
-export function useEvents<T, U>(
-  events: Events<T, U>,
-  initialState?: () => T | T,
-): [T, () => Dispatchs<T, U>] {
-  const [state, setState] = useState(() => {
-    if (initialState) {
-      return typeof initialState === 'function' ? initialState() : initialState;
-    }
-
-    const event = (Object.values(events) as Array<Event<T, U[keyof U]>>)[0];
-
-    return event.get();
-  });
-
-  const arrKeys = Object.keys(events) as (keyof Events<T, U>)[];
-
-  const dispatchs = arrKeys.reduce((prev, key) => {
-    const event = events[key];
-    return {
-      ...prev,
-      [key]: (value: CheckGeneric<T, U[keyof U]>) =>
-        event.dispatch(value, state as T),
-    };
-  }, {} as Dispatchs<T, U>);
-
-  const ref = useRef(dispatchs);
-  ref.current = dispatchs;
-
-  const dispatchsCallback = useCallback(() => ref.current, []);
-
-  useEffect(() => {
-    const arrKeys = Object.keys(events) as (keyof Events<T, U>)[];
-    const subscriptions = arrKeys.map((key) =>
-      events[key].subscribe((value) => setState(value)),
-    );
-
-    return () => {
-      subscriptions.forEach((sub) => {
-        sub.unsubscribe();
-      });
-    };
-  }, [events]);
-
-  return [state as T, dispatchsCallback];
 }
