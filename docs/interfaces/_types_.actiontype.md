@@ -20,7 +20,7 @@
 
 ▸ (...`params_0`: U): *Promise‹[CheckGeneric](../modules/_types_.md#checkgeneric)‹T, R› | object›*
 
-*Defined in [src/types.ts:19](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/types.ts#L19)*
+*Defined in [src/types.ts:21](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L21)*
 
 **Parameters:**
 
@@ -42,17 +42,17 @@ Name | Type |
 
 ###  errorEvent
 
-• **errorEvent**: *[Event](../classes/_event_.event.md)‹E, E›*
+• **errorEvent**: *[Event](../modules/_types_.md#event)‹E, E›*
 
-*Defined in [src/types.ts:28](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/types.ts#L28)*
+*Defined in [src/types.ts:30](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L30)*
 
 ___
 
 ###  event
 
-• **event**: *[Event](../classes/_event_.event.md)‹T, R›*
+• **event**: *[Event](../modules/_types_.md#event)‹T, R›*
 
-*Defined in [src/types.ts:27](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/types.ts#L27)*
+*Defined in [src/types.ts:29](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L29)*
 
 ___
 
@@ -60,4 +60,4 @@ ___
 
 • **isAction**: *boolean*
 
-*Defined in [src/types.ts:26](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/types.ts#L26)*
+*Defined in [src/types.ts:28](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L28)*

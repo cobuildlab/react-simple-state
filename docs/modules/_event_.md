@@ -7,6 +7,7 @@
 ### Classes
 
 * [Event](../classes/_event_.event.md)
+* [MixedEvent](../classes/_event_.mixedevent.md)
 
 ### Type aliases
 
@@ -16,7 +17,7 @@
 ### Functions
 
 * [createEvent](_event_.md#createevent)
-* [createEvents](_event_.md#createevents)
+* [createMixedEvent](_event_.md#createmixedevent)
 
 ## Type aliases
 
@@ -24,7 +25,7 @@
 
 Ƭ **EventParams**: *object*
 
-*Defined in [src/event.ts:11](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/event.ts#L11)*
+*Defined in [src/event.ts:6](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/event.ts#L6)*
 
 #### Type declaration:
 
@@ -32,13 +33,15 @@
 
 * **reducer**? : *[Reducer](_event_.md#reducer)‹T, U›*
 
+* **shared**? : *undefined | false | true*
+
 ___
 
 ###  Reducer
 
 Ƭ **Reducer**: *function*
 
-*Defined in [src/event.ts:9](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/event.ts#L9)*
+*Defined in [src/event.ts:4](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/event.ts#L4)*
 
 #### Type declaration:
 
@@ -57,7 +60,7 @@ Name | Type |
 
 ▸ **createEvent**‹**T**, **U**›(`eventDescriptor?`: [EventParams](_event_.md#eventparams)‹T, U›): *[Event](../classes/_event_.event.md)‹T, U›*
 
-*Defined in [src/event.ts:81](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/event.ts#L81)*
+*Defined in [src/event.ts:114](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/event.ts#L114)*
 
 Creates an event from a descriptor.
 
@@ -79,11 +82,11 @@ Name | Type | Description |
 
 ___
 
-###  createEvents
+###  createMixedEvent
 
-▸ **createEvents**‹**T**, **U**›(`initalState`: T, `events`: [Reducers](_types_.md#reducers)‹T, U›): *[Events](_types_.md#events)‹T, U›*
+▸ **createMixedEvent**‹**T**, **U**, **V**›(`events`: Events‹T, U›, `eventDescriptor?`: [EventParams](_event_.md#eventparams)‹T, V›): *[MixedEvent](../classes/_event_.mixedevent.md)‹T, U, V›*
 
-*Defined in [src/event.ts:93](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/event.ts#L93)*
+*Defined in [src/event.ts:124](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/event.ts#L124)*
 
 **Type parameters:**
 
@@ -93,13 +96,15 @@ ___
 
 ▪ **U**
 
+▪ **V**
+
 **Parameters:**
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`initalState` | T | Initial state. |
-`events` | [Reducers](_types_.md#reducers)‹T, U› | Events inputs tu create. |
+`events` | Events‹T, U› | Events to subscribe. |
+`eventDescriptor?` | [EventParams](_event_.md#eventparams)‹T, V› | Event options. |
 
-**Returns:** *[Events](_types_.md#events)‹T, U›*
+**Returns:** *[MixedEvent](../classes/_event_.mixedevent.md)‹T, U, V›*
 
-- Returned events.
+- Returned mixed event.

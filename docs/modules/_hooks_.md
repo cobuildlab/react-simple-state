@@ -8,7 +8,6 @@
 
 * [useCallAction](_hooks_.md#usecallaction)
 * [useEvent](_hooks_.md#useevent)
-* [useEvents](_hooks_.md#useevents)
 * [useFetchAction](_hooks_.md#usefetchaction)
 * [useSubscription](_hooks_.md#usesubscription)
 
@@ -18,7 +17,7 @@
 
 ▸ **useCallAction**‹**T**, **U**, **R**, **E**›(`action`: [ActionType](../interfaces/_types_.actiontype.md)‹T, U, E, R›, `options?`: [UseActionOptions](_types_.md#useactionoptions)‹T, E›): *[UseCallActionReturn](_types_.md#usecallactionreturn)‹T, U, E›*
 
-*Defined in [src/hooks.ts:187](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/hooks.ts#L187)*
+*Defined in [src/hooks.ts:171](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/hooks.ts#L171)*
 
 Hook that handle call promise actions, like mutations to database in a declarative way.
 
@@ -47,9 +46,9 @@ ___
 
 ###  useEvent
 
-▸ **useEvent**‹**U**, **T**, **V**›(`event`: [Event](../classes/_event_.event.md)‹T, V›, `params?`: [EventHookParams](_types_.md#eventhookparams)‹T, U›): *[useEventReturn](_types_.md#useeventreturn)‹T, U›*
+▸ **useEvent**‹**U**, **T**, **V**›(`event`: [Event](_types_.md#event)‹T, V›, `params?`: [EventHookParams](_types_.md#eventhookparams)‹T, U›): *[useEventReturn](_types_.md#useeventreturn)‹T, U›*
 
-*Defined in [src/hooks.ts:59](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/hooks.ts#L59)*
+*Defined in [src/hooks.ts:52](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/hooks.ts#L52)*
 
 React Hook to subscribe to an Event.
 
@@ -65,7 +64,7 @@ React Hook to subscribe to an Event.
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`event` | [Event](../classes/_event_.event.md)‹T, V› | The event. |
+`event` | [Event](_types_.md#event)‹T, V› | The event. |
 `params?` | [EventHookParams](_types_.md#eventhookparams)‹T, U› | Params. |
 
 **Returns:** *[useEventReturn](_types_.md#useeventreturn)‹T, U›*
@@ -74,45 +73,11 @@ Data object.
 
 ___
 
-###  useEvents
-
-▸ **useEvents**‹**T**, **U**›(`events`: [Events](_types_.md#events)‹T, U›, `initialState`: function): *[]*
-
-*Defined in [src/hooks.ts:260](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/hooks.ts#L260)*
-
-**Type parameters:**
-
-▪ **T**
-
-.
-
-▪ **U**
-
-.
-
-**Parameters:**
-
-▪ **events**: *[Events](_types_.md#events)‹T, U›*
-
-Events.
-
-▪ **initialState**: *function*
-
-Default state if no default state if passed the hook will use the initial state of the first event.
-
-▸ (): *T | T*
-
-**Returns:** *[]*
-
-Tuple with hook state.
-
-___
-
 ###  useFetchAction
 
 ▸ **useFetchAction**‹**T**, **U**, **R**, **E**›(`action`: [ActionType](../interfaces/_types_.actiontype.md)‹T, U, E, R›, `params`: U, `options?`: [UseFetchActionOptions](../interfaces/_types_.usefetchactionoptions.md)‹T, E›): *[UseFetchActionReturn](_types_.md#usefetchactionreturn)‹T, E›*
 
-*Defined in [src/hooks.ts:106](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/hooks.ts#L106)*
+*Defined in [src/hooks.ts:95](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/hooks.ts#L95)*
 
 Hook that handle fetch promise actions, like querys to database.
 This hook uses a declarative pattern.
@@ -143,9 +108,9 @@ ___
 
 ###  useSubscription
 
-▸ **useSubscription**‹**T**, **U**, **V**›(`event`: [Event](../classes/_event_.event.md)‹T, V›, `callback`: function, `deps`: U[] | undefined): *void*
+▸ **useSubscription**‹**T**, **U**, **V**›(`event`: [Event](_types_.md#event)‹T, V›, `callback`: function, `deps`: U[] | undefined): *void*
 
-*Defined in [src/hooks.ts:24](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/hooks.ts#L24)*
+*Defined in [src/hooks.ts:21](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/hooks.ts#L21)*
 
 React Hook to subscribe to an specific event.
 
@@ -159,7 +124,7 @@ React Hook to subscribe to an specific event.
 
 **Parameters:**
 
-▪ **event**: *[Event](../classes/_event_.event.md)‹T, V›*
+▪ **event**: *[Event](_types_.md#event)‹T, V›*
 
 The event to subscribe. The Event is considered constant across renders.
 

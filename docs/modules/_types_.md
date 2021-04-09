@@ -13,7 +13,7 @@
 
 * [Arr](_types_.md#arr)
 * [CheckGeneric](_types_.md#checkgeneric)
-* [Dispatchs](_types_.md#dispatchs)
+* [Event](_types_.md#event)
 * [EventHookParams](_types_.md#eventhookparams)
 * [Events](_types_.md#events)
 * [LocalObserver](_types_.md#localobserver)
@@ -30,7 +30,7 @@
 
 Ƭ **Arr**: *keyof any[]*
 
-*Defined in [src/types.ts:17](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/types.ts#L17)*
+*Defined in [src/types.ts:19](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L19)*
 
 ___
 
@@ -38,17 +38,15 @@ ___
 
 Ƭ **CheckGeneric**: *T extends R ? T : R*
 
-*Defined in [src/types.ts:18](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/types.ts#L18)*
+*Defined in [src/types.ts:20](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L20)*
 
 ___
 
-###  Dispatchs
+###  Event
 
-Ƭ **Dispatchs**: *object*
+Ƭ **Event**: *EventInstance‹Generic, Reducer› | MixedEventInstance‹Generic, Events, Reducer›*
 
-*Defined in [src/types.ts:71](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/types.ts#L71)*
-
-#### Type declaration:
+*Defined in [src/types.ts:16](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L16)*
 
 ___
 
@@ -56,7 +54,7 @@ ___
 
 Ƭ **EventHookParams**: *object*
 
-*Defined in [src/types.ts:55](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/types.ts#L55)*
+*Defined in [src/types.ts:57](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L57)*
 
 #### Type declaration:
 
@@ -70,7 +68,7 @@ ___
 
 Ƭ **Events**: *object*
 
-*Defined in [src/types.ts:67](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/types.ts#L67)*
+*Defined in [src/types.ts:69](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L69)*
 
 #### Type declaration:
 
@@ -80,7 +78,7 @@ ___
 
 Ƭ **LocalObserver**: *object*
 
-*Defined in [src/types.ts:8](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/types.ts#L8)*
+*Defined in [src/types.ts:8](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L8)*
 
 #### Type declaration:
 
@@ -88,7 +86,7 @@ ___
 
   * (`value?`: T | null): *void*
 
-* **event**? : *[Event](../classes/_event_.event.md)‹T›*
+* **event**? : *EventInstance‹T›*
 
 * **eventName**? : *undefined | string*
 
@@ -102,7 +100,7 @@ ___
 
 Ƭ **Reducers**: *object*
 
-*Defined in [src/types.ts:61](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/types.ts#L61)*
+*Defined in [src/types.ts:63](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L63)*
 
 #### Type declaration:
 
@@ -112,7 +110,7 @@ ___
 
 Ƭ **Store**: *object*
 
-*Defined in [src/types.ts:3](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/types.ts#L3)*
+*Defined in [src/types.ts:3](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L3)*
 
 #### Type declaration:
 
@@ -124,7 +122,7 @@ ___
 
 Ƭ **UseActionOptions**: *object*
 
-*Defined in [src/types.ts:31](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/types.ts#L31)*
+*Defined in [src/types.ts:33](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L33)*
 
 #### Type declaration:
 
@@ -138,7 +136,7 @@ ___
 
 Ƭ **UseCallActionReturn**: *[]*
 
-*Defined in [src/types.ts:46](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/types.ts#L46)*
+*Defined in [src/types.ts:48](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L48)*
 
 ___
 
@@ -146,7 +144,7 @@ ___
 
 Ƭ **UseFetchActionReturn**: *[]*
 
-*Defined in [src/types.ts:38](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/types.ts#L38)*
+*Defined in [src/types.ts:40](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L40)*
 
 ___
 
@@ -154,4 +152,4 @@ ___
 
 Ƭ **useEventReturn**: *T extends U ? T : U*
 
-*Defined in [src/types.ts:59](https://github.com/cobuildlab/react-simple-state/blob/7265dd9/src/types.ts#L59)*
+*Defined in [src/types.ts:61](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L61)*
