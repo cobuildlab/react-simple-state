@@ -373,7 +373,7 @@ export const View = () => {
   return (
     <>
       <button onClick={() => actionsEvent.events.SELECT.dispatch('item-id')}>Select item</button>
-      <Modal isOpen={state.showModal} onClose={() => dispatch().CLOSE()} />
+      <Modal isOpen={state.showModal} onClose={() => actionsEvent.events.CLOSE.dispatch()} />
     </>
   );
 };
