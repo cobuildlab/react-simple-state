@@ -1,4 +1,4 @@
-import { Event } from './event';
+import { Event as EventInstance, MixedEvent as MixedEventInstance, Reducer } from './event';
 
 export type Store = {
   // eslint-disable-next-line @typescript-eslint/ban-types
@@ -8,10 +8,12 @@ export type Store = {
 export type LocalObserver<T> = {
   store?: Store;
   eventName?: string;
-  event?: Event<T>;
+  event?: EventInstance<T>;
   callback: (value?: T | null) => void;
   receiveLastValue: boolean;
 };
+
+export type Event<Generic, Reducer = unknown, Events = unknown> = EventInstance<Generic, Reducer> | MixedEventInstance<Generic, Events, Reducer>;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Arr = readonly any[];
@@ -43,7 +45,7 @@ export type UseFetchActionReturn<T, E> = [
     refetch: () => void;
   },
 ];
-export type UseCallActionReturn<T, U extends any[], E> = [
+export type UseCallActionReturn<T, U extends unknown[], E> = [
   (...params: U) => void,
   boolean,
   {
@@ -57,3 +59,13 @@ export type EventHookParams<T, U = T> = {
   reducer?: (value: T) => U;
 };
 export type useEventReturn<T, U> = T extends U ? T : U;
+
+export type Reducers<T, U> = {
+  [K in keyof U]: {
+    reducer: Reducer<T, U[K]>;
+  };
+};
+
+export type Events<T, U> = {
+  [K in keyof U]: Event<T, U[K]>;
+};

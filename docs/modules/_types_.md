@@ -7,15 +7,22 @@
 ### Interfaces
 
 * [ActionType](../interfaces/_types_.actiontype.md)
+* [UseFetchActionOptions](../interfaces/_types_.usefetchactionoptions.md)
 
 ### Type aliases
 
 * [Arr](_types_.md#arr)
+* [CheckGeneric](_types_.md#checkgeneric)
+* [Event](_types_.md#event)
+* [EventHookParams](_types_.md#eventhookparams)
+* [Events](_types_.md#events)
 * [LocalObserver](_types_.md#localobserver)
+* [Reducers](_types_.md#reducers)
 * [Store](_types_.md#store)
 * [UseActionOptions](_types_.md#useactionoptions)
 * [UseCallActionReturn](_types_.md#usecallactionreturn)
 * [UseFetchActionReturn](_types_.md#usefetchactionreturn)
+* [useEventReturn](_types_.md#useeventreturn)
 
 ## Type aliases
 
@@ -23,7 +30,47 @@
 
 Ƭ **Arr**: *keyof any[]*
 
-*Defined in [src/types.ts:17](https://github.com/cobuildlab/react-simple-state/blob/fe49677/src/types.ts#L17)*
+*Defined in [src/types.ts:19](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L19)*
+
+___
+
+###  CheckGeneric
+
+Ƭ **CheckGeneric**: *T extends R ? T : R*
+
+*Defined in [src/types.ts:20](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L20)*
+
+___
+
+###  Event
+
+Ƭ **Event**: *EventInstance‹Generic, Reducer› | MixedEventInstance‹Generic, Events, Reducer›*
+
+*Defined in [src/types.ts:16](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L16)*
+
+___
+
+###  EventHookParams
+
+Ƭ **EventHookParams**: *object*
+
+*Defined in [src/types.ts:57](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L57)*
+
+#### Type declaration:
+
+* **initialValue**? : *U*
+
+* **reducer**? : *undefined | function*
+
+___
+
+###  Events
+
+Ƭ **Events**: *object*
+
+*Defined in [src/types.ts:69](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L69)*
+
+#### Type declaration:
 
 ___
 
@@ -31,7 +78,7 @@ ___
 
 Ƭ **LocalObserver**: *object*
 
-*Defined in [src/types.ts:8](https://github.com/cobuildlab/react-simple-state/blob/fe49677/src/types.ts#L8)*
+*Defined in [src/types.ts:8](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L8)*
 
 #### Type declaration:
 
@@ -39,7 +86,7 @@ ___
 
   * (`value?`: T | null): *void*
 
-* **event**? : *[Event](../classes/_event_.event.md)‹T›*
+* **event**? : *EventInstance‹T›*
 
 * **eventName**? : *undefined | string*
 
@@ -49,11 +96,21 @@ ___
 
 ___
 
+###  Reducers
+
+Ƭ **Reducers**: *object*
+
+*Defined in [src/types.ts:63](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L63)*
+
+#### Type declaration:
+
+___
+
 ###  Store
 
 Ƭ **Store**: *object*
 
-*Defined in [src/types.ts:3](https://github.com/cobuildlab/react-simple-state/blob/fe49677/src/types.ts#L3)*
+*Defined in [src/types.ts:3](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L3)*
 
 #### Type declaration:
 
@@ -65,7 +122,7 @@ ___
 
 Ƭ **UseActionOptions**: *object*
 
-*Defined in [src/types.ts:30](https://github.com/cobuildlab/react-simple-state/blob/fe49677/src/types.ts#L30)*
+*Defined in [src/types.ts:33](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L33)*
 
 #### Type declaration:
 
@@ -79,7 +136,7 @@ ___
 
 Ƭ **UseCallActionReturn**: *[]*
 
-*Defined in [src/types.ts:43](https://github.com/cobuildlab/react-simple-state/blob/fe49677/src/types.ts#L43)*
+*Defined in [src/types.ts:48](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L48)*
 
 ___
 
@@ -87,4 +144,12 @@ ___
 
 Ƭ **UseFetchActionReturn**: *[]*
 
-*Defined in [src/types.ts:35](https://github.com/cobuildlab/react-simple-state/blob/fe49677/src/types.ts#L35)*
+*Defined in [src/types.ts:40](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L40)*
+
+___
+
+###  useEventReturn
+
+Ƭ **useEventReturn**: *T extends U ? T : U*
+
+*Defined in [src/types.ts:61](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L61)*

@@ -27,12 +27,7 @@ $ npm i --save @cobuildlab/react-simple-state
 2. To import the library anywhere you would like to use it:
 
 ```js
-import {
-  createEvent,
-  useSubscription,
-  useEvent,
-  View,
-} from '@cobuildlab/react-simple-state';
+import { createEvent, useSubscription, useEvent, View } from '@cobuildlab/react-simple-state';
 ```
 
 ## API Docsw
@@ -255,15 +250,11 @@ import { OnFecthUserEvent, OnFetchUserErrorEvent } from './events';
 import { apiClient } from './api';
 
 // single declarition of the async service and the action
-export const fetchUserAction = createAction(
-  OnFecthUserEvent,
-  OnFetchUserErrorEvent,
-  async (id) => {
-    const user = await apiClient.fetch({ user: id });
+export const fetchUserAction = createAction(OnFecthUserEvent, OnFetchUserErrorEvent, async (id) => {
+  const user = await apiClient.fetch({ user: id });
 
-    return user;
-  },
-);
+  return user;
+});
 
 // Or we could declare the async service and then use in with diferent actions
 
@@ -273,16 +264,8 @@ export const fetchUserService = async (id) => {
   return user;
 };
 
-export const fetchMainUserAction = createAction(
-  OnFecthMainUserEvent,
-  OnFetchMainUserErrorEvent,
-  fetchUserService,
-);
-export const fetchSecondaryUserAction = createAction(
-  OnFecthSecondaryUserEvent,
-  OnFetchSecondaryUserErrorEvent,
-  fetchUserService,
-);
+export const fetchMainUserAction = createAction(OnFecthMainUserEvent, OnFetchMainUserErrorEvent, fetchUserService);
+export const fetchSecondaryUserAction = createAction(OnFecthSecondaryUserEvent, OnFetchSecondaryUserErrorEvent, fetchUserService);
 ```
 
 ### 5) Fetch can be done with `useFetchAction` hook
@@ -359,7 +342,48 @@ export const UserProfile = ({ userId }) => {
 };
 ```
 
+### 7) Complext state manament with multiples events with `useEvents` hook
+
+```js
+import { createMixedEvent, useEvent } from '@cobuildlab/react-simple-state';
+
+const initalState = { showModal: false, selectedItem: '' };
+
+const OnSelectItem = createEvent({
+  reducer: (value: string, state) => ({
+    ..state,
+    selectedItem: value,
+    showModal: true,
+  }),
+})
+
+const OnCloseModal = createEvent({
+  reducer: (value: string, state) => ({
+    ..state,
+    selectedItem: value,
+    showModal: true,
+  }),
+})
+
+const actionsEvent = createMixedEvent({ SELECT: OnSelectItem, CLOSE: OnCloseModal, },{ initialValue: initalState, });
+
+export const View = () => {
+  const state = useEvent(actionsEvent);
+
+  return (
+    <>
+      <button onClick={() => actionsEvent.events.SELECT.dispatch('item-id')}>Select item</button>
+      <Modal isOpen={state.showModal} onClose={() => actionsEvent.events.CLOSE.dispatch()} />
+    </>
+  );
+};
+```
+
 ## Changelog
+
+### v0.7.0:
+
+- Add `MixedEvent` envet type.
 
 ### v0.6.0:
 

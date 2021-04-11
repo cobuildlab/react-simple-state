@@ -1,6 +1,6 @@
 [@cobuildlab/react-simple-state](../README.md) › ["types"](../modules/_types_.md) › [ActionType](_types_.actiontype.md)
 
-# Interface: ActionType ‹**T, U, E**›
+# Interface: ActionType ‹**T, U, E, R**›
 
 ## Type parameters
 
@@ -10,15 +10,17 @@
 
 ▪ **E**
 
+▪ **R**
+
 ## Hierarchy
 
 * **ActionType**
 
 ## Callable
 
-▸ (...`params_0`: U): *Promise‹T | object›*
+▸ (...`params_0`: U): *Promise‹[CheckGeneric](../modules/_types_.md#checkgeneric)‹T, R› | object›*
 
-*Defined in [src/types.ts:18](https://github.com/cobuildlab/react-simple-state/blob/fe49677/src/types.ts#L18)*
+*Defined in [src/types.ts:21](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L21)*
 
 **Parameters:**
 
@@ -26,7 +28,7 @@ Name | Type |
 ------ | ------ |
 `...params_0` | U |
 
-**Returns:** *Promise‹T | object›*
+**Returns:** *Promise‹[CheckGeneric](../modules/_types_.md#checkgeneric)‹T, R› | object›*
 
 ## Index
 
@@ -40,17 +42,17 @@ Name | Type |
 
 ###  errorEvent
 
-• **errorEvent**: *[Event](../classes/_event_.event.md)‹E, unknown›*
+• **errorEvent**: *[Event](../modules/_types_.md#event)‹E, E›*
 
-*Defined in [src/types.ts:27](https://github.com/cobuildlab/react-simple-state/blob/fe49677/src/types.ts#L27)*
+*Defined in [src/types.ts:30](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L30)*
 
 ___
 
 ###  event
 
-• **event**: *[Event](../classes/_event_.event.md)‹T, unknown›*
+• **event**: *[Event](../modules/_types_.md#event)‹T, R›*
 
-*Defined in [src/types.ts:26](https://github.com/cobuildlab/react-simple-state/blob/fe49677/src/types.ts#L26)*
+*Defined in [src/types.ts:29](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L29)*
 
 ___
 
@@ -58,4 +60,4 @@ ___
 
 • **isAction**: *boolean*
 
-*Defined in [src/types.ts:25](https://github.com/cobuildlab/react-simple-state/blob/fe49677/src/types.ts#L25)*
+*Defined in [src/types.ts:28](https://github.com/cobuildlab/react-simple-state/blob/b6cec23/src/types.ts#L28)*
