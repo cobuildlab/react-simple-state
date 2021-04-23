@@ -158,9 +158,13 @@ export function useFetchAction<
       if (callbacksRef.current.error) callbacksRef.current.error(data as E);
     };
 
-    event.subscribe(onSuccessCallback);
-    errorEvent.subscribe(onErrorCallback);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const successSub = event.subscribe(onSuccessCallback);
+    const errorSub = errorEvent.subscribe(onErrorCallback);
+
+    return () => {
+      successSub.unsubscribe();
+      errorSub.unsubscribe();
+    };
   }, [event, errorEvent]);
   return [
     value as T,
@@ -233,9 +237,13 @@ export function useCallAction<
       if (callbacksRef.current.error) callbacksRef.current.error(data as E);
     };
 
-    event.subscribe(onSuccessCallback);
-    errorEvent.subscribe(onErrorCallback);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const successSub = event.subscribe(onSuccessCallback);
+    const errorSub = errorEvent.subscribe(onErrorCallback);
+
+    return () => {
+      successSub.unsubscribe();
+      errorSub.unsubscribe();
+    };
   }, [event, errorEvent]);
   return [
     call,

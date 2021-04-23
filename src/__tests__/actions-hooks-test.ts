@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook, act, cleanup } from '@testing-library/react-hooks';
 import { createAction } from '../actions';
 import { createEvent } from '../event';
 import { useCallAction, useFetchAction } from '../hooks';
@@ -133,5 +133,50 @@ describe('test useCallAction', () => {
 
     expect(result.current[1]).toBe(false);
     expect(result.current[2].data).toStrictEqual({ user });
+  });
+});
+
+describe('test hooks unmounting', () => {
+  it('useFetchAction unmounted', async () => {
+    const user = {
+      id: 'test user id',
+    };
+    const TestEvent = createEvent<{
+      user: {
+        id: string;
+      };
+    }>();
+    const onCompletedHandler = jest.fn();
+    const TestErrorEvent = createEvent<Error>();
+
+    const fetchAction = createAction(TestEvent, TestErrorEvent, async () => {
+      return await makePromise({ user }, 500);
+    });
+
+    const { waitForNextUpdate } = renderHook(() =>
+      useFetchAction(fetchAction, [], {
+        onCompleted: () => {
+          onCompletedHandler();
+        },
+      }),
+    );
+
+    await waitForNextUpdate();
+
+    expect(onCompletedHandler).toHaveBeenCalledTimes(1);
+
+    await cleanup();
+
+    const { waitForNextUpdate: waitForNextUpdate2 } = renderHook(() =>
+      useFetchAction(fetchAction, [], {
+        onCompleted: () => {
+          onCompletedHandler();
+        },
+      }),
+    );
+
+    await waitForNextUpdate2();
+
+    expect(onCompletedHandler).toHaveBeenCalledTimes(2);
   });
 });
