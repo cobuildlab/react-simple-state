@@ -1,60 +1,65 @@
 import {
   ConcretePublisher,
-  Publisher,
-  Subscriber,
+  ConcretePublisherV2,
+  PublisherV2,
+  SubscriberV2,
   Subscription,
 } from './pub-sub';
-import { Reducer } from './event';
 
-export type EventParams<T, U extends []> = {
-  initialValue?: T | null;
-  reducer: Reducer<T, U>;
-  stores: [...U];
+type Reducer<T, R> = (prevState: T, newState: R) => T;
+export type CheckDispatchType<T, R> = R extends unknown ? T : R;
+
+export type StoreParams<T, R> = {
+  initialValue: T;
+  reducer?: Reducer<T, R>;
 };
-export class Store<T, U extends []> {
-  private value: T | null = null;
-  private readonly reducer?: Reducer<T, [...U]>;
-  private publisher: Publisher<T> = new ConcretePublisher();
-  private errorPublisher: Publisher<Error> = new ConcretePublisher();
+export class Store<T, R = unknown> {
+  private value: T;
+  private initialValue: T;
+  private publisher: PublisherV2<T> = new ConcretePublisherV2();
+  private errorPublisher: PublisherV2<Error> = new ConcretePublisher();
+  private reducer: Reducer<T, R> | undefined;
 
-  constructor(eventDescriptor?: EventParams<T, U>) {
-    if (eventDescriptor && eventDescriptor.initialValue)
-      this.value = eventDescriptor.initialValue;
-    this.reducer = eventDescriptor?.reducer;
+  constructor(eventDescriptor: StoreParams<T, R>) {
+    this.value = eventDescriptor.initialValue;
+    this.initialValue = eventDescriptor.initialValue;
+
+    this.reducer = eventDescriptor.reducer;
   }
 
   subscribe(
-    subscriber: (value: T | null) => void,
+    subscriber: (value: T) => void,
     receiveLastValue = false,
   ): Subscription {
-    const _subscriber: Subscriber<T> = {
+    const _subscriber: SubscriberV2<T> = {
       update: subscriber,
     };
     if (receiveLastValue) subscriber(this.get());
     return this.publisher.subscribe(_subscriber);
   }
 
-  subscribeError(subscriber: (value: Error | null) => void): Subscription {
-    const _subscriber: Subscriber<Error> = {
+  subscribeError(subscriber: (value: Error) => void): Subscription {
+    const _subscriber: SubscriberV2<Error> = {
       update: subscriber,
     };
     return this.errorPublisher.subscribe(_subscriber);
   }
 
-  dispatch(eventValue: T | U | null): void {
-    const value = Object.freeze(
-      this.reducer !== null && this.reducer !== undefined
-        ? this.reducer(eventValue as U)
-        : (eventValue as T),
-    );
+  dispatch(eventValue: CheckDispatchType<T, R>): void {
+    const value = this.reducer
+      ? this.reducer(this.value, eventValue as R)
+      : this.value;
 
     this.value = value;
-    this.publisher.notify(value);
+
+    this.publisher.notify(Object.freeze(value));
   }
+
   dispatchError(value: Error): void {
     this.errorPublisher.notify(value);
   }
-  get(): T | null {
+
+  get(): T {
     return Object.freeze(this.value);
   }
 
@@ -64,10 +69,10 @@ export class Store<T, U extends []> {
    * @param {boolean} dispatch -
    */
   clear(dispatch = false): void {
+    this.value = this.initialValue;
+
     if (dispatch) {
-      this.dispatch(null); // Empty dispatch
-    } else {
-      this.value = null;
+      this.dispatch(this.value); // Empty dispatch
     }
   }
 }
