@@ -20,8 +20,10 @@ export function createAction<T, U extends any[], E = Error, R = unknown>(
     try {
       data = await action(...params);
     } catch (error) {
-      errorEvent.dispatch(error);
-      return { error };
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      errorEvent.dispatch(error as any);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return { error } as { error: any };
     }
 
     event.dispatch(data);
