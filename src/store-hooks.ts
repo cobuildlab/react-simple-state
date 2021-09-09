@@ -4,21 +4,17 @@ import { Store } from './store';
 /**
  * @param {Store} store  - Store to subscribe.
  * @param {Function} callback - Function to call on each dipatch.
- * @param {Function} errorcCallback - Function to call on each error dipatch.
  */
 export function useStoreSubcription<T>(
   store: Store<T>,
-  callback: ((data: T) => void) | undefined = undefined,
-  errorcCallback: ((data: Error) => void) | undefined = undefined,
+  callback: (data: T) => void,
 ): void {
   const callbacksRef = useRef({
     callback,
-    errorcCallback,
   });
 
   callbacksRef.current = {
     callback,
-    errorcCallback,
   };
 
   useEffect(() => {
@@ -28,6 +24,29 @@ export function useStoreSubcription<T>(
       }
     });
 
+    return () => {
+      unsubscribeSuccess.unsubscribe();
+    };
+  }, [store]);
+}
+
+/**
+ * @param {Store} store  - Store to subscribe.
+ * @param {Function} errorcCallback - Function to call on each error dipatch.
+ */
+export function useStoreErrorSubscription<T>(
+  store: Store<T>,
+  errorcCallback: (data: Error) => void,
+): void {
+  const callbacksRef = useRef({
+    errorcCallback,
+  });
+
+  callbacksRef.current = {
+    errorcCallback,
+  };
+
+  useEffect(() => {
     const unsubscribeError = store.subscribeError((data) => {
       if (callbacksRef.current.errorcCallback) {
         callbacksRef.current.errorcCallback(data);
@@ -35,7 +54,6 @@ export function useStoreSubcription<T>(
     });
 
     return () => {
-      unsubscribeSuccess.unsubscribe();
       unsubscribeError.unsubscribe();
     };
   }, [store]);
