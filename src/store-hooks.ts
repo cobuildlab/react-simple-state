@@ -72,3 +72,17 @@ export function useStore<T>(store: Store<T>): T {
 
   return state;
 }
+
+/**
+ * @param {Store} store - Store to subscribe.
+ * @returns {Object} - Resulto object from the store.
+ */
+export function useStoreError<T>(store: Store<T>): Error | null {
+  const [state, setState] = useState<Error | null>(null);
+
+  useStoreErrorSubscription(store, (data) => {
+    setState(data as Error);
+  });
+
+  return state;
+}
