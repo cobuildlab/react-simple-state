@@ -1,8 +1,7 @@
 import {
   ConcretePublisher,
-  ConcretePublisherV2,
-  PublisherV2,
-  SubscriberV2,
+  Publisher,
+  Subscriber,
   Subscription,
 } from './pub-sub';
 
@@ -16,8 +15,8 @@ export type StoreParams<T, R> = {
 export class Store<T, R = unknown> {
   private value: T;
   private initialValue: T;
-  private publisher: PublisherV2<T> = new ConcretePublisherV2();
-  private errorPublisher: PublisherV2<Error> = new ConcretePublisher();
+  private publisher: Publisher<T> = new ConcretePublisher();
+  private errorPublisher: Publisher<Error> = new ConcretePublisher();
   private reducer: Reducer<T, R> | undefined;
 
   constructor(eventDescriptor: StoreParams<T, R>) {
@@ -31,7 +30,7 @@ export class Store<T, R = unknown> {
     subscriber: (value: T) => void,
     receiveLastValue = false,
   ): Subscription {
-    const _subscriber: SubscriberV2<T> = {
+    const _subscriber: Subscriber<T> = {
       update: subscriber,
     };
     if (receiveLastValue) subscriber(this.get());
@@ -39,7 +38,7 @@ export class Store<T, R = unknown> {
   }
 
   subscribeError(subscriber: (value: Error) => void): Subscription {
-    const _subscriber: SubscriberV2<Error> = {
+    const _subscriber: Subscriber<Error> = {
       update: subscriber,
     };
     return this.errorPublisher.subscribe(_subscriber);
