@@ -6,7 +6,7 @@ import { Store } from './store';
  * @param {Function} callback - Function to call on each dipatch.
  * @param {Function} errorcCallback - Function to call on each error dipatch.
  */
-export function useStoreSub<T>(
+export function useStoreSubcription<T>(
   store: Store<T>,
   callback: ((data: T) => void) | undefined = undefined,
   errorcCallback: ((data: Error) => void) | undefined = undefined,
@@ -48,7 +48,7 @@ export function useStoreSub<T>(
 export function useStore<T>(store: Store<T>): T {
   const [state, setState] = useState(store.get());
 
-  useStoreSub(store, (data) => {
+  useStoreSubcription(store, (data) => {
     setState(data);
   });
 
