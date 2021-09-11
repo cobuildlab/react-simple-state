@@ -3,7 +3,7 @@ export interface Subscription {
 }
 
 export interface Subscriber<T> {
-  update: (value: T | null) => void;
+  update: (value: T) => void;
 }
 
 export interface Publisher<T> {
@@ -11,7 +11,7 @@ export interface Publisher<T> {
 
   subscribe(subscriber: Subscriber<T>): Subscription;
 
-  notify(value: T | null): void;
+  notify(value: T): void;
 }
 
 /**
@@ -53,7 +53,7 @@ class ConcretePublisher<T> implements Publisher<T> {
     return new ConcreteSubscription(this, subscriber);
   }
 
-  public notify(value: T | null): void {
+  public notify(value: T): void {
     for (const subscriber of this.subscribers) {
       subscriber.update(value);
     }
