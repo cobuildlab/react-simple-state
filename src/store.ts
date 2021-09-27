@@ -47,7 +47,7 @@ export class Store<T, R = unknown> {
   dispatch(eventValue: CheckDispatchType<T, R>): void {
     const value = this.reducer
       ? this.reducer(this.value, eventValue as R)
-      : this.value;
+      : (eventValue as T);
 
     this.value = value;
 
