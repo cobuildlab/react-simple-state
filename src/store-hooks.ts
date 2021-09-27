@@ -4,30 +4,54 @@ import { Store } from './store';
 /**
  * @param {Store} store  - Store to subscribe.
  * @param {Function} callback - Function to call on each dipatch.
+ * @param {Function} errorCallback - Function to call on each error dipatch.
  */
 export function useStoreSubcription<T>(
   store: Store<T>,
-  callback: (data: T) => void,
+  callback?: (data: T) => void,
+  errorCallback?: (data: Error) => void,
 ): void {
   const callbacksRef = useRef({
     callback,
+    errorCallback,
   });
 
   callbacksRef.current = {
     callback,
+    errorCallback,
   };
 
+  const hasCallBack = Boolean(callback);
+  const hasErrorCallBack = Boolean(errorCallback);
   useEffect(() => {
-    const unsubscribeSuccess = store.subscribe((data) => {
+    if (!hasCallBack) {
+      return;
+    }
+    const unsubscribe = store.subscribe((data) => {
       if (callbacksRef.current.callback) {
         callbacksRef.current.callback(data);
       }
     });
 
     return () => {
-      unsubscribeSuccess.unsubscribe();
+      unsubscribe.unsubscribe();
     };
-  }, [store]);
+  }, [store, hasCallBack]);
+
+  useEffect(() => {
+    if (!hasErrorCallBack) {
+      return;
+    }
+    const unsubscribe = store.subscribeError((data) => {
+      if (callbacksRef.current.errorCallback) {
+        callbacksRef.current.errorCallback(data);
+      }
+    });
+
+    return () => {
+      unsubscribe.unsubscribe();
+    };
+  }, [store, hasErrorCallBack]);
 }
 
 /**
