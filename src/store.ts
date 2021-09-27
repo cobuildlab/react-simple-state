@@ -75,3 +75,15 @@ export class Store<T, R = unknown> {
     }
   }
 }
+
+/**
+ * Creates an event from a descriptor.
+ *
+ * @param {StoreParams} storeDescriptor - Event options.
+ * @returns {Store} - Event object.
+ */
+export function createStore<T, U = T>(
+  storeDescriptor: StoreParams<T, U>,
+): Store<T, U> {
+  return new Store<T, U>(storeDescriptor);
+}
