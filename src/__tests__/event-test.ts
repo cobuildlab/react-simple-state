@@ -9,6 +9,9 @@ test("createEvent:", () => {
     const eventWithInitial = createEvent({initialValue: 1});
     expect(eventWithInitial.get()).toBe(1);
 
+    const eventWithInitialFalsy = createEvent({initialValue: 0});
+    expect(eventWithInitialFalsy.get()).toBe(0);
+
     const eventWithReducer = createEvent({reducer: (val: any) => !val});
     eventWithReducer.subscribe(val => {
         expect(val).toBe(false);

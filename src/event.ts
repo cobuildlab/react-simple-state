@@ -23,8 +23,7 @@ export class Event<T, U = unknown> {
   private isEventEmpty = true;
 
   constructor(eventDescriptor?: EventParams<T, U>) {
-    if (eventDescriptor && eventDescriptor.initialValue)
-      this.value = eventDescriptor.initialValue;
+    this.value = eventDescriptor?.initialValue ?? null;
     this.reducer = eventDescriptor?.reducer;
   }
 
