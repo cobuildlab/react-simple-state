@@ -22,14 +22,14 @@
 
 • **update**: *function*
 
-*Defined in [src/pub-sub.ts:6](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/pub-sub.ts#L6)*
+*Defined in [src/pub-sub.ts:6](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/pub-sub.ts#L6)*
 
 #### Type declaration:
 
-▸ (`value`: T | null): *void*
+▸ (`value`: T): *void*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`value` | T &#124; null |
+`value` | T |

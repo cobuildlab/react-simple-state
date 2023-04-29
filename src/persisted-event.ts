@@ -1,4 +1,3 @@
-import { ConcretePublisher, Publisher } from './pub-sub';
 import { CheckGeneric } from './types';
 import { Event } from './event';
 
@@ -8,6 +7,8 @@ export interface StorageInterface {
   setItem(key: string, value: string): Promise<void>;
 
   getItem(key: string): Promise<string | null>;
+
+  removeItem(key: string): Promise<void>;
 }
 
 export class LocalStorage implements StorageInterface {
@@ -22,6 +23,10 @@ export class LocalStorage implements StorageInterface {
 
   setItem(key: string, value: string): Promise<void> {
     return Promise.resolve(window.localStorage.setItem(key, value));
+  }
+
+  removeItem(key: string): Promise<void> {
+    return Promise.resolve(window.localStorage.removeItem(key));
   }
 
 }
@@ -63,7 +68,7 @@ export class PersistedEvent<T, U = unknown> extends Event<T, U> {
 
   clear(dispatch = false): void {
     super.clear(dispatch);
-    this.storage.setItem(this.storageKey, JSON.stringify(this.value)).catch((error) => {
+    this.storage.removeItem(this.storageKey).catch((error) => {
       console.error('PersistedEvent:clear', error);
     });
   }

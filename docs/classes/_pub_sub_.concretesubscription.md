@@ -37,7 +37,7 @@ An Object that represent the subscription to a Publisher.
 
 \+ **new ConcreteSubscription**(`publisher`: [Publisher](../interfaces/_pub_sub_.publisher.md)‹T›, `subscriber`: [Subscriber](../interfaces/_pub_sub_.subscriber.md)‹T›): *[ConcreteSubscription](_pub_sub_.concretesubscription.md)*
 
-*Defined in [src/pub-sub.ts:22](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/pub-sub.ts#L22)*
+*Defined in [src/pub-sub.ts:22](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/pub-sub.ts#L22)*
 
 **Parameters:**
 
@@ -54,7 +54,7 @@ Name | Type |
 
 • **publisher**: *[Publisher](../interfaces/_pub_sub_.publisher.md)‹T› | null* = null
 
-*Defined in [src/pub-sub.ts:21](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/pub-sub.ts#L21)*
+*Defined in [src/pub-sub.ts:21](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/pub-sub.ts#L21)*
 
 ___
 
@@ -62,7 +62,7 @@ ___
 
 • **subscriber**: *[Subscriber](../interfaces/_pub_sub_.subscriber.md)‹T› | null* = null
 
-*Defined in [src/pub-sub.ts:22](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/pub-sub.ts#L22)*
+*Defined in [src/pub-sub.ts:22](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/pub-sub.ts#L22)*
 
 ## Methods
 
@@ -72,6 +72,6 @@ ___
 
 *Implementation of [Subscription](../interfaces/_pub_sub_.subscription.md)*
 
-*Defined in [src/pub-sub.ts:29](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/pub-sub.ts#L29)*
+*Defined in [src/pub-sub.ts:29](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/pub-sub.ts#L29)*
 
 **Returns:** *void*

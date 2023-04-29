@@ -1,12 +1,12 @@
 [@cobuildlab/react-simple-state](../README.md) › ["store"](../modules/_store_.md) › [Store](_store_.store.md)
 
-# Class: Store ‹**T, U**›
+# Class: Store ‹**T, R**›
 
 ## Type parameters
 
 ▪ **T**
 
-▪ **U**: *[]*
+▪ **R**
 
 ## Hierarchy
 
@@ -21,8 +21,9 @@
 ### Properties
 
 * [errorPublisher](_store_.store.md#private-errorpublisher)
+* [initialValue](_store_.store.md#private-initialvalue)
 * [publisher](_store_.store.md#private-publisher)
-* [reducer](_store_.store.md#private-optional-readonly-reducer)
+* [reducer](_store_.store.md#private-reducer)
 * [value](_store_.store.md#private-value)
 
 ### Methods
@@ -38,15 +39,15 @@
 
 ###  constructor
 
-\+ **new Store**(`eventDescriptor?`: [EventParams](../modules/_store_.md#eventparams)‹T, U›): *[Store](_store_.store.md)*
+\+ **new Store**(`eventDescriptor`: [StoreParams](../modules/_store_.md#storeparams)‹T, R›): *[Store](_store_.store.md)*
 
-*Defined in [src/store.ts:18](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/store.ts#L18)*
+*Defined in [src/store.ts:20](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L20)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`eventDescriptor?` | [EventParams](../modules/_store_.md#eventparams)‹T, U› |
+`eventDescriptor` | [StoreParams](../modules/_store_.md#storeparams)‹T, R› |
 
 **Returns:** *[Store](_store_.store.md)*
 
@@ -56,7 +57,15 @@ Name | Type |
 
 • **errorPublisher**: *[Publisher](../interfaces/_pub_sub_.publisher.md)‹Error›* = new ConcretePublisher()
 
-*Defined in [src/store.ts:18](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/store.ts#L18)*
+*Defined in [src/store.ts:19](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L19)*
+
+___
+
+### `Private` initialValue
+
+• **initialValue**: *T*
+
+*Defined in [src/store.ts:17](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L17)*
 
 ___
 
@@ -64,23 +73,23 @@ ___
 
 • **publisher**: *[Publisher](../interfaces/_pub_sub_.publisher.md)‹T›* = new ConcretePublisher()
 
-*Defined in [src/store.ts:17](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/store.ts#L17)*
+*Defined in [src/store.ts:18](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L18)*
 
 ___
 
-### `Private` `Optional` `Readonly` reducer
+### `Private` reducer
 
-• **reducer**? : *[Reducer](../modules/_event_.md#reducer)‹T, []›*
+• **reducer**: *[Reducer](../modules/_store_.md#reducer)‹T, R› | undefined*
 
-*Defined in [src/store.ts:16](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/store.ts#L16)*
+*Defined in [src/store.ts:20](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L20)*
 
 ___
 
 ### `Private` value
 
-• **value**: *T | null* = null
+• **value**: *T*
 
-*Defined in [src/store.ts:15](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/store.ts#L15)*
+*Defined in [src/store.ts:16](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L16)*
 
 ## Methods
 
@@ -88,7 +97,7 @@ ___
 
 ▸ **clear**(`dispatch`: boolean): *void*
 
-*Defined in [src/store.ts:66](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/store.ts#L66)*
+*Defined in [src/store.ts:70](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L70)*
 
 Removes all data from the Event store.
 
@@ -104,15 +113,15 @@ ___
 
 ###  dispatch
 
-▸ **dispatch**(`eventValue`: T | U | null): *void*
+▸ **dispatch**(`eventValue`: [CheckDispatchType](../modules/_store_.md#checkdispatchtype)‹T, R›): *void*
 
-*Defined in [src/store.ts:44](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/store.ts#L44)*
+*Defined in [src/store.ts:47](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L47)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`eventValue` | T &#124; U &#124; null |
+`eventValue` | [CheckDispatchType](../modules/_store_.md#checkdispatchtype)‹T, R› |
 
 **Returns:** *void*
 
@@ -122,7 +131,7 @@ ___
 
 ▸ **dispatchError**(`value`: Error): *void*
 
-*Defined in [src/store.ts:54](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/store.ts#L54)*
+*Defined in [src/store.ts:57](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L57)*
 
 **Parameters:**
 
@@ -136,11 +145,11 @@ ___
 
 ###  get
 
-▸ **get**(): *T | null*
+▸ **get**(): *T*
 
-*Defined in [src/store.ts:57](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/store.ts#L57)*
+*Defined in [src/store.ts:61](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L61)*
 
-**Returns:** *T | null*
+**Returns:** *T*
 
 ___
 
@@ -148,19 +157,19 @@ ___
 
 ▸ **subscribe**(`subscriber`: function, `receiveLastValue`: boolean): *[Subscription](../interfaces/_pub_sub_.subscription.md)*
 
-*Defined in [src/store.ts:26](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/store.ts#L26)*
+*Defined in [src/store.ts:29](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L29)*
 
 **Parameters:**
 
 ▪ **subscriber**: *function*
 
-▸ (`value`: T | null): *void*
+▸ (`value`: T): *void*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`value` | T &#124; null |
+`value` | T |
 
 ▪`Default value`  **receiveLastValue**: *boolean*= false
 
@@ -172,18 +181,18 @@ ___
 
 ▸ **subscribeError**(`subscriber`: function): *[Subscription](../interfaces/_pub_sub_.subscription.md)*
 
-*Defined in [src/store.ts:37](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/store.ts#L37)*
+*Defined in [src/store.ts:40](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L40)*
 
 **Parameters:**
 
 ▪ **subscriber**: *function*
 
-▸ (`value`: Error | null): *void*
+▸ (`value`: Error): *void*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`value` | Error &#124; null |
+`value` | Error |
 
 **Returns:** *[Subscription](../interfaces/_pub_sub_.subscription.md)*
