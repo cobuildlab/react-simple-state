@@ -22,6 +22,6 @@
 
 ▸ **unsubscribe**(): *void*
 
-*Defined in [src/pub-sub.ts:2](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/pub-sub.ts#L2)*
+*Defined in [src/pub-sub.ts:2](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/pub-sub.ts#L2)*
 
 **Returns:** *void*

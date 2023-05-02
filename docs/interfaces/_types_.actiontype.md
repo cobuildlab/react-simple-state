@@ -20,7 +20,7 @@
 
 ▸ (...`params_0`: U): *Promise‹[CheckGeneric](../modules/_types_.md#checkgeneric)‹T, R› | object›*
 
-*Defined in [src/types.ts:19](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/types.ts#L19)*
+*Defined in [src/types.ts:19](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/types.ts#L19)*
 
 **Parameters:**
 
@@ -44,7 +44,7 @@ Name | Type |
 
 • **errorEvent**: *[Event](../classes/_event_.event.md)‹E, E›*
 
-*Defined in [src/types.ts:28](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/types.ts#L28)*
+*Defined in [src/types.ts:28](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/types.ts#L28)*
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 • **event**: *[Event](../classes/_event_.event.md)‹T, R›*
 
-*Defined in [src/types.ts:27](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/types.ts#L27)*
+*Defined in [src/types.ts:27](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/types.ts#L27)*
 
 ___
 
@@ -60,4 +60,4 @@ ___
 
 • **isAction**: *boolean*
 
-*Defined in [src/types.ts:26](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/types.ts#L26)*
+*Defined in [src/types.ts:26](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/types.ts#L26)*

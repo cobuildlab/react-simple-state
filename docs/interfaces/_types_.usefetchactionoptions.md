@@ -30,7 +30,7 @@
 
 *Inherited from __type.onCompleted*
 
-*Defined in [src/types.ts:32](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/types.ts#L32)*
+*Defined in [src/types.ts:32](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/types.ts#L32)*
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 *Inherited from __type.onError*
 
-*Defined in [src/types.ts:33](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/types.ts#L33)*
+*Defined in [src/types.ts:33](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/types.ts#L33)*
 
 ___
 
@@ -48,4 +48,4 @@ ___
 
 • **skip**? : *undefined | false | true*
 
-*Defined in [src/types.ts:36](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/types.ts#L36)*
+*Defined in [src/types.ts:36](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/types.ts#L36)*

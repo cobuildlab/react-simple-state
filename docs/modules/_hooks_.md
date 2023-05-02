@@ -17,7 +17,7 @@
 
 ▸ **useCallAction**‹**T**, **U**, **R**, **E**›(`action`: [ActionType](../interfaces/_types_.actiontype.md)‹T, U, E, R›, `options?`: [UseActionOptions](_types_.md#useactionoptions)‹T, E›): *[UseCallActionReturn](_types_.md#usecallactionreturn)‹T, U, E›*
 
-*Defined in [src/hooks.ts:188](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/hooks.ts#L188)*
+*Defined in [src/hooks.ts:188](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/hooks.ts#L188)*
 
 Hook that handle call promise actions, like mutations to database in a declarative way.
 
@@ -48,7 +48,7 @@ ___
 
 ▸ **useEvent**‹**U**, **T**, **V**›(`event`: [Event](../classes/_event_.event.md)‹T, V›, `params?`: [EventHookParams](_types_.md#eventhookparams)‹T, U›): *[useEventReturn](_types_.md#useeventreturn)‹T, U›*
 
-*Defined in [src/hooks.ts:56](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/hooks.ts#L56)*
+*Defined in [src/hooks.ts:56](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/hooks.ts#L56)*
 
 React Hook to subscribe to an Event.
 
@@ -77,7 +77,7 @@ ___
 
 ▸ **useFetchAction**‹**T**, **U**, **R**, **E**›(`action`: [ActionType](../interfaces/_types_.actiontype.md)‹T, U, E, R›, `params`: U, `options?`: [UseFetchActionOptions](../interfaces/_types_.usefetchactionoptions.md)‹T, E›): *[UseFetchActionReturn](_types_.md#usefetchactionreturn)‹T, E›*
 
-*Defined in [src/hooks.ts:103](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/hooks.ts#L103)*
+*Defined in [src/hooks.ts:103](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/hooks.ts#L103)*
 
 Hook that handle fetch promise actions, like querys to database.
 This hook uses a declarative pattern.
@@ -110,7 +110,7 @@ ___
 
 ▸ **useSubscription**‹**T**, **U**, **V**›(`event`: [Event](../classes/_event_.event.md)‹T, V›, `callback`: function, `deps`: U[] | undefined): *void*
 
-*Defined in [src/hooks.ts:21](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/hooks.ts#L21)*
+*Defined in [src/hooks.ts:21](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/hooks.ts#L21)*
 
 React Hook to subscribe to an specific event.
 

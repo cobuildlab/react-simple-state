@@ -27,7 +27,7 @@
 
 Ƭ **Arr**: *keyof any[]*
 
-*Defined in [src/types.ts:17](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/types.ts#L17)*
+*Defined in [src/types.ts:17](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/types.ts#L17)*
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 Ƭ **CheckGeneric**: *T extends R ? T : R*
 
-*Defined in [src/types.ts:18](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/types.ts#L18)*
+*Defined in [src/types.ts:18](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/types.ts#L18)*
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 Ƭ **EventHookParams**: *object*
 
-*Defined in [src/types.ts:55](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/types.ts#L55)*
+*Defined in [src/types.ts:55](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/types.ts#L55)*
 
 #### Type declaration:
 
@@ -57,7 +57,7 @@ ___
 
 Ƭ **LocalObserver**: *object*
 
-*Defined in [src/types.ts:8](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/types.ts#L8)*
+*Defined in [src/types.ts:8](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/types.ts#L8)*
 
 #### Type declaration:
 
@@ -79,7 +79,7 @@ ___
 
 Ƭ **Store**: *object*
 
-*Defined in [src/types.ts:3](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/types.ts#L3)*
+*Defined in [src/types.ts:3](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/types.ts#L3)*
 
 #### Type declaration:
 
@@ -91,7 +91,7 @@ ___
 
 Ƭ **UseActionOptions**: *object*
 
-*Defined in [src/types.ts:31](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/types.ts#L31)*
+*Defined in [src/types.ts:31](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/types.ts#L31)*
 
 #### Type declaration:
 
@@ -105,7 +105,7 @@ ___
 
 Ƭ **UseCallActionReturn**: *[]*
 
-*Defined in [src/types.ts:46](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/types.ts#L46)*
+*Defined in [src/types.ts:46](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/types.ts#L46)*
 
 ___
 
@@ -113,7 +113,7 @@ ___
 
 Ƭ **UseFetchActionReturn**: *[]*
 
-*Defined in [src/types.ts:38](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/types.ts#L38)*
+*Defined in [src/types.ts:38](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/types.ts#L38)*
 
 ___
 
@@ -121,4 +121,4 @@ ___
 
 Ƭ **useEventReturn**: *T extends U ? T : U*
 
-*Defined in [src/types.ts:59](https://github.com/cobuildlab/react-simple-state/blob/72fa9c7/src/types.ts#L59)*
+*Defined in [src/types.ts:59](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/types.ts#L59)*

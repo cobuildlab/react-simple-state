@@ -17,10 +17,10 @@ export type EventParams<T, U> = {
  * New Event Classes.
  */
 export class Event<T, U = unknown> {
-  private value: T | null = null;
+  protected value: T | null = null;
   private readonly reducer?: Reducer<T, U>;
   private publisher: Publisher<T> = new ConcretePublisher();
-  private isEventEmpty = true;
+  protected isEventEmpty = true;
 
   constructor(eventDescriptor?: EventParams<T, U>) {
     this.value = eventDescriptor?.initialValue ?? null;
