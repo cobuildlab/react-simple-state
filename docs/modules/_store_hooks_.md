@@ -17,7 +17,7 @@
 
 ▸ **useStore**‹**T**›(`store`: [Store](../classes/_store_.store.md)‹T›): *T*
 
-*Defined in [src/store-hooks.ts:90](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store-hooks.ts#L90)*
+*Defined in [src/store-hooks.ts:90](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/store-hooks.ts#L90)*
 
 **Type parameters:**
 
@@ -39,7 +39,7 @@ ___
 
 ▸ **useStoreError**‹**T**›(`store`: [Store](../classes/_store_.store.md)‹T›): *Error | null*
 
-*Defined in [src/store-hooks.ts:104](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store-hooks.ts#L104)*
+*Defined in [src/store-hooks.ts:104](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/store-hooks.ts#L104)*
 
 **Type parameters:**
 
@@ -61,7 +61,7 @@ ___
 
 ▸ **useStoreErrorSubscription**‹**T**›(`store`: [Store](../classes/_store_.store.md)‹T›, `errorcCallback`: function): *void*
 
-*Defined in [src/store-hooks.ts:61](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store-hooks.ts#L61)*
+*Defined in [src/store-hooks.ts:61](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/store-hooks.ts#L61)*
 
 **Type parameters:**
 
@@ -93,7 +93,7 @@ ___
 
 ▸ **useStoreSubcription**‹**T**›(`store`: [Store](../classes/_store_.store.md)‹T›, `callback?`: undefined | function, `errorCallback?`: undefined | function): *void*
 
-*Defined in [src/store-hooks.ts:9](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store-hooks.ts#L9)*
+*Defined in [src/store-hooks.ts:9](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/store-hooks.ts#L9)*
 
 **Type parameters:**
 

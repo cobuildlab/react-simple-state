@@ -41,7 +41,7 @@
 
 \+ **new Store**(`eventDescriptor`: [StoreParams](../modules/_store_.md#storeparams)‹T, R›): *[Store](_store_.store.md)*
 
-*Defined in [src/store.ts:20](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L20)*
+*Defined in [src/store.ts:20](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/store.ts#L20)*
 
 **Parameters:**
 
@@ -57,7 +57,7 @@ Name | Type |
 
 • **errorPublisher**: *[Publisher](../interfaces/_pub_sub_.publisher.md)‹Error›* = new ConcretePublisher()
 
-*Defined in [src/store.ts:19](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L19)*
+*Defined in [src/store.ts:19](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/store.ts#L19)*
 
 ___
 
@@ -65,7 +65,7 @@ ___
 
 • **initialValue**: *T*
 
-*Defined in [src/store.ts:17](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L17)*
+*Defined in [src/store.ts:17](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/store.ts#L17)*
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 • **publisher**: *[Publisher](../interfaces/_pub_sub_.publisher.md)‹T›* = new ConcretePublisher()
 
-*Defined in [src/store.ts:18](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L18)*
+*Defined in [src/store.ts:18](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/store.ts#L18)*
 
 ___
 
@@ -81,7 +81,7 @@ ___
 
 • **reducer**: *[Reducer](../modules/_store_.md#reducer)‹T, R› | undefined*
 
-*Defined in [src/store.ts:20](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L20)*
+*Defined in [src/store.ts:20](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/store.ts#L20)*
 
 ___
 
@@ -89,7 +89,7 @@ ___
 
 • **value**: *T*
 
-*Defined in [src/store.ts:16](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L16)*
+*Defined in [src/store.ts:16](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/store.ts#L16)*
 
 ## Methods
 
@@ -97,7 +97,7 @@ ___
 
 ▸ **clear**(`dispatch`: boolean): *void*
 
-*Defined in [src/store.ts:70](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L70)*
+*Defined in [src/store.ts:70](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/store.ts#L70)*
 
 Removes all data from the Event store.
 
@@ -115,7 +115,7 @@ ___
 
 ▸ **dispatch**(`eventValue`: [CheckDispatchType](../modules/_store_.md#checkdispatchtype)‹T, R›): *void*
 
-*Defined in [src/store.ts:47](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L47)*
+*Defined in [src/store.ts:47](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/store.ts#L47)*
 
 **Parameters:**
 
@@ -131,7 +131,7 @@ ___
 
 ▸ **dispatchError**(`value`: Error): *void*
 
-*Defined in [src/store.ts:57](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L57)*
+*Defined in [src/store.ts:57](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/store.ts#L57)*
 
 **Parameters:**
 
@@ -147,7 +147,7 @@ ___
 
 ▸ **get**(): *T*
 
-*Defined in [src/store.ts:61](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L61)*
+*Defined in [src/store.ts:61](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/store.ts#L61)*
 
 **Returns:** *T*
 
@@ -157,7 +157,7 @@ ___
 
 ▸ **subscribe**(`subscriber`: function, `receiveLastValue`: boolean): *[Subscription](../interfaces/_pub_sub_.subscription.md)*
 
-*Defined in [src/store.ts:29](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L29)*
+*Defined in [src/store.ts:29](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/store.ts#L29)*
 
 **Parameters:**
 
@@ -181,7 +181,7 @@ ___
 
 ▸ **subscribeError**(`subscriber`: function): *[Subscription](../interfaces/_pub_sub_.subscription.md)*
 
-*Defined in [src/store.ts:40](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L40)*
+*Defined in [src/store.ts:40](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/store.ts#L40)*
 
 **Parameters:**
 

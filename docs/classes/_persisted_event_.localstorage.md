@@ -19,6 +19,7 @@
 ### Methods
 
 * [getItem](_persisted_event_.localstorage.md#getitem)
+* [removeItem](_persisted_event_.localstorage.md#removeitem)
 * [setItem](_persisted_event_.localstorage.md#setitem)
 
 ## Constructors
@@ -27,7 +28,7 @@
 
 \+ **new LocalStorage**(): *[LocalStorage](_persisted_event_.localstorage.md)*
 
-*Defined in [src/persisted-event.ts:13](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/persisted-event.ts#L13)*
+*Defined in [src/persisted-event.ts:14](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/persisted-event.ts#L14)*
 
 **Returns:** *[LocalStorage](_persisted_event_.localstorage.md)*
 
@@ -39,7 +40,7 @@
 
 *Implementation of [StorageInterface](../interfaces/_persisted_event_.storageinterface.md)*
 
-*Defined in [src/persisted-event.ts:19](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/persisted-event.ts#L19)*
+*Defined in [src/persisted-event.ts:20](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/persisted-event.ts#L20)*
 
 **Parameters:**
 
@@ -51,13 +52,31 @@ Name | Type |
 
 ___
 
+###  removeItem
+
+▸ **removeItem**(`key`: string): *Promise‹void›*
+
+*Implementation of [StorageInterface](../interfaces/_persisted_event_.storageinterface.md)*
+
+*Defined in [src/persisted-event.ts:28](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/persisted-event.ts#L28)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`key` | string |
+
+**Returns:** *Promise‹void›*
+
+___
+
 ###  setItem
 
 ▸ **setItem**(`key`: string, `value`: string): *Promise‹void›*
 
 *Implementation of [StorageInterface](../interfaces/_persisted_event_.storageinterface.md)*
 
-*Defined in [src/persisted-event.ts:23](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/persisted-event.ts#L23)*
+*Defined in [src/persisted-event.ts:24](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/persisted-event.ts#L24)*
 
 **Parameters:**
 

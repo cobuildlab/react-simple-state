@@ -24,7 +24,7 @@
 
 Ƭ **CheckDispatchType**: *R extends unknown ? T : R*
 
-*Defined in [src/store.ts:9](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L9)*
+*Defined in [src/store.ts:9](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/store.ts#L9)*
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 Ƭ **Reducer**: *function*
 
-*Defined in [src/store.ts:8](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L8)*
+*Defined in [src/store.ts:8](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/store.ts#L8)*
 
 #### Type declaration:
 
@@ -51,7 +51,7 @@ ___
 
 Ƭ **StoreParams**: *object*
 
-*Defined in [src/store.ts:11](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L11)*
+*Defined in [src/store.ts:11](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/store.ts#L11)*
 
 #### Type declaration:
 
@@ -65,7 +65,7 @@ ___
 
 ▸ **createStore**‹**T**, **U**›(`storeDescriptor`: [StoreParams](_store_.md#storeparams)‹T, U›): *[Store](../classes/_store_.store.md)‹T, U›*
 
-*Defined in [src/store.ts:85](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store.ts#L85)*
+*Defined in [src/store.ts:85](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/store.ts#L85)*
 
 Creates an event from a descriptor.
 

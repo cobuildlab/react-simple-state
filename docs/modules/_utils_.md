@@ -14,7 +14,7 @@
 
 ▸ **makePromise**‹**T**›(`data`: T, `ms`: number, `error`: boolean): *Promise‹T›*
 
-*Defined in [src/utils.ts:7](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/utils.ts#L7)*
+*Defined in [src/utils.ts:7](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/utils.ts#L7)*
 
 **Type parameters:**
 

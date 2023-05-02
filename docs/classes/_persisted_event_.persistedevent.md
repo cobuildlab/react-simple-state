@@ -43,7 +43,7 @@
 
 *Overrides [Event](_event_.event.md).[constructor](_event_.event.md#constructor)*
 
-*Defined in [src/persisted-event.ts:39](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/persisted-event.ts#L39)*
+*Defined in [src/persisted-event.ts:44](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/persisted-event.ts#L44)*
 
 **Parameters:**
 
@@ -61,7 +61,7 @@ Name | Type |
 
 *Inherited from [Event](_event_.event.md).[isEventEmpty](_event_.event.md#protected-iseventempty)*
 
-*Defined in [src/event.ts:23](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/event.ts#L23)*
+*Defined in [src/event.ts:23](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/event.ts#L23)*
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 • **storage**: *[StorageInterface](../interfaces/_persisted_event_.storageinterface.md)*
 
-*Defined in [src/persisted-event.ts:39](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/persisted-event.ts#L39)*
+*Defined in [src/persisted-event.ts:44](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/persisted-event.ts#L44)*
 
 ___
 
@@ -77,7 +77,7 @@ ___
 
 • **storageKey**: *string*
 
-*Defined in [src/persisted-event.ts:38](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/persisted-event.ts#L38)*
+*Defined in [src/persisted-event.ts:43](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/persisted-event.ts#L43)*
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 *Inherited from [Event](_event_.event.md).[value](_event_.event.md#protected-value)*
 
-*Defined in [src/event.ts:20](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/event.ts#L20)*
+*Defined in [src/event.ts:20](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/event.ts#L20)*
 
 ## Methods
 
@@ -97,7 +97,7 @@ ___
 
 *Overrides [Event](_event_.event.md).[clear](_event_.event.md#clear)*
 
-*Defined in [src/persisted-event.ts:64](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/persisted-event.ts#L64)*
+*Defined in [src/persisted-event.ts:69](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/persisted-event.ts#L69)*
 
 **Parameters:**
 
@@ -115,7 +115,7 @@ ___
 
 *Overrides [Event](_event_.event.md).[dispatch](_event_.event.md#dispatch)*
 
-*Defined in [src/persisted-event.ts:57](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/persisted-event.ts#L57)*
+*Defined in [src/persisted-event.ts:62](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/persisted-event.ts#L62)*
 
 **Parameters:**
 
@@ -133,7 +133,7 @@ ___
 
 *Inherited from [Event](_event_.event.md).[get](_event_.event.md#get)*
 
-*Defined in [src/event.ts:51](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/event.ts#L51)*
+*Defined in [src/event.ts:51](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/event.ts#L51)*
 
 **Returns:** *T | null*
 
@@ -145,7 +145,7 @@ ___
 
 *Inherited from [Event](_event_.event.md).[isEmpty](_event_.event.md#isempty)*
 
-*Defined in [src/event.ts:54](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/event.ts#L54)*
+*Defined in [src/event.ts:54](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/event.ts#L54)*
 
 **Returns:** *boolean*
 
@@ -157,7 +157,7 @@ ___
 
 *Inherited from [Event](_event_.event.md).[subscribe](_event_.event.md#subscribe)*
 
-*Defined in [src/event.ts:30](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/event.ts#L30)*
+*Defined in [src/event.ts:30](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/event.ts#L30)*
 
 **Parameters:**
 

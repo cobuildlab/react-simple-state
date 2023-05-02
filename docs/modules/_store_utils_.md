@@ -14,7 +14,7 @@
 
 ▸ **createStoreAction**‹**T**, **V**, **U**›(`store`: [Store](../classes/_store_.store.md)‹T, U›, `callback`: function | function, `sideEffect?`: undefined | function): *(Anonymous function)*
 
-*Defined in [src/store-utils.ts:9](https://github.com/cobuildlab/react-simple-state/blob/a61bd53/src/store-utils.ts#L9)*
+*Defined in [src/store-utils.ts:9](https://github.com/cobuildlab/react-simple-state/blob/e6423d5/src/store-utils.ts#L9)*
 
 **Type parameters:**
 
